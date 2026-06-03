@@ -12,12 +12,13 @@
       --panel2:#191410;
       --ink:#fff4e6;
       --muted:rgba(255,244,230,.64);
+      --soft:rgba(255,244,230,.48);
       --line:rgba(255,244,230,.13);
       --line2:rgba(255,244,230,.22);
       --accent:#b06a49;
       --olive:#767247;
       --radius:24px;
-      --shadow:0 28px 90px rgba(0,0,0,.55);
+      --shadow:0 24px 80px rgba(0,0,0,.48);
     }
 
     *{box-sizing:border-box}
@@ -25,8 +26,8 @@
     body{
       margin:0;
       background:
-        radial-gradient(circle at 72% 8%, rgba(176,106,73,.16), transparent 330px),
-        radial-gradient(circle at 16% 0%, rgba(118,114,71,.10), transparent 260px),
+        radial-gradient(circle at 78% 0%, rgba(176,106,73,.14), transparent 320px),
+        radial-gradient(circle at 10% 0%, rgba(118,114,71,.08), transparent 240px),
         var(--bg);
       color:var(--ink);
       font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
@@ -41,7 +42,7 @@
       position:sticky;
       top:0;
       z-index:30;
-      background:rgba(8,7,6,.78);
+      background:rgba(8,7,6,.82);
       backdrop-filter:blur(16px);
       border-bottom:1px solid var(--line);
     }
@@ -79,34 +80,30 @@
     .nav-links a{transition:color .2s ease}
     .nav-links a:hover{color:var(--ink)}
 
-    main{
-      width:min(1120px, calc(100% - 32px));
-      margin:auto;
-    }
+    main{width:min(1120px, calc(100% - 32px));margin:auto}
 
     .hero{
       min-height:calc(100vh - 62px);
       display:grid;
-      grid-template-columns:.82fr 1.18fr;
+      grid-template-columns:.78fr 1.22fr;
       gap:18px;
       align-items:center;
-      padding:30px 0 28px;
+      padding:28px 0 26px;
     }
 
     .copy,
-    .visual,
-    .strip-card,
+    .render-card,
     .mini-card{
       border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025));
+      background:linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.026));
       border-radius:var(--radius);
       box-shadow:var(--shadow);
       overflow:hidden;
     }
 
     .copy{
-      padding:34px;
-      min-height:540px;
+      padding:32px;
+      min-height:500px;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
@@ -118,50 +115,32 @@
       font-weight:760;
       letter-spacing:.18em;
       text-transform:uppercase;
-      margin-bottom:20px;
+      margin-bottom:18px;
     }
 
     h1{
       font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(42px, 6vw, 76px);
-      line-height:.94;
+      font-size:clamp(42px, 5.7vw, 72px);
+      line-height:.95;
       letter-spacing:-.045em;
       font-weight:500;
-      max-width:560px;
+      max-width:520px;
     }
 
     .lead{
-      margin-top:20px;
-      max-width:520px;
+      margin-top:18px;
+      max-width:500px;
       color:var(--muted);
-      font-size:17px;
-      line-height:1.62;
+      font-size:16.5px;
+      line-height:1.58;
     }
 
     .lead strong{color:#f0b18e;font-weight:760}
 
-    .tags{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-top:26px;
-    }
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+    .tag{border:1px solid var(--line2);color:rgba(255,244,230,.72);padding:7px 10px;border-radius:999px;font-size:12px}
 
-    .tag{
-      border:1px solid var(--line2);
-      color:rgba(255,244,230,.72);
-      padding:7px 10px;
-      border-radius:999px;
-      font-size:12px;
-    }
-
-    .actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:28px;
-    }
-
+    .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
     .btn{
       min-height:42px;
       display:inline-flex;
@@ -175,121 +154,46 @@
       font-size:14px;
       transition:transform .25s ease, background .25s ease;
     }
-
     .btn:hover{transform:translateY(-2px);background:rgba(176,106,73,.26)}
 
-    .visual{
-      position:relative;
-      min-height:540px;
-      cursor:pointer;
-    }
-
-    .visual img{
-      height:540px;
+    .render-card{cursor:pointer;box-shadow:var(--shadow)}
+    .render-frame{overflow:hidden;background:#17110e}
+    .render-card img{
+      aspect-ratio:16/10;
       object-fit:cover;
       transform:scale(1.01);
-      animation:slowMove 13s ease-in-out infinite alternate;
+      transition:transform .65s cubic-bezier(.2,.7,.2,1), filter .65s ease;
     }
+    .hero .render-card img{height:500px;aspect-ratio:auto;animation:slowMove 13s ease-in-out infinite alternate}
+    .render-card:hover img{transform:scale(1.055);filter:saturate(1.06) contrast(1.03)}
 
     @keyframes slowMove{
       from{transform:scale(1.03) translate3d(-8px,0,0)}
       to{transform:scale(1.07) translate3d(8px,-5px,0)}
     }
 
-    .visual::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg, transparent 52%, rgba(0,0,0,.45));
-      pointer-events:none;
+    .caption{
+      padding:15px 16px 16px;
+      background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.022));
+      border-top:1px solid var(--line);
     }
+    .caption b{display:block;font-family:Georgia,serif;font-size:20px;font-weight:500;margin-bottom:5px}
+    .caption span{display:block;color:var(--muted);font-size:14px;line-height:1.42}
 
-    .visual-label{
-      position:absolute;
-      left:18px;
-      right:18px;
-      bottom:18px;
-      z-index:2;
-      padding:15px 16px;
-      border:1px solid rgba(255,255,255,.16);
-      border-radius:18px;
-      background:rgba(10,8,6,.68);
-      backdrop-filter:blur(14px);
-    }
-
-    .visual-label b{display:block;font-family:Georgia,serif;font-size:20px;font-weight:500;margin-bottom:5px}
-    .visual-label span{display:block;color:var(--muted);font-size:14px;line-height:1.45}
-
-    .gallery-section{
-      padding:0 0 34px;
-    }
-
-    .section-top{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:18px;
-      margin-bottom:14px;
-    }
-
-    h2{
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(28px, 3vw, 42px);
-      line-height:1;
-      letter-spacing:-.03em;
-      font-weight:500;
-    }
-
+    .gallery-section{padding:0 0 28px}
+    .section-top{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:14px}
+    h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(28px,3vw,42px);line-height:1;letter-spacing:-.03em;font-weight:500}
     .section-top p{color:var(--muted);font-size:14px;line-height:1.5;max-width:460px}
 
-    .strip{
-      display:grid;
-      grid-template-columns:1.25fr 1fr 1fr 1fr;
-      gap:12px;
-    }
+    .strip{display:grid;grid-template-columns:1.25fr 1fr 1fr 1fr;gap:12px}
+    .strip .render-card{box-shadow:none}
+    .strip .render-card img{height:210px;aspect-ratio:auto}
+    .strip .caption{padding:13px 14px 14px}
+    .strip .caption b{font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:14px;font-weight:760;margin-bottom:4px}
+    .strip .caption span{font-size:12.5px}
 
-    .strip-card{
-      position:relative;
-      cursor:pointer;
-      min-height:210px;
-      box-shadow:none;
-    }
-
-    .strip-card img{
-      height:230px;
-      object-fit:cover;
-      transition:transform .55s cubic-bezier(.2,.7,.2,1), filter .55s ease;
-    }
-
-    .strip-card:hover img{transform:scale(1.06);filter:saturate(1.07) contrast(1.03)}
-
-    .strip-caption{
-      position:absolute;
-      left:12px;
-      right:12px;
-      bottom:12px;
-      padding:12px;
-      border-radius:14px;
-      background:rgba(8,7,6,.66);
-      backdrop-filter:blur(12px);
-      border:1px solid rgba(255,255,255,.10);
-    }
-
-    .strip-caption b{display:block;font-size:14px;margin-bottom:4px}
-    .strip-caption span{display:block;color:var(--muted);font-size:12px;line-height:1.35}
-
-    .info-row{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:12px;
-      padding:0 0 38px;
-    }
-
-    .mini-card{
-      box-shadow:none;
-      padding:18px;
-    }
-
+    .info-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:0 0 34px}
+    .mini-card{box-shadow:none;padding:18px}
     .mini-card b{display:block;font-size:15px;margin-bottom:7px}
     .mini-card span{display:block;color:var(--muted);font-size:13px;line-height:1.5}
 
@@ -319,7 +223,6 @@
       background:rgba(0,0,0,.88);
       backdrop-filter:blur(16px);
     }
-
     .lightbox.open{display:flex}
     .lightbox img{max-width:min(1180px,96vw);max-height:84vh;object-fit:contain;border-radius:18px;box-shadow:0 30px 90px rgba(0,0,0,.65)}
     .lightbox button{position:absolute;top:16px;right:16px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.10);color:white;font-size:26px;cursor:pointer}
@@ -327,17 +230,24 @@
     @media(max-width:860px){
       .nav-inner,main,footer{width:min(100% - 24px,1120px)}
       .nav-links{display:none}
-      .hero{min-height:auto;grid-template-columns:1fr;padding:20px 0 22px;gap:12px}
-      .copy{min-height:auto;padding:24px}
-      .visual{min-height:auto}
-      .visual img{height:auto;aspect-ratio:16/10;animation:none}
-      h1{font-size:clamp(36px, 11vw, 54px)}
-      .lead{font-size:15.5px;line-height:1.58}
-      .strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:4px}
-      .strip-card{min-width:82%;scroll-snap-align:start}
-      .strip-card img{height:auto;aspect-ratio:16/10}
-      .info-row{grid-template-columns:1fr;padding-bottom:28px}
-      .section-top{align-items:flex-start;flex-direction:column}
+      .hero{min-height:auto;grid-template-columns:1fr;padding:18px 0 22px;gap:12px}
+      .copy{min-height:auto;padding:22px;border-radius:22px}
+      h1{font-size:clamp(34px,10.5vw,50px)}
+      .lead{font-size:15px;line-height:1.55}
+      .tags{margin-top:18px}
+      .hero .render-card{border-radius:22px}
+      .hero .render-card img{height:auto;aspect-ratio:16/10;animation:none}
+      .caption{padding:13px 14px 15px}
+      .caption b{font-size:18px}
+      .caption span{font-size:13.5px}
+      .section-top{align-items:flex-start;flex-direction:column;margin-bottom:12px}
+      .gallery-section{padding-bottom:24px}
+      .strip{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 0 5px}
+      .strip .render-card{min-width:84%;scroll-snap-align:start;border-radius:20px}
+      .strip .render-card img{height:auto;aspect-ratio:16/10}
+      .strip .caption b{font-size:14px}
+      .strip .caption span{font-size:12.5px}
+      .info-row{grid-template-columns:1fr;padding-bottom:26px}
       footer{flex-direction:column}
     }
   </style>
@@ -362,22 +272,22 @@
         <div class="actions"><a class="btn" href="#renders">Смотреть рендеры</a><a class="btn" href="#idea">Идея проекта</a></div>
       </div>
 
-      <article class="visual reveal" data-full="assets/render-01.webp">
-        <img src="assets/render-01.webp" alt="Главный рендер лектория">
-        <div class="visual-label"><b>Главный вид</b><span>Нажми на изображение, чтобы открыть рендер крупно.</span></div>
+      <article class="render-card reveal" data-full="assets/render-01.webp">
+        <div class="render-frame"><img src="assets/render-01.webp" alt="Главный рендер лектория"></div>
+        <div class="caption"><b>Главный вид</b><span>Нажми на рендер, чтобы открыть изображение крупно.</span></div>
       </article>
     </section>
 
     <section id="renders" class="gallery-section">
       <div class="section-top reveal">
         <h2>Рендеры проекта</h2>
-        <p>Мини-галерея для быстрой презентации. На телефоне карточки листаются горизонтально.</p>
+        <p>Подписи теперь снизу, чтобы не перекрывать изображение. На телефоне карточки листаются горизонтально.</p>
       </div>
       <div class="strip">
-        <article class="strip-card reveal" data-full="assets/render-01.webp"><img src="assets/render-01.webp" alt="Общий вид"><div class="strip-caption"><b>Общий вид</b><span>Стол, лавки, мягкая зона</span></div></article>
-        <article class="strip-card reveal" data-full="assets/render-02.webp"><img src="assets/render-02.webp" alt="Фронтальная перспектива"><div class="strip-caption"><b>Фронтальная перспектива</b><span>Лекторий и зона отдыха</span></div></article>
-        <article class="strip-card reveal" data-full="assets/render-03.webp"><img src="assets/render-03.webp" alt="Терракотовая стена"><div class="strip-caption"><b>Терракотовая стена</b><span>Цветовой акцент</span></div></article>
-        <article class="strip-card reveal" data-full="assets/render-04.webp"><img src="assets/render-04.webp" alt="Экран и посадка"><div class="strip-caption"><b>Экран и посадка</b><span>Практичная часть</span></div></article>
+        <article class="render-card reveal" data-full="assets/render-01.webp"><div class="render-frame"><img src="assets/render-01.webp" alt="Общий вид"></div><div class="caption"><b>Общий вид</b><span>Стол, лавки, мягкая зона</span></div></article>
+        <article class="render-card reveal" data-full="assets/render-02.webp"><div class="render-frame"><img src="assets/render-02.webp" alt="Фронтальная перспектива"></div><div class="caption"><b>Фронтальная перспектива</b><span>Лекторий и зона отдыха</span></div></article>
+        <article class="render-card reveal" data-full="assets/render-03.webp"><div class="render-frame"><img src="assets/render-03.webp" alt="Терракотовая стена"></div><div class="caption"><b>Терракотовая стена</b><span>Цветовой акцент</span></div></article>
+        <article class="render-card reveal" data-full="assets/render-04.webp"><div class="render-frame"><img src="assets/render-04.webp" alt="Экран и посадка"></div><div class="caption"><b>Экран и посадка</b><span>Практичная часть</span></div></article>
       </div>
     </section>
 
