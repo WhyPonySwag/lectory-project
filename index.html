@@ -4,32 +4,38 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Лекторий — интерьерная концепция</title>
-  <meta name="description" content="Интерьерная концепция камерного лектория: естественный свет, медно-терракотовые стены, оливковый текстиль, дерево и зелень.">
+  <meta name="description" content="Интерьерная концепция камерного лектория: естественный свет, earthy copper стены, оливковый текстиль, дерево и зелень.">
   <style>
     :root{
-      --bg:#f5efe4;
+      --bg:#f3eadc;
       --paper:#fffaf1;
-      --paper2:#efe2d0;
-      --ink:#2d241d;
-      --muted:#7a6b5d;
-      --line:rgba(70,49,32,.18);
+      --paper-strong:#fff6e8;
+      --ink:#211914;
+      --text:#35291f;
+      --muted:#6d5f52;
+      --line:rgba(71,49,31,.18);
+      --line-strong:rgba(71,49,31,.28);
       --copper:#9c5d41;
-      --olive:#66633b;
-      --wood:#3a1f10;
-      --cream:#eadbc2;
-      --shadow:0 24px 70px rgba(71,45,25,.18);
-      --radius:28px;
+      --copper-dark:#75412e;
+      --olive:#686540;
+      --wood:#3c2114;
+      --sand:#ddc49d;
+      --cream:#f0dfc5;
+      --radius:30px;
+      --shadow-soft:0 18px 55px rgba(69,43,24,.13);
+      --shadow-card:0 28px 80px rgba(69,43,24,.18);
     }
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0;
-      background:
-        radial-gradient(circle at 20% 0%, rgba(156,93,65,.16), transparent 36%),
-        radial-gradient(circle at 85% 15%, rgba(102,99,59,.14), transparent 34%),
-        linear-gradient(180deg,#fbf6ec 0%, var(--bg) 54%, #eadbc7 100%);
       color:var(--ink);
+      background:
+        linear-gradient(90deg, rgba(60,33,20,.045) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(60,33,20,.035) 1px, transparent 1px),
+        linear-gradient(180deg, #f9f1e5 0%, #f1e4d4 48%, #ead7c1 100%);
+      background-size:64px 64px, 64px 64px, 100% 100%;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       overflow-x:hidden;
     }
@@ -39,311 +45,335 @@
       position:fixed;
       inset:0;
       pointer-events:none;
-      opacity:.34;
-      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.20'/%3E%3C/svg%3E");
-      mix-blend-mode:multiply;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(156,93,65,.10), transparent 30%),
+        radial-gradient(circle at 92% 8%, rgba(104,101,64,.08), transparent 26%);
+      opacity:.9;
+      z-index:-2;
     }
 
     a{color:inherit;text-decoration:none}
     img{display:block;width:100%;height:auto}
+    p,h1,h2,h3{margin:0}
 
     .nav{
       position:sticky;
       top:0;
-      z-index:50;
+      z-index:40;
       border-bottom:1px solid var(--line);
-      background:rgba(250,244,234,.76);
+      background:rgba(249,241,229,.88);
       backdrop-filter:blur(18px);
     }
 
     .nav-inner{
-      width:min(1180px, calc(100% - 38px));
+      width:min(1180px, calc(100% - 40px));
+      height:66px;
       margin:auto;
-      height:68px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:20px;
+      gap:24px;
     }
 
     .brand{
       display:flex;
       align-items:center;
       gap:12px;
-      font-family: Georgia, "Times New Roman", serif;
-      letter-spacing:.16em;
+      font-family:Georgia, "Times New Roman", serif;
       text-transform:uppercase;
-      font-size:14px;
+      letter-spacing:.17em;
+      font-size:13px;
       white-space:nowrap;
     }
 
     .brand-mark{
-      width:32px;
-      height:32px;
+      width:34px;
+      height:34px;
       border-radius:50%;
-      background:conic-gradient(from 180deg, var(--copper), #dbc29b, var(--olive), var(--wood), var(--copper));
+      background:linear-gradient(135deg, var(--copper), var(--sand) 48%, var(--olive));
       box-shadow:inset 0 0 0 1px rgba(0,0,0,.12);
     }
 
     .nav-links{
       display:flex;
-      align-items:center;
-      gap:18px;
-      color:var(--muted);
+      gap:22px;
       font-size:14px;
+      color:var(--muted);
     }
 
     .nav-links a{
-      position:relative;
       padding:8px 0;
+      transition:color .25s ease;
     }
 
-    .nav-links a::after{
-      content:"";
-      position:absolute;
-      left:0;
-      right:0;
-      bottom:2px;
-      height:1px;
-      background:var(--ink);
-      transform:scaleX(0);
-      transform-origin:right;
-      transition:transform .35s ease;
-    }
-
-    .nav-links a:hover::after{
-      transform:scaleX(1);
-      transform-origin:left;
-    }
+    .nav-links a:hover{color:var(--ink)}
 
     main{
-      width:min(1180px, calc(100% - 38px));
+      width:min(1180px, calc(100% - 40px));
       margin:auto;
     }
 
     .hero{
-      min-height:calc(100vh - 68px);
+      padding:54px 0 72px;
+    }
+
+    .hero-shell{
+      position:relative;
       display:grid;
-      grid-template-columns:.88fr 1.12fr;
-      gap:34px;
-      align-items:center;
-      padding:58px 0 52px;
+      grid-template-columns:.92fr 1.08fr;
+      gap:28px;
+      align-items:stretch;
+      border:1px solid var(--line-strong);
+      background:linear-gradient(135deg, rgba(255,250,241,.94), rgba(246,232,211,.9));
+      border-radius:42px;
+      padding:28px;
+      box-shadow:var(--shadow-card);
+      overflow:hidden;
+    }
+
+    .hero-shell::after{
+      content:"";
+      position:absolute;
+      right:-140px;
+      top:-140px;
+      width:360px;
+      height:360px;
+      border-radius:50%;
+      background:rgba(156,93,65,.11);
+      filter:blur(2px);
+      pointer-events:none;
+    }
+
+    .hero-text{
+      position:relative;
+      z-index:1;
+      align-self:center;
+      padding:36px 14px 36px 18px;
     }
 
     .eyebrow{
-      display:flex;
+      display:inline-flex;
       align-items:center;
-      gap:12px;
-      color:var(--copper);
+      gap:10px;
+      color:var(--copper-dark);
       text-transform:uppercase;
       letter-spacing:.18em;
       font-size:12px;
-      font-weight:700;
-      margin-bottom:22px;
+      font-weight:750;
+      margin-bottom:24px;
     }
 
     .eyebrow::before{
       content:"";
-      width:54px;
+      width:42px;
       height:1px;
-      background:var(--copper);
+      background:var(--copper-dark);
     }
 
-    h1,h2,h3,p{margin:0}
-
     h1{
-      font-family: Georgia, "Times New Roman", serif;
-      font-size:clamp(48px, 7vw, 105px);
-      line-height:.88;
-      letter-spacing:-.055em;
+      max-width:680px;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(42px, 6vw, 86px);
+      line-height:.93;
+      letter-spacing:-.045em;
       font-weight:500;
-      max-width:780px;
+      color:var(--ink);
     }
 
     .lead{
       margin-top:24px;
-      max-width:620px;
-      color:var(--muted);
+      max-width:610px;
+      color:var(--text);
       font-size:18px;
       line-height:1.72;
     }
 
+    .lead strong{
+      color:var(--copper-dark);
+      font-weight:720;
+    }
+
     .hero-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
       margin-top:32px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
     }
 
     .button{
-      border:1px solid var(--line);
-      border-radius:999px;
-      padding:13px 18px;
-      font-size:14px;
       display:inline-flex;
-      gap:10px;
       align-items:center;
-      transition:transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+      justify-content:center;
+      min-height:46px;
+      padding:0 18px;
+      border-radius:999px;
+      border:1px solid var(--line-strong);
+      background:rgba(255,250,241,.68);
+      color:var(--ink);
+      font-size:14px;
+      transition:transform .22s ease, background .22s ease, color .22s ease, border-color .22s ease;
     }
 
     .button.primary{
       background:var(--ink);
-      color:#fff8ec;
       border-color:var(--ink);
+      color:#fff7eb;
     }
 
     .button:hover{
       transform:translateY(-2px);
       background:var(--copper);
-      color:#fff8ec;
       border-color:var(--copper);
+      color:#fff7eb;
     }
 
-    .hero-visual{
+    .hero-image{
       position:relative;
-    }
-
-    .hero-card{
+      z-index:1;
       overflow:hidden;
-      border-radius:34px;
-      box-shadow:var(--shadow);
-      border:1px solid rgba(72,47,31,.15);
-      background:var(--paper);
-      transform:rotate(.8deg);
+      border-radius:32px;
+      border:1px solid rgba(71,49,31,.16);
+      box-shadow:0 24px 70px rgba(70,42,20,.20);
+      background:var(--wood);
+      min-height:420px;
     }
 
-    .hero-card img{
-      aspect-ratio:16/9;
+    .hero-image img{
+      height:100%;
+      min-height:420px;
       object-fit:cover;
     }
 
-    .floating-note{
+    .image-label{
       position:absolute;
-      left:-24px;
-      bottom:28px;
-      width:min(290px, 72%);
-      border:1px solid rgba(72,47,31,.14);
-      background:rgba(255,250,241,.82);
-      backdrop-filter:blur(18px);
-      box-shadow:0 18px 48px rgba(64,38,18,.16);
-      border-radius:22px;
-      padding:18px;
+      left:18px;
+      bottom:18px;
+      max-width:310px;
+      padding:15px 16px;
+      border-radius:20px;
+      background:rgba(32,23,16,.68);
+      color:#fff7eb;
+      backdrop-filter:blur(16px);
+      box-shadow:0 12px 35px rgba(0,0,0,.18);
     }
 
-    .floating-note b{
+    .image-label b{
       display:block;
-      margin-bottom:7px;
       font-family:Georgia,serif;
-      font-size:18px;
       font-weight:500;
+      font-size:18px;
+      margin-bottom:5px;
     }
 
-    .floating-note span{
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.5;
+    .image-label span{
+      display:block;
+      color:rgba(255,247,235,.75);
+      font-size:13px;
+      line-height:1.45;
     }
 
     .section{
-      padding:82px 0;
+      padding:76px 0;
       border-top:1px solid var(--line);
     }
 
     .section-head{
       display:grid;
-      grid-template-columns:.52fr 1fr;
+      grid-template-columns:.55fr 1fr;
       gap:36px;
       align-items:end;
       margin-bottom:30px;
     }
 
-    .section-kicker{
-      color:var(--copper);
-      font-size:12px;
+    .kicker{
+      color:var(--copper-dark);
       text-transform:uppercase;
       letter-spacing:.18em;
-      font-weight:700;
+      font-size:12px;
+      font-weight:750;
       margin-bottom:14px;
     }
 
     h2{
       font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(34px, 4.5vw, 64px);
-      line-height:.96;
-      letter-spacing:-.04em;
+      font-size:clamp(34px, 4.6vw, 64px);
+      line-height:.98;
+      letter-spacing:-.035em;
       font-weight:500;
     }
 
     .section-copy{
-      color:var(--muted);
+      max-width:700px;
+      color:var(--text);
       font-size:17px;
       line-height:1.72;
-      max-width:680px;
     }
 
     .concept-grid{
       display:grid;
-      grid-template-columns:1.05fr .95fr;
+      grid-template-columns:1.08fr .92fr;
       gap:22px;
       align-items:stretch;
     }
 
     .panel{
-      border:1px solid var(--line);
+      border:1px solid var(--line-strong);
       border-radius:var(--radius);
-      background:rgba(255,250,241,.62);
-      box-shadow:var(--shadow);
+      background:rgba(255,250,241,.82);
+      box-shadow:var(--shadow-soft);
       overflow:hidden;
     }
 
-    .panel-pad{padding:26px}
-
     .concept-board img{
-      aspect-ratio:16/9;
+      height:100%;
+      min-height:420px;
       object-fit:cover;
     }
 
-    .chips{
-      display:flex;
-      gap:9px;
-      flex-wrap:wrap;
-      margin-top:18px;
-    }
-
-    .chip{
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.36);
-      padding:8px 11px;
-      border-radius:999px;
-      color:var(--muted);
-      font-size:13px;
-    }
+    .panel-pad{padding:28px}
 
     .palette{
       display:grid;
-      gap:16px;
+      gap:15px;
+      margin-top:22px;
     }
 
     .palette-row{
       display:grid;
-      grid-template-columns:54px 1fr;
+      grid-template-columns:50px 1fr;
       gap:14px;
       align-items:center;
     }
 
     .swatch{
-      width:54px;
-      height:54px;
+      width:50px;
+      height:50px;
       border-radius:50%;
-      box-shadow:inset 0 0 0 1px rgba(0,0,0,.12);
+      box-shadow:inset 0 0 0 1px rgba(0,0,0,.13);
     }
 
-    .palette-row b{display:block;font-size:15px;margin-bottom:4px}
-    .palette-row span{font-size:13px;color:var(--muted);line-height:1.4}
+    .palette-row b{display:block;margin-bottom:4px;font-size:15px}
+    .palette-row span{display:block;color:var(--muted);font-size:13px;line-height:1.38}
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:22px;
+    }
+
+    .chip{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.42);
+      color:var(--muted);
+      padding:8px 11px;
+      border-radius:999px;
+      font-size:13px;
+    }
 
     .gallery-grid{
       display:grid;
-      grid-template-columns:repeat(2, 1fr);
+      grid-template-columns:repeat(2,1fr);
       gap:22px;
     }
 
@@ -352,9 +382,9 @@
       overflow:hidden;
       cursor:pointer;
       border-radius:var(--radius);
-      border:1px solid rgba(72,47,31,.15);
+      border:1px solid var(--line-strong);
       background:var(--paper);
-      box-shadow:var(--shadow);
+      box-shadow:var(--shadow-soft);
     }
 
     .shot:first-child{
@@ -364,12 +394,11 @@
     .shot img{
       aspect-ratio:16/9;
       object-fit:cover;
-      transform:scale(1.01);
       transition:transform .7s cubic-bezier(.2,.7,.2,1), filter .7s ease;
     }
 
     .shot:hover img{
-      transform:scale(1.055);
+      transform:scale(1.045);
       filter:saturate(1.04) contrast(1.02);
     }
 
@@ -380,17 +409,10 @@
       bottom:16px;
       padding:16px;
       border-radius:20px;
-      background:rgba(35,25,17,.64);
-      color:#fff8ee;
+      background:rgba(35,25,17,.70);
+      color:#fff7eb;
       backdrop-filter:blur(16px);
-      transform:translateY(8px);
-      opacity:.92;
-      transition:transform .35s ease, opacity .35s ease;
-    }
-
-    .shot:hover .shot-caption{
-      transform:translateY(0);
-      opacity:1;
+      box-shadow:0 12px 35px rgba(0,0,0,.18);
     }
 
     .shot-caption b{
@@ -403,7 +425,7 @@
 
     .shot-caption span{
       display:block;
-      color:rgba(255,248,238,.72);
+      color:rgba(255,247,235,.76);
       font-size:14px;
       line-height:1.45;
     }
@@ -415,38 +437,29 @@
     }
 
     .feature{
-      min-height:190px;
-      border:1px solid var(--line);
-      border-radius:24px;
-      background:rgba(255,250,241,.55);
+      min-height:192px;
       padding:22px;
-      box-shadow:0 16px 42px rgba(64,38,18,.09);
-      transition:transform .3s ease, background .3s ease;
+      border-radius:26px;
+      border:1px solid var(--line);
+      background:rgba(255,250,241,.74);
+      box-shadow:0 14px 38px rgba(69,43,24,.09);
+      transition:transform .28s ease, box-shadow .28s ease;
     }
 
     .feature:hover{
-      transform:translateY(-5px);
-      background:rgba(255,250,241,.84);
+      transform:translateY(-4px);
+      box-shadow:var(--shadow-soft);
     }
 
     .num{
       font-family:Georgia,serif;
-      color:var(--copper);
+      color:var(--copper-dark);
       font-size:30px;
       margin-bottom:24px;
     }
 
-    .feature b{
-      display:block;
-      font-size:16px;
-      margin-bottom:10px;
-    }
-
-    .feature span{
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.55;
-    }
+    .feature b{display:block;font-size:16px;margin-bottom:10px}
+    .feature span{display:block;color:var(--muted);font-size:14px;line-height:1.55}
 
     .footer{
       border-top:1px solid var(--line);
@@ -460,8 +473,8 @@
 
     .reveal{
       opacity:0;
-      transform:translateY(26px);
-      transition:opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1);
+      transform:translateY(22px);
+      transition:opacity .75s ease, transform .75s cubic-bezier(.2,.7,.2,1);
     }
 
     .reveal.visible{
@@ -477,7 +490,7 @@
       align-items:center;
       justify-content:center;
       padding:28px;
-      background:rgba(24,18,13,.82);
+      background:rgba(24,18,13,.84);
       backdrop-filter:blur(18px);
     }
 
@@ -507,23 +520,19 @@
     }
 
     @media(max-width:900px){
-      .hero,
+      .hero-shell,
       .section-head,
       .concept-grid{
         grid-template-columns:1fr;
       }
 
-      .hero{
-        min-height:auto;
-        padding-top:34px;
+      .hero-text{
+        padding:18px 4px 8px;
       }
 
-      .floating-note{
-        position:relative;
-        left:auto;
-        bottom:auto;
-        margin:-22px 18px 0;
-        width:auto;
+      .hero-image,
+      .hero-image img{
+        min-height:auto;
       }
 
       .features{
@@ -532,25 +541,42 @@
     }
 
     @media(max-width:640px){
-      .nav-inner{
-        width:min(100% - 24px, 1180px);
-        height:60px;
+      body{
+        background-size:42px 42px, 42px 42px, 100% 100%;
       }
 
-      .nav-links{
-        display:none;
-      }
-
+      .nav-inner,
       main{
         width:min(100% - 24px, 1180px);
       }
 
-      .hero-card{
+      .nav-links{display:none}
+
+      .hero{
+        padding:28px 0 52px;
+      }
+
+      .hero-shell{
+        border-radius:28px;
+        padding:14px;
+      }
+
+      .hero-image{
         border-radius:22px;
       }
 
+      h1{
+        font-size:clamp(40px, 13vw, 62px);
+      }
+
+      .lead,
+      .section-copy{
+        font-size:16px;
+        line-height:1.66;
+      }
+
       .section{
-        padding:56px 0;
+        padding:54px 0;
       }
 
       .gallery-grid,
@@ -564,10 +590,6 @@
 
       .footer{
         flex-direction:column;
-      }
-
-      h1{
-        font-size:clamp(42px, 15vw, 70px);
       }
     }
   </style>
@@ -589,26 +611,27 @@
 
   <main id="top">
     <section class="hero">
-      <div class="hero-text reveal">
-        <div class="eyebrow">Interior concept · 2026</div>
-        <h1>Камерный лекторий в тёплой природной эстетике</h1>
-        <p class="lead">
-          Концепция общественного пространства, где учебная функция соединяется с мягкой атмосферой:
-          естественный свет, earthy copper стены, оливковый текстиль, дерево и живая зелень.
-        </p>
-        <div class="hero-actions">
-          <a class="button primary" href="#gallery">Смотреть рендеры</a>
-          <a class="button" href="#concept">Открыть концепт</a>
+      <div class="hero-shell">
+        <div class="hero-text reveal">
+          <div class="eyebrow">Interior concept · 2026</div>
+          <h1>Камерный лекторий в тёплой природной эстетике</h1>
+          <p class="lead">
+            Концепция общественного пространства, где учебная функция соединяется с мягкой атмосферой:
+            <strong>естественный свет</strong>, <strong>earthy copper стены</strong>, оливковый текстиль,
+            дерево и живая зелень.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#gallery">Смотреть рендеры</a>
+            <a class="button" href="#concept">Открыть концепцию</a>
+          </div>
         </div>
-      </div>
 
-      <div class="hero-visual reveal">
-        <div class="hero-card">
+        <div class="hero-image reveal">
           <img src="assets/render-01.webp" alt="Главный рендер интерьера лектория">
-        </div>
-        <div class="floating-note">
-          <b>Свет как главный материал</b>
-          <span>Солнечные пятна и мягкие тени делают помещение не плоским, а живым и камерным.</span>
+          <div class="image-label">
+            <b>Свет как главный материал</b>
+            <span>Солнечные пятна и мягкие тени делают помещение живым, а не декоративно-плоским.</span>
+          </div>
         </div>
       </div>
     </section>
@@ -616,13 +639,12 @@
     <section id="concept" class="section">
       <div class="section-head reveal">
         <div>
-          <div class="section-kicker">Concept board</div>
+          <div class="kicker">Concept board</div>
           <h2>Материалы, свет и настроение</h2>
         </div>
         <p class="section-copy">
-          Основа проекта — спокойная, почти сакральная атмосфера без визуального шума.
-          Цвета не конкурируют между собой: медь и терракота дают тепло, олива успокаивает,
-          тёмное дерево собирает композицию.
+          Основа проекта — спокойная камерная атмосфера без визуального шума.
+          Медь и терракота дают тепло, олива успокаивает, а тёмное дерево собирает пространство в единую композицию.
         </p>
       </div>
 
@@ -632,32 +654,33 @@
         </article>
 
         <article class="panel panel-pad reveal">
-          <h3 style="font-family:Georgia,serif;font-size:32px;font-weight:500;line-height:1;margin-bottom:20px;">Палитра проекта</h3>
+          <h3 style="font-family:Georgia,serif;font-size:32px;font-weight:500;line-height:1;margin-bottom:8px;">Палитра проекта</h3>
+          <p style="color:var(--muted);font-size:15px;line-height:1.55;">Цвета подобраны так, чтобы интерьер воспринимался тёплым, но не тяжёлым.</p>
           <div class="palette">
             <div class="palette-row">
               <div class="swatch" style="background:#9c5d41"></div>
               <div><b>Earthy Copper</b><span>Основной тёплый акцент стены лектора.</span></div>
             </div>
             <div class="palette-row">
-              <div class="swatch" style="background:#ddc39a"></div>
+              <div class="swatch" style="background:#ddc49d"></div>
               <div><b>Sand Beige</b><span>Фоновый светлый тон для стен и потолка.</span></div>
             </div>
             <div class="palette-row">
-              <div class="swatch" style="background:#f0e0c6"></div>
+              <div class="swatch" style="background:#f0dfc5"></div>
               <div><b>Warm Cream</b><span>Основа для мягкого дневного восприятия.</span></div>
             </div>
             <div class="palette-row">
-              <div class="swatch" style="background:#66633b"></div>
-              <div><b>Soft Olive</b><span>Текстиль, кресла и спокойные природные акценты.</span></div>
+              <div class="swatch" style="background:#686540"></div>
+              <div><b>Soft Olive</b><span>Текстиль, кресла и природные акценты.</span></div>
             </div>
             <div class="palette-row">
-              <div class="swatch" style="background:#3a1f10"></div>
-              <div><b>Dark Wood</b><span>Балки, рейки, мебель и визуальный каркас помещения.</span></div>
+              <div class="swatch" style="background:#3c2114"></div>
+              <div><b>Dark Wood</b><span>Балки, рейки, мебель и визуальный каркас.</span></div>
             </div>
           </div>
           <div class="chips">
             <span class="chip">Natural light</span>
-            <span class="chip">Warm sacred atmosphere</span>
+            <span class="chip">Warm atmosphere</span>
             <span class="chip">Textured walls</span>
             <span class="chip">Olive seating</span>
           </div>
@@ -668,12 +691,12 @@
     <section id="gallery" class="section">
       <div class="section-head reveal">
         <div>
-          <div class="section-kicker">Render gallery</div>
+          <div class="kicker">Render gallery</div>
           <h2>Четыре ключевых вида помещения</h2>
         </div>
         <p class="section-copy">
-          Галерея показывает не только красоту, но и структуру проекта: лекционная зона,
-          посадочные места, зона отдыха, мебель, свет и декоративное озеленение.
+          Галерея показывает структуру проекта: лекционную зону, посадочные места,
+          зону отдыха, мебель, свет и декоративное озеленение.
         </p>
       </div>
 
@@ -695,7 +718,7 @@
 
         <article class="shot reveal" data-full="assets/render-04.webp">
           <img src="assets/render-04.webp" alt="Стена с экраном и длинной мягкой лавкой">
-          <div class="shot-caption"><b>Экран и посадка</b><span>Практичная лекционная часть: монитор, лавка, рейки и мягкое естественное освещение.</span></div>
+          <div class="shot-caption"><b>Экран и посадка</b><span>Практичная лекционная часть: монитор, лавка, рейки и мягкое освещение.</span></div>
         </article>
       </div>
     </section>
@@ -703,7 +726,7 @@
     <section id="details" class="section">
       <div class="section-head reveal">
         <div>
-          <div class="section-kicker">Design logic</div>
+          <div class="kicker">Design logic</div>
           <h2>Почему решение работает</h2>
         </div>
         <p class="section-copy">
