@@ -1,1 +1,791 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Лекторий — галерея рендеров</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#080808;color:#f5efe6;font-family:Inter,Arial,sans-serif}.top{height:64px;border-bottom:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;position:sticky;top:0;background:rgba(8,8,8,.86);backdrop-filter:blur(16px);z-index:10}.top a{color:rgba(255,255,255,.62);text-decoration:none}main{width:min(1120px,calc(100% - 32px));margin:auto}.hero{padding:28px 0 48px}.cover,.card{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);border-radius:24px;overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,.45)}img{width:100%;display:block}.cover img{max-height:620px;object-fit:cover}.tags{display:flex;gap:8px;flex-wrap:wrap;margin:30px 0 16px}.tags span{border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.62);padding:6px 10px;border-radius:999px;font-size:12px}h1{margin:0;font-size:clamp(34px,6vw,72px);line-height:.95;letter-spacing:-.06em}h2{margin:0 0 12px;font-size:28px;letter-spacing:-.04em}p{color:rgba(255,255,255,.58);font-size:17px;line-height:1.65;max-width:760px}.details{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.details div{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);border-radius:18px;padding:18px}.details b,.caption b{display:block;margin-bottom:7px;color:white}.details span,.caption span{color:rgba(255,255,255,.52);line-height:1.45;font-size:14px}.intro{border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);padding:42px 0}.gallery{padding:44px 0 60px}.section-title{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px}.section-title span{color:rgba(255,255,255,.42);font-size:14px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.card.large{margin-bottom:18px}.caption{padding:18px}footer{border-top:1px solid rgba(255,255,255,.1);padding:28px;text-align:center;color:rgba(255,255,255,.38)}@media(max-width:760px){main{width:min(100% - 22px,560px)}.top{height:56px}.hero{padding-top:16px}.cover,.card{border-radius:16px}.details,.grid{grid-template-columns:1fr}p{font-size:15px}}</style></head><body><header class="top"><a href="#gallery">← Галерея проекта</a></header><main><section class="hero"><div class="cover"><img src="ChatGPT%20Image%202%20%D0%B8%D1%8E%D0%BD.%202026%20%D0%B3.%2C%2001_03_12%20(2).png" alt="Главный рендер интерьера"></div><div class="tags"><span>Interior Render</span><span>Lecture Room</span><span>2026</span></div><h1>Современный лекторий<br>в тёплой природной эстетике</h1><p>Серия архитектурных визуализаций камерного лектория с деревянными фактурами, оливковыми акцентами, мягким естественным светом и атмосферой спокойного общественного пространства.</p><div class="details"><div><b>Тип проекта</b><span>Интерьер / общественное пространство</span></div><div><b>Стиль</b><span>Современный рустик, тёплый минимализм</span></div><div><b>Задача</b><span>Показать композицию, свет, материалы и зоны помещения</span></div></div></section><section class="intro"><h2>О проекте</h2><p>Концепция строится на контрасте фактур: тёплое дерево, матовые стены, мягкий текстиль, зелень и солнечные тени. Пространство воспринимается не как формальный класс, а как спокойное место для лекций, встреч и обсуждений.</p></section><section id="gallery" class="gallery"><div class="section-title"><h2>Рендеры</h2><span>3 изображения</span></div><article class="card large"><img src="ChatGPT%20Image%202%20%D0%B8%D1%8E%D0%BD.%202026%20%D0%B3.%2C%2001_03_12%20(2).png" alt="Фронтальный вид интерьера"><div class="caption"><b>Общий вид</b><span>Главная композиция помещения: стол, лавки, зона отдыха и стена лектора.</span></div></article><div class="grid"><article class="card"><img src="ChatGPT%20Image%201%20%D0%B8%D1%8E%D0%BD.%202026%20%D0%B3.%2C%2012_29_26.png" alt="Вид на лекционную зону"><div class="caption"><b>Лекционная зона</b><span>Тёплая терракотовая стена, экран, деревянные рейки и мягкое освещение.</span></div></article><article class="card"><img src="ChatGPT%20Image%201%20%D0%B8%D1%8E%D0%BD.%202026%20%D0%B3.%2C%2011_41_40.png" alt="Зона отдыха"><div class="caption"><b>Зона отдыха</b><span>Оливковая стена, кресла, растения и камерная атмосфера у окна.</span></div></article></div></section></main><footer>Interior visualization portfolio · 2026</footer></body></html>
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Лекторий — интерьерная концепция</title>
+  <meta name="description" content="Интерьерная концепция камерного лектория: естественный свет, медно-терракотовые стены, оливковый текстиль, дерево и зелень.">
+  <style>
+    :root{
+      --bg:#f5efe4;
+      --paper:#fffaf1;
+      --paper2:#efe2d0;
+      --ink:#2d241d;
+      --muted:#7a6b5d;
+      --line:rgba(70,49,32,.18);
+      --copper:#9c5d41;
+      --olive:#66633b;
+      --wood:#3a1f10;
+      --cream:#eadbc2;
+      --shadow:0 24px 70px rgba(71,45,25,.18);
+      --radius:28px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(156,93,65,.16), transparent 36%),
+        radial-gradient(circle at 85% 15%, rgba(102,99,59,.14), transparent 34%),
+        linear-gradient(180deg,#fbf6ec 0%, var(--bg) 54%, #eadbc7 100%);
+      color:var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.34;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.20'/%3E%3C/svg%3E");
+      mix-blend-mode:multiply;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{display:block;width:100%;height:auto}
+
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:50;
+      border-bottom:1px solid var(--line);
+      background:rgba(250,244,234,.76);
+      backdrop-filter:blur(18px);
+    }
+
+    .nav-inner{
+      width:min(1180px, calc(100% - 38px));
+      margin:auto;
+      height:68px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      font-size:14px;
+      white-space:nowrap;
+    }
+
+    .brand-mark{
+      width:32px;
+      height:32px;
+      border-radius:50%;
+      background:conic-gradient(from 180deg, var(--copper), #dbc29b, var(--olive), var(--wood), var(--copper));
+      box-shadow:inset 0 0 0 1px rgba(0,0,0,.12);
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .nav-links a{
+      position:relative;
+      padding:8px 0;
+    }
+
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:2px;
+      height:1px;
+      background:var(--ink);
+      transform:scaleX(0);
+      transform-origin:right;
+      transition:transform .35s ease;
+    }
+
+    .nav-links a:hover::after{
+      transform:scaleX(1);
+      transform-origin:left;
+    }
+
+    main{
+      width:min(1180px, calc(100% - 38px));
+      margin:auto;
+    }
+
+    .hero{
+      min-height:calc(100vh - 68px);
+      display:grid;
+      grid-template-columns:.88fr 1.12fr;
+      gap:34px;
+      align-items:center;
+      padding:58px 0 52px;
+    }
+
+    .eyebrow{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:var(--copper);
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:12px;
+      font-weight:700;
+      margin-bottom:22px;
+    }
+
+    .eyebrow::before{
+      content:"";
+      width:54px;
+      height:1px;
+      background:var(--copper);
+    }
+
+    h1,h2,h3,p{margin:0}
+
+    h1{
+      font-family: Georgia, "Times New Roman", serif;
+      font-size:clamp(48px, 7vw, 105px);
+      line-height:.88;
+      letter-spacing:-.055em;
+      font-weight:500;
+      max-width:780px;
+    }
+
+    .lead{
+      margin-top:24px;
+      max-width:620px;
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.72;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:32px;
+    }
+
+    .button{
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:13px 18px;
+      font-size:14px;
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      transition:transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+    }
+
+    .button.primary{
+      background:var(--ink);
+      color:#fff8ec;
+      border-color:var(--ink);
+    }
+
+    .button:hover{
+      transform:translateY(-2px);
+      background:var(--copper);
+      color:#fff8ec;
+      border-color:var(--copper);
+    }
+
+    .hero-visual{
+      position:relative;
+    }
+
+    .hero-card{
+      overflow:hidden;
+      border-radius:34px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(72,47,31,.15);
+      background:var(--paper);
+      transform:rotate(.8deg);
+    }
+
+    .hero-card img{
+      aspect-ratio:16/9;
+      object-fit:cover;
+    }
+
+    .floating-note{
+      position:absolute;
+      left:-24px;
+      bottom:28px;
+      width:min(290px, 72%);
+      border:1px solid rgba(72,47,31,.14);
+      background:rgba(255,250,241,.82);
+      backdrop-filter:blur(18px);
+      box-shadow:0 18px 48px rgba(64,38,18,.16);
+      border-radius:22px;
+      padding:18px;
+    }
+
+    .floating-note b{
+      display:block;
+      margin-bottom:7px;
+      font-family:Georgia,serif;
+      font-size:18px;
+      font-weight:500;
+    }
+
+    .floating-note span{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.5;
+    }
+
+    .section{
+      padding:82px 0;
+      border-top:1px solid var(--line);
+    }
+
+    .section-head{
+      display:grid;
+      grid-template-columns:.52fr 1fr;
+      gap:36px;
+      align-items:end;
+      margin-bottom:30px;
+    }
+
+    .section-kicker{
+      color:var(--copper);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-weight:700;
+      margin-bottom:14px;
+    }
+
+    h2{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(34px, 4.5vw, 64px);
+      line-height:.96;
+      letter-spacing:-.04em;
+      font-weight:500;
+    }
+
+    .section-copy{
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.72;
+      max-width:680px;
+    }
+
+    .concept-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:22px;
+      align-items:stretch;
+    }
+
+    .panel{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:rgba(255,250,241,.62);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .panel-pad{padding:26px}
+
+    .concept-board img{
+      aspect-ratio:16/9;
+      object-fit:cover;
+    }
+
+    .chips{
+      display:flex;
+      gap:9px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    .chip{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.36);
+      padding:8px 11px;
+      border-radius:999px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .palette{
+      display:grid;
+      gap:16px;
+    }
+
+    .palette-row{
+      display:grid;
+      grid-template-columns:54px 1fr;
+      gap:14px;
+      align-items:center;
+    }
+
+    .swatch{
+      width:54px;
+      height:54px;
+      border-radius:50%;
+      box-shadow:inset 0 0 0 1px rgba(0,0,0,.12);
+    }
+
+    .palette-row b{display:block;font-size:15px;margin-bottom:4px}
+    .palette-row span{font-size:13px;color:var(--muted);line-height:1.4}
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:22px;
+    }
+
+    .shot{
+      position:relative;
+      overflow:hidden;
+      cursor:pointer;
+      border-radius:var(--radius);
+      border:1px solid rgba(72,47,31,.15);
+      background:var(--paper);
+      box-shadow:var(--shadow);
+    }
+
+    .shot:first-child{
+      grid-column:1 / -1;
+    }
+
+    .shot img{
+      aspect-ratio:16/9;
+      object-fit:cover;
+      transform:scale(1.01);
+      transition:transform .7s cubic-bezier(.2,.7,.2,1), filter .7s ease;
+    }
+
+    .shot:hover img{
+      transform:scale(1.055);
+      filter:saturate(1.04) contrast(1.02);
+    }
+
+    .shot-caption{
+      position:absolute;
+      left:16px;
+      right:16px;
+      bottom:16px;
+      padding:16px;
+      border-radius:20px;
+      background:rgba(35,25,17,.64);
+      color:#fff8ee;
+      backdrop-filter:blur(16px);
+      transform:translateY(8px);
+      opacity:.92;
+      transition:transform .35s ease, opacity .35s ease;
+    }
+
+    .shot:hover .shot-caption{
+      transform:translateY(0);
+      opacity:1;
+    }
+
+    .shot-caption b{
+      display:block;
+      font-family:Georgia,serif;
+      font-size:20px;
+      font-weight:500;
+      margin-bottom:5px;
+    }
+
+    .shot-caption span{
+      display:block;
+      color:rgba(255,248,238,.72);
+      font-size:14px;
+      line-height:1.45;
+    }
+
+    .features{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+
+    .feature{
+      min-height:190px;
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:rgba(255,250,241,.55);
+      padding:22px;
+      box-shadow:0 16px 42px rgba(64,38,18,.09);
+      transition:transform .3s ease, background .3s ease;
+    }
+
+    .feature:hover{
+      transform:translateY(-5px);
+      background:rgba(255,250,241,.84);
+    }
+
+    .num{
+      font-family:Georgia,serif;
+      color:var(--copper);
+      font-size:30px;
+      margin-bottom:24px;
+    }
+
+    .feature b{
+      display:block;
+      font-size:16px;
+      margin-bottom:10px;
+    }
+
+    .feature span{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.55;
+    }
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:34px 0 44px;
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(26px);
+      transition:opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .reveal.visible{
+      opacity:1;
+      transform:none;
+    }
+
+    .lightbox{
+      position:fixed;
+      inset:0;
+      z-index:100;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:28px;
+      background:rgba(24,18,13,.82);
+      backdrop-filter:blur(18px);
+    }
+
+    .lightbox.open{display:flex}
+
+    .lightbox img{
+      max-width:min(1180px, 96vw);
+      max-height:84vh;
+      object-fit:contain;
+      border-radius:22px;
+      box-shadow:0 30px 90px rgba(0,0,0,.45);
+      background:#111;
+    }
+
+    .lightbox button{
+      position:absolute;
+      top:18px;
+      right:18px;
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.24);
+      background:rgba(255,255,255,.1);
+      color:white;
+      font-size:26px;
+      cursor:pointer;
+    }
+
+    @media(max-width:900px){
+      .hero,
+      .section-head,
+      .concept-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero{
+        min-height:auto;
+        padding-top:34px;
+      }
+
+      .floating-note{
+        position:relative;
+        left:auto;
+        bottom:auto;
+        margin:-22px 18px 0;
+        width:auto;
+      }
+
+      .features{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media(max-width:640px){
+      .nav-inner{
+        width:min(100% - 24px, 1180px);
+        height:60px;
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+      main{
+        width:min(100% - 24px, 1180px);
+      }
+
+      .hero-card{
+        border-radius:22px;
+      }
+
+      .section{
+        padding:56px 0;
+      }
+
+      .gallery-grid,
+      .features{
+        grid-template-columns:1fr;
+      }
+
+      .shot:first-child{
+        grid-column:auto;
+      }
+
+      .footer{
+        flex-direction:column;
+      }
+
+      h1{
+        font-size:clamp(42px, 15vw, 70px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top" aria-label="Лекторий">
+        <span class="brand-mark"></span>
+        <span>Lectory Interior</span>
+      </a>
+      <nav class="nav-links" aria-label="Навигация">
+        <a href="#concept">Концепция</a>
+        <a href="#gallery">Рендеры</a>
+        <a href="#details">Детали</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-text reveal">
+        <div class="eyebrow">Interior concept · 2026</div>
+        <h1>Камерный лекторий в тёплой природной эстетике</h1>
+        <p class="lead">
+          Концепция общественного пространства, где учебная функция соединяется с мягкой атмосферой:
+          естественный свет, earthy copper стены, оливковый текстиль, дерево и живая зелень.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#gallery">Смотреть рендеры</a>
+          <a class="button" href="#concept">Открыть концепт</a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="hero-card">
+          <img src="assets/render-01.webp" alt="Главный рендер интерьера лектория">
+        </div>
+        <div class="floating-note">
+          <b>Свет как главный материал</b>
+          <span>Солнечные пятна и мягкие тени делают помещение не плоским, а живым и камерным.</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="concept" class="section">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-kicker">Concept board</div>
+          <h2>Материалы, свет и настроение</h2>
+        </div>
+        <p class="section-copy">
+          Основа проекта — спокойная, почти сакральная атмосфера без визуального шума.
+          Цвета не конкурируют между собой: медь и терракота дают тепло, олива успокаивает,
+          тёмное дерево собирает композицию.
+        </p>
+      </div>
+
+      <div class="concept-grid">
+        <article class="panel concept-board reveal">
+          <img src="assets/concept-board.webp" alt="Концепт-борд интерьера лектория">
+        </article>
+
+        <article class="panel panel-pad reveal">
+          <h3 style="font-family:Georgia,serif;font-size:32px;font-weight:500;line-height:1;margin-bottom:20px;">Палитра проекта</h3>
+          <div class="palette">
+            <div class="palette-row">
+              <div class="swatch" style="background:#9c5d41"></div>
+              <div><b>Earthy Copper</b><span>Основной тёплый акцент стены лектора.</span></div>
+            </div>
+            <div class="palette-row">
+              <div class="swatch" style="background:#ddc39a"></div>
+              <div><b>Sand Beige</b><span>Фоновый светлый тон для стен и потолка.</span></div>
+            </div>
+            <div class="palette-row">
+              <div class="swatch" style="background:#f0e0c6"></div>
+              <div><b>Warm Cream</b><span>Основа для мягкого дневного восприятия.</span></div>
+            </div>
+            <div class="palette-row">
+              <div class="swatch" style="background:#66633b"></div>
+              <div><b>Soft Olive</b><span>Текстиль, кресла и спокойные природные акценты.</span></div>
+            </div>
+            <div class="palette-row">
+              <div class="swatch" style="background:#3a1f10"></div>
+              <div><b>Dark Wood</b><span>Балки, рейки, мебель и визуальный каркас помещения.</span></div>
+            </div>
+          </div>
+          <div class="chips">
+            <span class="chip">Natural light</span>
+            <span class="chip">Warm sacred atmosphere</span>
+            <span class="chip">Textured walls</span>
+            <span class="chip">Olive seating</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="gallery" class="section">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-kicker">Render gallery</div>
+          <h2>Четыре ключевых вида помещения</h2>
+        </div>
+        <p class="section-copy">
+          Галерея показывает не только красоту, но и структуру проекта: лекционная зона,
+          посадочные места, зона отдыха, мебель, свет и декоративное озеленение.
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+        <article class="shot reveal" data-full="assets/render-01.webp">
+          <img src="assets/render-01.webp" alt="Общий вид лектория">
+          <div class="shot-caption"><b>Общий вид</b><span>Главная композиция: стол, лавки, мягкая зона и тёплый боковой свет.</span></div>
+        </article>
+
+        <article class="shot reveal" data-full="assets/render-02.webp">
+          <img src="assets/render-02.webp" alt="Фронтальный вид на лекционный стол и зону отдыха">
+          <div class="shot-caption"><b>Фронтальная перспектива</b><span>Баланс между лекционной функцией и уютом общественного пространства.</span></div>
+        </article>
+
+        <article class="shot reveal" data-full="assets/render-03.webp">
+          <img src="assets/render-03.webp" alt="Терракотовая стена и входная зона">
+          <div class="shot-caption"><b>Терракотовая стена</b><span>Earthy Copper как главный цветовой акцент и фон для лектора.</span></div>
+        </article>
+
+        <article class="shot reveal" data-full="assets/render-04.webp">
+          <img src="assets/render-04.webp" alt="Стена с экраном и длинной мягкой лавкой">
+          <div class="shot-caption"><b>Экран и посадка</b><span>Практичная лекционная часть: монитор, лавка, рейки и мягкое естественное освещение.</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="details" class="section">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-kicker">Design logic</div>
+          <h2>Почему решение работает</h2>
+        </div>
+        <p class="section-copy">
+          Проект держится на ясной иерархии: сначала свет и объём, затем крупные материалы,
+          потом мебель и только после этого декоративные элементы.
+        </p>
+      </div>
+
+      <div class="features">
+        <div class="feature reveal">
+          <div class="num">01</div>
+          <b>Естественный свет</b>
+          <span>Солнечные пятна усиливают глубину, но не превращают интерьер в перегруженную декорацию.</span>
+        </div>
+        <div class="feature reveal">
+          <div class="num">02</div>
+          <b>Тёплая стена</b>
+          <span>Earthy Copper визуально собирает зону лектора и даёт пространству характер.</span>
+        </div>
+        <div class="feature reveal">
+          <div class="num">03</div>
+          <b>Деревянный каркас</b>
+          <span>Балки, рейки и мебель связывают разные стены в единую композиционную систему.</span>
+        </div>
+        <div class="feature reveal">
+          <div class="num">04</div>
+          <b>Мягкая камерность</b>
+          <span>Оливковый текстиль, растения и локальный свет снижают формальность лектория.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Lectory Interior Concept · Sevastopol · 2026</span>
+    <span>materials · light · texture · chamber atmosphere</span>
+  </footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button type="button" aria-label="Закрыть">×</button>
+    <img src="" alt="">
+  </div>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach(el => observer.observe(el));
+
+    const lightbox = document.querySelector('#lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    const closeBtn = lightbox.querySelector('button');
+
+    document.querySelectorAll('.shot').forEach(card => {
+      card.addEventListener('click', () => {
+        lightboxImg.src = card.dataset.full;
+        lightboxImg.alt = card.querySelector('img').alt;
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    function closeLightbox(){
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImg.src = '';
+    }
+
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (event) => {
+      if(event.target === lightbox) closeLightbox();
+    });
+    window.addEventListener('keydown', (event) => {
+      if(event.key === 'Escape') closeLightbox();
+    });
+  </script>
+</body>
+</html>
