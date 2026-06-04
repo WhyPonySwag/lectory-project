@@ -516,6 +516,58 @@
       line-height: 1.65;
     }
 
+    .logic-layout {
+      display: grid;
+      grid-template-columns: minmax(360px, .78fr) minmax(0, 1fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .logic-diagram {
+      min-height: 420px;
+      padding: clamp(18px, 3vw, 28px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(145deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .025)), var(--graphite);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .22);
+    }
+
+    .logic-diagram svg {
+      width: 100%;
+      height: auto;
+      min-height: 340px;
+      display: block;
+      overflow: visible;
+    }
+
+    .logic-cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .logic-card {
+      min-height: 184px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--card);
+    }
+
+    .logic-card b {
+      display: block;
+      color: var(--ivory);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 23px;
+      letter-spacing: -.02em;
+    }
+
+    .logic-card p {
+      margin-top: 12px;
+      color: var(--ivory-muted);
+      line-height: 1.65;
+    }
+
     .palette {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -738,10 +790,13 @@
       .section-head,
       .about-grid,
       .concept-layout,
+      .logic-layout,
       .author-card,
       .contact-card { grid-template-columns: 1fr; }
       .hero-visual { order: -1; }
       .hero-visual img { min-height: 420px; aspect-ratio: 16 / 12; }
+      .logic-diagram { min-height: auto; }
+      .logic-cards { grid-template-columns: 1fr; }
       .palette { grid-template-columns: repeat(2, 1fr); }
       .swatch { min-height: 170px; }
     }
@@ -765,16 +820,20 @@
       .about-text p,
       .principle p,
       .case-step p,
+      .logic-card p,
       .materials-note,
       .author-card p,
       .contact-card p { font-size: 15px; line-height: 1.65; }
       .principles,
       .case-steps,
+      .logic-cards,
       .gallery-grid,
       .palette,
       .contact-links { grid-template-columns: 1fr; }
       .concept-board,
       .concept-board img { min-height: 310px; }
+      .logic-card { min-height: auto; padding: 18px; }
+      .logic-diagram svg { min-height: 280px; }
       .render-card img { aspect-ratio: 5 / 4; }
       .caption { padding: 16px; }
       footer { flex-direction: column; padding-bottom: 34px; line-height: 1.5; }
@@ -793,6 +852,7 @@
       <div class="nav-links" aria-label="Разделы проекта">
         <a href="#about">О проекте</a>
         <a href="#concept">Концепция</a>
+        <a href="#logic">Логика</a>
         <a href="#materials">Материалы</a>
         <a href="#renders">Рендеры</a>
         <a href="#author">Автор</a>
@@ -875,6 +935,56 @@
           <article class="principle reveal"><b>Сценарий</b><p>Зонирование поддерживает лекцию, дискуссию и работу в малых группах: столы, мягкие места и экран читаются как единая композиция.</p></article>
           <article class="principle reveal"><b>Свет</b><p>Тёплый свет подчёркивает глубину графитовых поверхностей и делает терракотовую стену главным эмоциональным акцентом.</p></article>
           <article class="principle reveal"><b>Архитектурная подача</b><p>Сайт выстроен как последовательность проектного рассказа: сильный кадр, описание задачи, концепция, материальная палитра, затем серия визуализаций.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="logic" aria-labelledby="logic-title">
+      <div class="section-head reveal">
+        <div>
+          <span class="section-kicker">Проектная логика</span>
+          <h2 id="logic-title">Сценарий, свет и зонирование</h2>
+        </div>
+        <p class="section-note">Интерьер строится не только на палитре и рендерах, но и на сценарии использования: где человек входит, где концентрируется, как работает свет и как материалы задают атмосферу.</p>
+      </div>
+      <div class="logic-layout">
+        <div class="logic-diagram reveal" role="img" aria-label="Условная схема лектория: вход, посадка, лектор, экран, мягкая зона, движение и визуальный фокус">
+          <svg viewBox="0 0 640 460" aria-hidden="true" focusable="false">
+            <defs>
+              <marker id="logic-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--copper)"></path>
+              </marker>
+            </defs>
+            <rect x="46" y="42" width="548" height="360" rx="24" fill="rgba(255, 255, 255, .025)" stroke="var(--line)" stroke-width="2"></rect>
+            <path d="M 92 118 H 318 V 356 H 92 Z" fill="rgba(181, 106, 70, .06)" stroke="var(--line)" stroke-width="1.5"></path>
+            <path d="M 342 118 H 548 V 256 H 342 Z" fill="rgba(255, 255, 255, .035)" stroke="var(--line)" stroke-width="1.5"></path>
+            <path d="M 342 276 H 548 V 356 H 342 Z" fill="rgba(118, 112, 74, .12)" stroke="var(--line)" stroke-width="1.5"></path>
+            <line x1="466" y1="78" x2="466" y2="118" stroke="var(--copper)" stroke-width="3" stroke-linecap="round"></line>
+            <line x1="392" y1="88" x2="540" y2="88" stroke="var(--copper)" stroke-width="3" stroke-linecap="round"></line>
+            <circle cx="126" cy="206" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
+            <circle cx="190" cy="206" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
+            <circle cx="254" cy="206" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
+            <circle cx="126" cy="276" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
+            <circle cx="190" cy="276" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
+            <circle cx="254" cy="276" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
+            <circle cx="448" cy="186" r="26" fill="rgba(181, 106, 70, .16)" stroke="var(--copper)" stroke-width="1.5"></circle>
+            <path d="M 124 370 C 150 326, 184 296, 226 270 C 282 236, 354 210, 448 186" fill="none" stroke="var(--copper)" stroke-width="3" stroke-linecap="round" stroke-dasharray="9 11" marker-end="url(#logic-arrow)"></path>
+            <path d="M 190 242 L 466 88" stroke="var(--ivory-muted)" stroke-width="1.5" stroke-dasharray="5 9" opacity=".8"></path>
+            <circle cx="190" cy="242" r="5" fill="var(--ivory)"></circle>
+            <text x="76" y="96" fill="var(--ivory-muted)" font-size="15" font-family="Inter, Arial, sans-serif">вход</text>
+            <text x="116" y="166" fill="var(--ivory)" font-size="16" font-family="Inter, Arial, sans-serif">посадка</text>
+            <text x="418" y="194" fill="var(--ivory)" font-size="16" font-family="Inter, Arial, sans-serif">лектор</text>
+            <text x="424" y="72" fill="var(--ivory-muted)" font-size="15" font-family="Inter, Arial, sans-serif">экран</text>
+            <text x="380" y="324" fill="var(--ivory-muted)" font-size="15" font-family="Inter, Arial, sans-serif">мягкая зона</text>
+            <text x="260" y="292" fill="var(--copper)" font-size="14" font-family="Inter, Arial, sans-serif">движение</text>
+            <text x="250" y="232" fill="var(--ivory-muted)" font-size="14" font-family="Inter, Arial, sans-serif">визуальный фокус</text>
+          </svg>
+        </div>
+        <div class="logic-cards">
+          <article class="logic-card reveal"><b>Зонирование</b><p>Рабочая зона, зона лектора, мягкая посадка и визуальный фокус собраны в спокойную композицию без лишнего шума.</p></article>
+          <article class="logic-card reveal"><b>Сценарий движения</b><p>Маршрут строится просто: вход → посадка → внимание на лектора и экран → обсуждение после занятия.</p></article>
+          <article class="logic-card reveal"><b>Свет</b><p>Тёплый направленный свет и естественная светотень выделяют терракотовую стену и делают пространство менее плоским.</p></article>
+          <article class="logic-card reveal"><b>Материалы</b><p>Матовые стены, дерево, текстиль и зелень создают тактильную среду с приглушённым контрастом.</p></article>
         </div>
       </div>
     </section>
