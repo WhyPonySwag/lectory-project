@@ -540,6 +540,144 @@
       overflow: visible;
     }
 
+    .logic-zone {
+      cursor: pointer;
+      outline: none;
+    }
+
+    .logic-zone .zone-fill,
+    .logic-zone .zone-line,
+    .logic-zone .zone-dot,
+    .logic-zone .zone-text,
+    .logic-scenario-card {
+      transition: fill .22s ease, stroke .22s ease, opacity .22s ease, border-color .22s ease, background .22s ease, transform .22s ease;
+    }
+
+    .logic-zone .zone-fill { opacity: .92; }
+
+    .logic-zone:hover .zone-fill,
+    .logic-zone:focus-visible .zone-fill {
+      fill: rgba(181, 106, 70, .18);
+      stroke: var(--copper);
+      stroke-width: 2.4;
+      opacity: 1;
+    }
+
+    .logic-zone:hover .zone-line,
+    .logic-zone:focus-visible .zone-line,
+    .logic-zone:hover .zone-dot,
+    .logic-zone:focus-visible .zone-dot {
+      stroke: var(--copper);
+      stroke-width: 2.4;
+    }
+
+    .logic-zone:hover .zone-text,
+    .logic-zone:focus-visible .zone-text {
+      fill: var(--ivory);
+    }
+
+    .logic-zone:focus-visible .zone-focus {
+      stroke: var(--copper);
+      stroke-width: 3;
+      stroke-dasharray: 6 8;
+    }
+
+    .logic-scenario {
+      grid-column: 1 / -1;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(21, 18, 14, .46);
+    }
+
+    .logic-scenario h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(24px, 3vw, 32px);
+      line-height: 1.12;
+      letter-spacing: -.02em;
+    }
+
+    .logic-scenario-grid {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .logic-scenario-card {
+      min-height: 150px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--card);
+    }
+
+    .logic-scenario-card:focus-visible,
+    .logic-scenario-card:hover {
+      border-color: rgba(181, 106, 70, .58);
+      background: linear-gradient(180deg, rgba(181, 106, 70, .13), var(--card));
+      transform: translateY(-2px);
+    }
+
+    .logic-scenario-card b {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--ivory);
+      font-size: 14px;
+    }
+
+    .logic-scenario-card b::before {
+      content: attr(data-step);
+      width: 24px;
+      height: 24px;
+      border: 1px solid rgba(181, 106, 70, .55);
+      border-radius: 999px;
+      display: inline-grid;
+      place-items: center;
+      color: var(--copper);
+      font-size: 11px;
+    }
+
+    .logic-scenario-card p {
+      margin-top: 10px;
+      color: var(--ivory-muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    @supports selector(:has(*)) {
+      .logic-layout:has(.logic-zone-entry:is(:hover, :focus-visible)) .logic-scenario-card[data-zone="entry"],
+      .logic-layout:has(.logic-zone-seating:is(:hover, :focus-visible)) .logic-scenario-card[data-zone="seating"],
+      .logic-layout:has(.logic-zone-lecturer:is(:hover, :focus-visible)) .logic-scenario-card[data-zone="lecturer"],
+      .logic-layout:has(.logic-zone-screen:is(:hover, :focus-visible)) .logic-scenario-card[data-zone="screen"],
+      .logic-layout:has(.logic-zone-soft:is(:hover, :focus-visible)) .logic-scenario-card[data-zone="soft"] {
+        border-color: rgba(181, 106, 70, .62);
+        background: linear-gradient(180deg, rgba(181, 106, 70, .14), var(--card));
+      }
+
+      .logic-layout:has(.logic-scenario-card[data-zone="entry"]:is(:hover, :focus-visible)) .logic-zone-entry .zone-fill,
+      .logic-layout:has(.logic-scenario-card[data-zone="seating"]:is(:hover, :focus-visible)) .logic-zone-seating .zone-fill,
+      .logic-layout:has(.logic-scenario-card[data-zone="lecturer"]:is(:hover, :focus-visible)) .logic-zone-lecturer .zone-fill,
+      .logic-layout:has(.logic-scenario-card[data-zone="screen"]:is(:hover, :focus-visible)) .logic-zone-screen .zone-fill,
+      .logic-layout:has(.logic-scenario-card[data-zone="soft"]:is(:hover, :focus-visible)) .logic-zone-soft .zone-fill {
+        fill: rgba(181, 106, 70, .18);
+        stroke: var(--copper);
+        stroke-width: 2.4;
+        opacity: 1;
+      }
+
+      .logic-layout:has(.logic-scenario-card[data-zone="entry"]:is(:hover, :focus-visible)) .logic-zone-entry .zone-line,
+      .logic-layout:has(.logic-scenario-card[data-zone="seating"]:is(:hover, :focus-visible)) .logic-zone-seating .zone-line,
+      .logic-layout:has(.logic-scenario-card[data-zone="lecturer"]:is(:hover, :focus-visible)) .logic-zone-lecturer .zone-line,
+      .logic-layout:has(.logic-scenario-card[data-zone="screen"]:is(:hover, :focus-visible)) .logic-zone-screen .zone-line,
+      .logic-layout:has(.logic-scenario-card[data-zone="soft"]:is(:hover, :focus-visible)) .logic-zone-soft .zone-line {
+        stroke: var(--copper);
+        stroke-width: 2.4;
+      }
+    }
+
     .logic-cards {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -608,74 +746,6 @@
       margin-top: 18px;
       color: var(--ivory-muted);
       line-height: 1.7;
-    }
-
-    .material-rationale,
-    .light-scenarios {
-      margin-top: 24px;
-      padding: 22px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: rgba(21, 18, 14, .52);
-    }
-
-    .material-rationale h3,
-    .light-scenarios h3 {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(24px, 3vw, 32px);
-      line-height: 1.12;
-      letter-spacing: -.02em;
-    }
-
-    .material-rationale-grid,
-    .light-scenarios-grid {
-      margin-top: 16px;
-      display: grid;
-      gap: 14px;
-    }
-
-    .material-rationale-grid {
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-    }
-
-    .light-scenarios-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .material-rationale-card,
-    .light-card {
-      min-height: 132px;
-      padding: 18px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      background: linear-gradient(180deg, rgba(255, 255, 255, .07), var(--card));
-    }
-
-    .material-rationale-card b,
-    .light-card b {
-      display: block;
-      color: var(--ivory);
-      font-size: 15px;
-      letter-spacing: .01em;
-    }
-
-    .material-rationale-card b::after,
-    .light-card b::after {
-      content: "";
-      display: block;
-      width: 34px;
-      height: 1px;
-      margin-top: 10px;
-      background: linear-gradient(90deg, var(--copper), rgba(181, 106, 70, 0));
-    }
-
-    .material-rationale-card p,
-    .light-card p {
-      margin-top: 12px;
-      color: var(--ivory-muted);
-      font-size: 13px;
-      line-height: 1.55;
     }
 
     .gallery-grid {
@@ -874,10 +944,9 @@
       .hero-visual { order: -1; }
       .hero-visual img { min-height: 420px; aspect-ratio: 16 / 12; }
       .logic-diagram { min-height: auto; }
-      .logic-cards { grid-template-columns: 1fr; }
-      .palette,
-      .material-rationale-grid { grid-template-columns: repeat(2, 1fr); }
-      .light-scenarios-grid { grid-template-columns: 1fr; }
+      .logic-cards,
+      .logic-scenario-grid { grid-template-columns: 1fr; }
+      .palette { grid-template-columns: repeat(2, 1fr); }
       .swatch { min-height: 170px; }
     }
 
@@ -901,9 +970,8 @@
       .principle p,
       .case-step p,
       .logic-card p,
+      .logic-scenario-card p,
       .materials-note,
-      .material-rationale-card p,
-      .light-card p,
       .author-card p,
       .contact-card p { font-size: 15px; line-height: 1.65; }
       .principles,
@@ -911,15 +979,12 @@
       .logic-cards,
       .gallery-grid,
       .palette,
-      .material-rationale-grid,
       .contact-links { grid-template-columns: 1fr; }
-      .material-rationale,
-      .light-scenarios { padding: 18px; }
-      .material-rationale-card,
-      .light-card { min-height: auto; }
       .concept-board,
       .concept-board img { min-height: 310px; }
-      .logic-card { min-height: auto; padding: 18px; }
+      .logic-card,
+      .logic-scenario-card { min-height: auto; padding: 18px; }
+      .logic-scenario { padding: 18px; }
       .logic-diagram svg { min-height: 280px; }
       .render-card img { aspect-ratio: 5 / 4; }
       .caption { padding: 16px; }
@@ -1035,39 +1100,68 @@
         <p class="section-note">Интерьер строится не только на палитре и рендерах, но и на сценарии использования: где человек входит, где концентрируется, как работает свет и как материалы задают атмосферу.</p>
       </div>
       <div class="logic-layout">
-        <div class="logic-diagram reveal" role="img" aria-label="Условная схема лектория: вход, посадка, лектор, экран, мягкая зона, движение и визуальный фокус">
-          <svg viewBox="0 0 640 460" aria-hidden="true" focusable="false">
+        <div class="logic-diagram reveal">
+          <svg viewBox="0 0 640 460" role="img" aria-labelledby="logic-map-title logic-map-desc">
+            <title id="logic-map-title">Интерактивная схема проектной логики лектория</title>
+            <desc id="logic-map-desc">Схема показывает вход, посадку, лектора, экран, мягкую зону, маршрут движения и визуальный фокус.</desc>
             <defs>
               <marker id="logic-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
                 <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--copper)"></path>
               </marker>
             </defs>
             <rect x="46" y="42" width="548" height="360" rx="24" fill="rgba(255, 255, 255, .025)" stroke="var(--line)" stroke-width="2"></rect>
-            <path d="M 92 118 H 318 V 356 H 92 Z" fill="rgba(181, 106, 70, .06)" stroke="var(--line)" stroke-width="1.5"></path>
-            <path d="M 342 118 H 548 V 256 H 342 Z" fill="rgba(255, 255, 255, .035)" stroke="var(--line)" stroke-width="1.5"></path>
-            <path d="M 342 276 H 548 V 356 H 342 Z" fill="rgba(118, 112, 74, .12)" stroke="var(--line)" stroke-width="1.5"></path>
-            <line x1="466" y1="78" x2="466" y2="118" stroke="var(--copper)" stroke-width="3" stroke-linecap="round"></line>
-            <line x1="392" y1="88" x2="540" y2="88" stroke="var(--copper)" stroke-width="3" stroke-linecap="round"></line>
-            <circle cx="126" cy="206" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
-            <circle cx="190" cy="206" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
-            <circle cx="254" cy="206" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
-            <circle cx="126" cy="276" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
-            <circle cx="190" cy="276" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
-            <circle cx="254" cy="276" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
-            <circle cx="448" cy="186" r="26" fill="rgba(181, 106, 70, .16)" stroke="var(--copper)" stroke-width="1.5"></circle>
-            <path d="M 124 370 C 150 326, 184 296, 226 270 C 282 236, 354 210, 448 186" fill="none" stroke="var(--copper)" stroke-width="3" stroke-linecap="round" stroke-dasharray="9 11" marker-end="url(#logic-arrow)"></path>
-            <path d="M 190 242 L 466 88" stroke="var(--ivory-muted)" stroke-width="1.5" stroke-dasharray="5 9" opacity=".8"></path>
-            <circle cx="190" cy="242" r="5" fill="var(--ivory)"></circle>
-            <text x="76" y="96" fill="var(--ivory-muted)" font-size="16" font-family="Inter, Arial, sans-serif">вход</text>
-            <text x="116" y="166" fill="var(--ivory)" font-size="16" font-family="Inter, Arial, sans-serif">посадка</text>
-            <text x="418" y="194" fill="var(--ivory)" font-size="16" font-family="Inter, Arial, sans-serif">лектор</text>
-            <text x="424" y="72" fill="var(--ivory-muted)" font-size="16" font-family="Inter, Arial, sans-serif">экран</text>
-            <text x="380" y="324" fill="var(--ivory-muted)" font-size="16" font-family="Inter, Arial, sans-serif">мягкая зона</text>
+            <g class="logic-zone logic-zone-entry" data-zone="entry" tabindex="0" role="img" aria-label="Вход: начальная точка маршрута">
+              <title>Вход</title>
+              <rect class="zone-focus" x="62" y="68" width="92" height="56" rx="18" fill="transparent" stroke="transparent"></rect>
+              <path class="zone-line" d="M 124 370 C 150 326, 184 296, 226 270 C 282 236, 354 210, 448 186" fill="none" stroke="var(--copper)" stroke-width="3" stroke-linecap="round" stroke-dasharray="9 11" marker-end="url(#logic-arrow)"></path>
+              <text class="zone-text" x="76" y="96" fill="var(--ivory-muted)" font-size="16" font-family="Inter, Arial, sans-serif">01 вход</text>
+            </g>
+            <g class="logic-zone logic-zone-seating" data-zone="seating" tabindex="0" role="img" aria-label="Посадка: рабочая зона группы">
+              <title>Посадка</title>
+              <path class="zone-fill" d="M 92 118 H 318 V 356 H 92 Z" fill="rgba(181, 106, 70, .06)" stroke="var(--line)" stroke-width="1.5"></path>
+              <circle class="zone-dot" cx="126" cy="206" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
+              <circle class="zone-dot" cx="190" cy="206" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
+              <circle class="zone-dot" cx="254" cy="206" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
+              <circle class="zone-dot" cx="126" cy="276" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
+              <circle class="zone-dot" cx="190" cy="276" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
+              <circle class="zone-dot" cx="254" cy="276" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
+              <circle cx="190" cy="242" r="5" fill="var(--ivory)"></circle>
+              <text class="zone-text" x="116" y="166" fill="var(--ivory)" font-size="16" font-family="Inter, Arial, sans-serif">02 посадка</text>
+            </g>
+            <g class="logic-zone logic-zone-lecturer" data-zone="lecturer" tabindex="0" role="img" aria-label="Лектор: смысловой центр занятия">
+              <title>Лектор</title>
+              <path class="zone-fill" d="M 342 118 H 548 V 256 H 342 Z" fill="rgba(255, 255, 255, .035)" stroke="var(--line)" stroke-width="1.5"></path>
+              <circle class="zone-line" cx="448" cy="186" r="26" fill="rgba(181, 106, 70, .16)" stroke="var(--copper)" stroke-width="1.5"></circle>
+              <text class="zone-text" x="418" y="194" fill="var(--ivory)" font-size="16" font-family="Inter, Arial, sans-serif">03 лектор</text>
+            </g>
+            <g class="logic-zone logic-zone-screen" data-zone="screen" tabindex="0" role="img" aria-label="Экран: визуальная ось лекционного сценария">
+              <title>Экран</title>
+              <rect class="zone-focus" x="376" y="58" width="184" height="72" rx="18" fill="transparent" stroke="transparent"></rect>
+              <line class="zone-line" x1="466" y1="78" x2="466" y2="118" stroke="var(--copper)" stroke-width="3" stroke-linecap="round"></line>
+              <line class="zone-line" x1="392" y1="88" x2="540" y2="88" stroke="var(--copper)" stroke-width="3" stroke-linecap="round"></line>
+              <path class="zone-line" d="M 190 242 L 466 88" stroke="var(--ivory-muted)" stroke-width="1.5" stroke-dasharray="5 9" opacity=".8"></path>
+              <text class="zone-text" x="424" y="72" fill="var(--ivory-muted)" font-size="16" font-family="Inter, Arial, sans-serif">04 экран</text>
+            </g>
+            <g class="logic-zone logic-zone-soft" data-zone="soft" tabindex="0" role="img" aria-label="Мягкая зона: место обсуждения и паузы">
+              <title>Мягкая зона</title>
+              <path class="zone-fill" d="M 342 276 H 548 V 356 H 342 Z" fill="rgba(118, 112, 74, .12)" stroke="var(--line)" stroke-width="1.5"></path>
+              <text class="zone-text" x="380" y="324" fill="var(--ivory-muted)" font-size="16" font-family="Inter, Arial, sans-serif">05 мягкая зона</text>
+            </g>
             <text x="260" y="292" fill="var(--copper)" font-size="15" font-family="Inter, Arial, sans-serif">движение</text>
             <text x="250" y="232" fill="var(--ivory-muted)" font-size="15" font-family="Inter, Arial, sans-serif">визуальный фокус</text>
           </svg>
         </div>
         <div class="logic-cards">
+          <div class="logic-scenario reveal" aria-labelledby="logic-scenario-title">
+            <h3 id="logic-scenario-title">Сценарий пространства</h3>
+            <div class="logic-scenario-grid">
+              <article class="logic-scenario-card" data-zone="entry" tabindex="0"><b data-step="01">Вход</b><p>Начальная точка маршрута: человек считывает пространство и выбирает траекторию движения.</p></article>
+              <article class="logic-scenario-card" data-zone="seating" tabindex="0"><b data-step="02">Посадка</b><p>Рабочая зона собирает группу и сохраняет спокойную ориентацию на лектора.</p></article>
+              <article class="logic-scenario-card" data-zone="lecturer" tabindex="0"><b data-step="03">Лектор</b><p>Фигура лектора задаёт главный смысловой центр и удерживает композицию занятия.</p></article>
+              <article class="logic-scenario-card" data-zone="screen" tabindex="0"><b data-step="04">Экран</b><p>Экран поддерживает визуальную ось и делает лекционный сценарий понятным.</p></article>
+              <article class="logic-scenario-card" data-zone="soft" tabindex="0"><b data-step="05">Мягкая зона</b><p>Мягкая посадка переводит пространство из режима лекции в обсуждение и паузу.</p></article>
+            </div>
+          </div>
           <article class="logic-card reveal"><b>Зонирование</b><p>Рабочая зона, зона лектора, мягкая посадка и визуальный фокус собраны в спокойную композицию без лишнего шума.</p></article>
           <article class="logic-card reveal"><b>Сценарий движения</b><p>Маршрут строится просто: вход → посадка → внимание на лектора и экран → обсуждение после занятия.</p></article>
           <article class="logic-card reveal"><b>Свет</b><p>Тёплый направленный свет и естественная светотень выделяют терракотовую стену и делают пространство менее плоским.</p></article>
@@ -1092,24 +1186,6 @@
         <div class="swatch olive"><b>Приглушённая олива</b><span>#76704A · природный баланс</span></div>
       </div>
       <p class="materials-note reveal">Матовые покрытия, дерево, текстиль и мягкое отражение света создают тактильность. Контраст строится не на яркости, а на глубине тона, фактуре и аккуратной композиции.</p>
-      <div class="material-rationale reveal" aria-labelledby="material-rationale-title">
-        <h3 id="material-rationale-title">Материальная логика</h3>
-        <div class="material-rationale-grid">
-          <article class="material-rationale-card"><b>Терракота</b><p>Эмоциональное тепло и визуальный акцент.</p></article>
-          <article class="material-rationale-card"><b>Дерево</b><p>Тактильность, устойчивость и камерность.</p></article>
-          <article class="material-rationale-card"><b>Матовые стены</b><p>Меньше визуального шума и больше концентрации.</p></article>
-          <article class="material-rationale-card"><b>Зелень</b><p>Мягкое размыкание тёмной палитры.</p></article>
-          <article class="material-rationale-card"><b>Текстиль</b><p>Уют и акустическая мягкость.</p></article>
-        </div>
-      </div>
-      <div class="light-scenarios reveal" aria-labelledby="light-scenarios-title">
-        <h3 id="light-scenarios-title">Световые сценарии</h3>
-        <div class="light-scenarios-grid">
-          <article class="light-card"><b>Лекция</b><p>Направленный тёплый свет удерживает внимание на лекторе, экране и акцентной стене.</p></article>
-          <article class="light-card"><b>Обсуждение</b><p>Более мягкий общий свет снижает напряжение и помогает перейти от монолога к диалогу.</p></article>
-          <article class="light-card"><b>Пауза</b><p>Низкий контраст, дерево и приглушённая палитра создают спокойное состояние между занятиями.</p></article>
-        </div>
-      </div>
     </section>
 
     <section class="section" id="renders" aria-labelledby="renders-title">
