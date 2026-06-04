@@ -14,22 +14,22 @@
   <style>
     :root {
       color-scheme: dark;
-      --black: #090705;
-      --graphite: #15120e;
-      --graphite-soft: #1d1812;
-      --ivory: #f4ecdf;
-      --ivory-muted: rgba(244, 236, 223, .72);
-      --ivory-dim: rgba(244, 236, 223, .48);
-      --copper: #b56a46;
-      --terracotta: #8f4934;
-      --olive: #76704a;
-      --line: rgba(244, 236, 223, .14);
-      --line-strong: rgba(244, 236, 223, .26);
-      --card: rgba(255, 255, 255, .055);
-      --shadow: 0 34px 110px rgba(0, 0, 0, .58);
-      --radius-xl: 38px;
-      --radius-lg: 28px;
-      --radius-md: 18px;
+      --black: #0b0c0d;
+      --graphite: #141618;
+      --graphite-soft: #1b1e21;
+      --ivory: #eeeeea;
+      --ivory-muted: rgba(238, 238, 234, .72);
+      --ivory-dim: rgba(238, 238, 234, .46);
+      --copper: #98877a;
+      --terracotta: #75675e;
+      --olive: #6f7370;
+      --line: rgba(255, 255, 255, .11);
+      --line-strong: rgba(255, 255, 255, .20);
+      --card: rgba(255, 255, 255, .04);
+      --shadow: 0 34px 110px rgba(0, 0, 0, .48);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 16px;
       --wrap: min(1180px, calc(100% - 40px));
     }
 
@@ -52,16 +52,15 @@
     body::before {
       content: "";
       position: fixed;
-      inset: -28%;
+      inset: -22%;
       z-index: -3;
       pointer-events: none;
       background:
-        radial-gradient(circle at 9% 4%, rgba(181, 106, 70, .30), transparent 28%),
-        radial-gradient(circle at 88% 16%, rgba(143, 73, 52, .24), transparent 30%),
-        radial-gradient(ellipse at 54% 52%, rgba(244, 236, 223, .055), transparent 42%),
-        linear-gradient(118deg, rgba(21, 18, 14, .88) 0 22%, transparent 22% 68%, rgba(181, 106, 70, .08) 68% 100%),
-        linear-gradient(180deg, #080604 0%, #15110d 42%, #090705 100%);
-      filter: saturate(1.05);
+        radial-gradient(ellipse at 18% 8%, rgba(255, 255, 255, .075), transparent 30%),
+        radial-gradient(ellipse at 82% 22%, rgba(152, 135, 122, .075), transparent 28%),
+        radial-gradient(ellipse at 46% 72%, rgba(255, 255, 255, .045), transparent 42%),
+        linear-gradient(118deg, rgba(20, 22, 24, .96) 0 24%, transparent 24% 66%, rgba(255, 255, 255, .035) 66% 100%),
+        linear-gradient(180deg, #0b0c0d 0%, #151719 48%, #090a0b 100%);
     }
 
     body::after {
@@ -71,12 +70,12 @@
       z-index: -2;
       pointer-events: none;
       background-image:
-        linear-gradient(rgba(244, 236, 223, .032) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(244, 236, 223, .024) 1px, transparent 1px),
-        repeating-linear-gradient(135deg, rgba(255, 255, 255, .012) 0 1px, transparent 1px 7px);
-      background-size: 78px 78px, 78px 78px, 14px 14px;
-      opacity: .78;
-      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .82), rgba(0, 0, 0, .48) 58%, transparent 92%);
+        linear-gradient(rgba(255, 255, 255, .026) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .02) 1px, transparent 1px),
+        repeating-linear-gradient(135deg, rgba(255, 255, 255, .011) 0 1px, transparent 1px 8px);
+      background-size: 84px 84px, 84px 84px, 16px 16px;
+      opacity: .74;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .78), rgba(0, 0, 0, .44) 58%, transparent 92%);
     }
 
     html::before {
@@ -86,22 +85,21 @@
       z-index: -1;
       pointer-events: none;
       background:
-        radial-gradient(ellipse at 24% 36%, rgba(181, 106, 70, .08), transparent 38%),
-        radial-gradient(ellipse at 82% 74%, rgba(118, 112, 74, .07), transparent 34%);
-      mix-blend-mode: screen;
+        radial-gradient(ellipse at 28% 42%, rgba(255, 255, 255, .035), transparent 38%),
+        radial-gradient(ellipse at 78% 76%, rgba(152, 135, 122, .045), transparent 34%);
       opacity: .72;
     }
 
     html::after {
-      content: "T.A.";
+      content: "ТА";
       position: fixed;
-      right: clamp(18px, 6vw, 88px);
-      top: clamp(96px, 18vh, 180px);
+      right: clamp(20px, 6vw, 92px);
+      top: clamp(100px, 18vh, 184px);
       z-index: -1;
       pointer-events: none;
-      color: rgba(244, 236, 223, .035);
+      color: rgba(238, 238, 234, .032);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(88px, 17vw, 260px);
+      font-size: clamp(86px, 16vw, 236px);
       font-weight: 700;
       letter-spacing: -.08em;
       line-height: .8;
@@ -111,7 +109,7 @@
     button { font: inherit; }
     img { display: block; max-width: 100%; height: auto; }
     h1, h2, h3, p { margin: 0; }
-    ::selection { background: rgba(181, 106, 70, .48); color: #fff; }
+    ::selection { background: rgba(152, 135, 122, .44); color: #fff; }
 
     :focus-visible {
       outline: 2px solid var(--copper);
@@ -138,7 +136,7 @@
       top: 0;
       z-index: 50;
       border-bottom: 1px solid var(--line);
-      background: rgba(9, 7, 5, .78);
+      background: rgba(11, 12, 13, .82);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
     }
@@ -169,8 +167,8 @@
       width: 31px;
       height: 31px;
       border-radius: 50%;
-      background: radial-gradient(circle at 34% 28%, #e1b17a 0 21%, var(--copper) 48%, #4f4c2f 100%);
-      box-shadow: 0 0 0 7px rgba(181, 106, 70, .08), 0 0 42px rgba(181, 106, 70, .30);
+      background: radial-gradient(circle at 34% 28%, #d8d5cd 0 18%, var(--copper) 48%, #3b3f42 100%);
+      box-shadow: 0 0 0 7px rgba(255, 255, 255, .055), 0 0 34px rgba(152, 135, 122, .16);
     }
 
     .nav-links {
@@ -280,7 +278,7 @@
       border: 1px solid var(--line);
       border-radius: 999px;
       color: var(--ivory-muted);
-      background: rgba(255, 255, 255, .045);
+      background: rgba(255, 255, 255, .036);
       font-size: 13px;
     }
 
@@ -306,7 +304,7 @@
     }
 
     .btn:hover { transform: translateY(-2px); background: rgba(255, 255, 255, .09); }
-    .btn.primary { border-color: transparent; background: linear-gradient(135deg, var(--copper), #d19a64); color: #140c07; font-weight: 750; }
+    .btn.primary { border-color: rgba(255, 255, 255, .16); background: linear-gradient(135deg, #d8d4cc, var(--copper)); color: #111315; font-weight: 750; }
 
     .hero-visual {
       position: relative;
@@ -315,7 +313,7 @@
       border: 1px solid var(--line-strong);
       border-radius: var(--radius-xl);
       overflow: hidden;
-      background: #130f0b;
+      background: #101214;
       color: inherit;
       box-shadow: var(--shadow);
       cursor: zoom-in;
@@ -527,13 +525,13 @@
       padding: 24px;
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
-      background: rgba(255, 255, 255, .045);
+      background: rgba(255, 255, 255, .036);
     }
 
     .principle:nth-child(3) {
       grid-column: 1 / -1;
       min-height: 150px;
-      background: linear-gradient(135deg, rgba(181, 106, 70, .16), rgba(118, 112, 74, .09));
+      background: linear-gradient(135deg, rgba(255, 255, 255, .07), rgba(152, 135, 122, .055));
     }
 
     .principle b {
@@ -545,58 +543,6 @@
     }
 
     .principle p {
-      margin-top: 12px;
-      color: var(--ivory-muted);
-      line-height: 1.65;
-    }
-
-    .logic-layout {
-      display: grid;
-      grid-template-columns: minmax(360px, .78fr) minmax(0, 1fr);
-      gap: 22px;
-      align-items: stretch;
-    }
-
-    .logic-diagram {
-      min-height: 420px;
-      padding: clamp(18px, 3vw, 28px);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: linear-gradient(145deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .025)), var(--graphite);
-      box-shadow: 0 24px 80px rgba(0, 0, 0, .22);
-    }
-
-    .logic-diagram svg {
-      width: 100%;
-      height: auto;
-      min-height: 340px;
-      display: block;
-      overflow: visible;
-    }
-
-    .logic-cards {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .logic-card {
-      min-height: 184px;
-      padding: 22px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: var(--card);
-    }
-
-    .logic-card b {
-      display: block;
-      color: var(--ivory);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 23px;
-      letter-spacing: -.02em;
-    }
-
-    .logic-card p {
       margin-top: 12px;
       color: var(--ivory-muted);
       line-height: 1.65;
@@ -699,13 +645,13 @@
       border: 1px solid var(--line);
       border-radius: var(--radius-xl);
       background:
-        linear-gradient(135deg, rgba(181, 106, 70, .14), rgba(118, 112, 74, .08)),
-        rgba(255, 255, 255, .045);
+        linear-gradient(135deg, rgba(255, 255, 255, .065), rgba(152, 135, 122, .045)),
+        rgba(255, 255, 255, .038);
     }
 
     .author-card p { color: var(--ivory-muted); line-height: 1.7; }
     .author-meta { display: grid; gap: 12px; align-content: start; }
-    .author-meta div { padding: 15px; border: 1px solid var(--line); border-radius: var(--radius-md); background: rgba(0, 0, 0, .12); }
+    .author-meta div { padding: 15px; border: 1px solid var(--line); border-radius: var(--radius-md); background: rgba(255, 255, 255, .026); }
     .author-meta small { display: block; color: var(--ivory-dim); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
     .author-meta b { display: block; margin-top: 6px; }
 
@@ -713,14 +659,13 @@
       display: grid;
       grid-template-columns: minmax(0, .72fr) minmax(280px, .62fr) minmax(220px, .42fr);
       gap: 18px;
-      padding: clamp(24px, 4vw, 42px);
+      padding: clamp(26px, 4vw, 46px);
       border: 1px solid var(--line);
       border-radius: var(--radius-xl);
       background:
-        radial-gradient(circle at 10% 4%, rgba(181, 106, 70, .18), transparent 34%),
-        linear-gradient(145deg, rgba(255, 255, 255, .07), rgba(181, 106, 70, .075)),
-        rgba(255, 255, 255, .035);
-      box-shadow: 0 28px 92px rgba(0, 0, 0, .26);
+        linear-gradient(145deg, rgba(255, 255, 255, .062), rgba(255, 255, 255, .026)),
+        var(--graphite);
+      box-shadow: 0 28px 92px rgba(0, 0, 0, .24);
       overflow: hidden;
       position: relative;
     }
@@ -729,7 +674,7 @@
       content: "";
       position: absolute;
       inset: 18px;
-      border: 1px solid rgba(244, 236, 223, .08);
+      border: 1px solid rgba(255, 255, 255, .07);
       border-radius: calc(var(--radius-xl) - 12px);
       pointer-events: none;
     }
@@ -757,14 +702,14 @@
       padding: 15px;
       border: 1px solid var(--line);
       border-radius: 999px;
-      background: rgba(0, 0, 0, .14);
+      background: rgba(255, 255, 255, .028);
       transition: transform .2s ease, border-color .2s ease, background .2s ease;
     }
 
     .contact-link:hover {
       transform: translateY(-2px);
-      border-color: rgba(181, 106, 70, .46);
-      background: rgba(255, 255, 255, .065);
+      border-color: var(--line-strong);
+      background: rgba(255, 255, 255, .055);
     }
 
     .contact-link small {
@@ -790,7 +735,7 @@
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
       overflow: hidden;
-      background: rgba(0, 0, 0, .16);
+      background: rgba(0, 0, 0, .18);
     }
 
     .contact-detail img {
@@ -798,8 +743,8 @@
       height: 100%;
       min-height: 220px;
       object-fit: cover;
-      opacity: .82;
-      filter: saturate(.92) contrast(1.03);
+      opacity: .86;
+      filter: saturate(.94) contrast(1.02);
     }
 
     .contact-detail span {
@@ -836,14 +781,14 @@
     .footer-symbol {
       width: 40px;
       height: 40px;
-      border: 1px solid rgba(181, 106, 70, .55);
+      border: 1px solid var(--line-strong);
       border-radius: 50%;
       display: inline-grid;
       place-items: center;
-      color: var(--copper);
+      color: var(--ivory-muted);
       font-family: Georgia, "Times New Roman", serif;
       font-weight: 700;
-      background: rgba(181, 106, 70, .075);
+      background: rgba(255, 255, 255, .035);
     }
 
     .footer-copy,
@@ -912,17 +857,14 @@
       .section-head,
       .about-grid,
       .concept-layout,
-      .logic-layout,
       .author-card,
       .contact-card,
       footer { grid-template-columns: 1fr; }
       .hero-visual { order: -1; }
       .hero-visual img { min-height: 420px; aspect-ratio: 16 / 12; }
-      .logic-diagram { min-height: auto; }
-      .logic-cards { grid-template-columns: 1fr; }
       .palette { grid-template-columns: repeat(2, 1fr); }
-      .swatch { min-height: 170px; }
       .footer-service { justify-content: flex-start; }
+      .swatch { min-height: 170px; }
     }
 
     @media (max-width: 640px) {
@@ -944,13 +886,11 @@
       .about-text p,
       .principle p,
       .case-step p,
-      .logic-card p,
       .materials-note,
       .author-card p,
       .contact-card p { font-size: 15px; line-height: 1.65; }
       .principles,
       .case-steps,
-      .logic-cards,
       .gallery-grid,
       .palette,
       .contact-links { grid-template-columns: 1fr; }
@@ -958,14 +898,12 @@
       .contact-detail,
       .contact-detail img { min-height: 180px; }
       .footer-service { justify-content: flex-start; }
-      body::after { opacity: .42; background-size: 92px 92px, 92px 92px, 18px 18px; }
-      body::before { filter: saturate(.95); opacity: .86; }
-      html::before { opacity: .42; }
-      html::after { opacity: .45; right: 18px; top: 112px; }
+      body::after { opacity: .38; background-size: 96px 96px, 96px 96px, 20px 20px; }
+      body::before { opacity: .82; }
+      html::before { opacity: .34; }
+      html::after { opacity: .18; right: 18px; top: 112px; }
       .concept-board,
       .concept-board img { min-height: 310px; }
-      .logic-card { min-height: auto; padding: 18px; }
-      .logic-diagram svg { min-height: 280px; }
       .render-card img { aspect-ratio: 5 / 4; }
       .caption { padding: 16px; }
       footer { padding-bottom: 34px; line-height: 1.5; }
@@ -984,7 +922,6 @@
       <div class="nav-links" aria-label="Разделы проекта">
         <a href="#about">О проекте</a>
         <a href="#concept">Концепция</a>
-        <a href="#logic">Логика</a>
         <a href="#materials">Материалы</a>
         <a href="#renders">Рендеры</a>
         <a href="#author">Автор</a>
@@ -1071,55 +1008,6 @@
       </div>
     </section>
 
-    <section class="section" id="logic" aria-labelledby="logic-title">
-      <div class="section-head reveal">
-        <div>
-          <span class="section-kicker">Проектная логика</span>
-          <h2 id="logic-title">Сценарий, свет и зонирование</h2>
-        </div>
-        <p class="section-note">Интерьер строится не только на палитре и рендерах, но и на сценарии использования: где человек входит, где концентрируется, как работает свет и как материалы задают атмосферу.</p>
-      </div>
-      <div class="logic-layout">
-        <div class="logic-diagram reveal" role="img" aria-label="Условная схема лектория: вход, посадка, лектор, экран, мягкая зона, движение и визуальный фокус">
-          <svg viewBox="0 0 640 460" aria-hidden="true" focusable="false">
-            <defs>
-              <marker id="logic-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--copper)"></path>
-              </marker>
-            </defs>
-            <rect x="46" y="42" width="548" height="360" rx="24" fill="rgba(255, 255, 255, .025)" stroke="var(--line)" stroke-width="2"></rect>
-            <path d="M 92 118 H 318 V 356 H 92 Z" fill="rgba(181, 106, 70, .06)" stroke="var(--line)" stroke-width="1.5"></path>
-            <path d="M 342 118 H 548 V 256 H 342 Z" fill="rgba(255, 255, 255, .035)" stroke="var(--line)" stroke-width="1.5"></path>
-            <path d="M 342 276 H 548 V 356 H 342 Z" fill="rgba(118, 112, 74, .12)" stroke="var(--line)" stroke-width="1.5"></path>
-            <line x1="466" y1="78" x2="466" y2="118" stroke="var(--copper)" stroke-width="3" stroke-linecap="round"></line>
-            <line x1="392" y1="88" x2="540" y2="88" stroke="var(--copper)" stroke-width="3" stroke-linecap="round"></line>
-            <circle cx="126" cy="206" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
-            <circle cx="190" cy="206" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
-            <circle cx="254" cy="206" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
-            <circle cx="126" cy="276" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
-            <circle cx="190" cy="276" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
-            <circle cx="254" cy="276" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
-            <circle cx="448" cy="186" r="26" fill="rgba(181, 106, 70, .16)" stroke="var(--copper)" stroke-width="1.5"></circle>
-            <path d="M 124 370 C 150 326, 184 296, 226 270 C 282 236, 354 210, 448 186" fill="none" stroke="var(--copper)" stroke-width="3" stroke-linecap="round" stroke-dasharray="9 11" marker-end="url(#logic-arrow)"></path>
-            <path d="M 190 242 L 466 88" stroke="var(--ivory-muted)" stroke-width="1.5" stroke-dasharray="5 9" opacity=".8"></path>
-            <circle cx="190" cy="242" r="5" fill="var(--ivory)"></circle>
-            <text x="76" y="96" fill="var(--ivory-muted)" font-size="16" font-family="Inter, Arial, sans-serif">вход</text>
-            <text x="116" y="166" fill="var(--ivory)" font-size="16" font-family="Inter, Arial, sans-serif">посадка</text>
-            <text x="418" y="194" fill="var(--ivory)" font-size="16" font-family="Inter, Arial, sans-serif">лектор</text>
-            <text x="424" y="72" fill="var(--ivory-muted)" font-size="16" font-family="Inter, Arial, sans-serif">экран</text>
-            <text x="380" y="324" fill="var(--ivory-muted)" font-size="16" font-family="Inter, Arial, sans-serif">мягкая зона</text>
-            <text x="260" y="292" fill="var(--copper)" font-size="15" font-family="Inter, Arial, sans-serif">движение</text>
-            <text x="250" y="232" fill="var(--ivory-muted)" font-size="15" font-family="Inter, Arial, sans-serif">визуальный фокус</text>
-          </svg>
-        </div>
-        <div class="logic-cards">
-          <article class="logic-card reveal"><b>Зонирование</b><p>Рабочая зона, зона лектора, мягкая посадка и визуальный фокус собраны в спокойную композицию без лишнего шума.</p></article>
-          <article class="logic-card reveal"><b>Сценарий движения</b><p>Маршрут строится просто: вход → посадка → внимание на лектора и экран → обсуждение после занятия.</p></article>
-          <article class="logic-card reveal"><b>Свет</b><p>Тёплый направленный свет и естественная светотень выделяют терракотовую стену и делают пространство менее плоским.</p></article>
-          <article class="logic-card reveal"><b>Материалы</b><p>Матовые стены, дерево, текстиль и зелень создают тактильную среду с приглушённым контрастом.</p></article>
-        </div>
-      </div>
-    </section>
 
     <section class="section" id="materials" aria-labelledby="materials-title">
       <div class="section-head reveal">
@@ -1200,7 +1088,7 @@
             <small>GitHub</small><b>WhyPonySwag</b>
           </a>
           <a class="contact-link" href="https://lectory-project.vercel.app" aria-label="Открыть опубликованное портфолио проекта">
-            <small>Live site</small><b>lectory-project</b>
+            <small>Portfolio</small><b>Live site</b>
           </a>
           <span class="contact-link" aria-label="PDF-версия проекта будет подготовлена позже">
             <small>PDF</small><b>позже</b>
@@ -1219,7 +1107,7 @@
 
   <footer>
     <div class="footer-mark" aria-label="Авторский знак проекта">
-      <span class="footer-symbol" aria-hidden="true">TA</span>
+      <span class="footer-symbol" aria-hidden="true">ТА</span>
       <span>Lectory / 2026</span>
     </div>
     <div class="footer-copy">
