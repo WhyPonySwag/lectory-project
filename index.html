@@ -3,159 +3,894 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Учебная интерьерная концепция лектория: тёплая природная палитра, деревянные фактуры, мягкий свет, рендеры и описание проекта.">
-  <meta name="theme-color" content="#080705">
+  <title>Лекторий — архитектурный case study интерьера</title>
+  <meta name="description" content="Архитектурное портфолио учебного интерьерного проекта лектория: концепция, материалы, тёплая палитра, рендеры и авторская информация.">
+  <meta name="theme-color" content="#090705">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Lectory Interior — интерьерная концепция">
-  <meta property="og:description" content="Портфолио-страница с визуализациями лектория и кратким описанием архитектурной идеи.">
+  <meta property="og:title" content="Лекторий — архитектурный case study интерьера">
+  <meta property="og:description" content="Учебный интерьерный проект лектория в тёплой тёмной эстетике: концепция, материалы, рендеры и проектная логика.">
   <meta property="og:image" content="assets/render-03.webp">
-  <title>Lectory Interior — интерьерная концепция</title>
   <link rel="preload" as="image" href="assets/render-03.webp" fetchpriority="high">
   <style>
-    :root{
-      color-scheme:dark;
-      --bg:#080705;
-      --bg-2:#0f0d0a;
-      --ink:#f5eee4;
-      --muted:rgba(245,238,228,.68);
-      --dim:rgba(245,238,228,.44);
-      --line:rgba(245,238,228,.13);
-      --line-strong:rgba(245,238,228,.23);
-      --card:rgba(255,255,255,.045);
-      --card-2:rgba(255,255,255,.075);
-      --accent:#b86b47;
-      --accent-2:#d59b65;
-      --olive:#777248;
-      --shadow:0 32px 110px rgba(0,0,0,.58);
-      --radius-lg:34px;
-      --radius-md:24px;
-      --radius-sm:16px;
-      --wrap:min(1120px,calc(100% - 40px));
+    :root {
+      color-scheme: dark;
+      --black: #090705;
+      --graphite: #15120e;
+      --graphite-soft: #1d1812;
+      --ivory: #f4ecdf;
+      --ivory-muted: rgba(244, 236, 223, .72);
+      --ivory-dim: rgba(244, 236, 223, .48);
+      --copper: #b56a46;
+      --terracotta: #8f4934;
+      --olive: #76704a;
+      --line: rgba(244, 236, 223, .14);
+      --line-strong: rgba(244, 236, 223, .26);
+      --card: rgba(255, 255, 255, .055);
+      --shadow: 0 34px 110px rgba(0, 0, 0, .58);
+      --radius-xl: 38px;
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --wrap: min(1180px, calc(100% - 40px));
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
-    body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;overflow-x:hidden}
-    body::before{content:"";position:fixed;inset:-20%;z-index:-2;background:radial-gradient(circle at 12% 8%,rgba(184,107,71,.18),transparent 32%),radial-gradient(circle at 82% 18%,rgba(119,114,72,.18),transparent 30%),linear-gradient(180deg,#080705 0%,#0d0b08 52%,#070605 100%)}
-    body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.7),transparent 72%)}
-    a{color:inherit;text-decoration:none}
-    img{display:block;max-width:100%;height:auto}
-    h1,h2,h3,p{margin:0}
-    ::selection{background:rgba(184,107,71,.42);color:#fff}
-    .skip{position:absolute;left:-999px;top:12px;background:var(--ink);color:#111;padding:10px 14px;border-radius:999px;z-index:1000}.skip:focus{left:12px}
-    .nav{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);background:rgba(8,7,5,.76);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
-    .nav-inner{width:var(--wrap);height:66px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .brand{display:flex;align-items:center;gap:12px;min-width:max-content;font-family:Georgia,"Times New Roman",serif;text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:600}
-    .brand-mark{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 34% 28%,#e9b783 0 22%,#b86b47 48%,#514b2b 100%);box-shadow:0 0 0 7px rgba(184,107,71,.08),0 0 38px rgba(184,107,71,.28)}
-    .nav-meta{margin-left:auto;color:var(--dim);font-size:13px;white-space:nowrap}
-    .nav-links{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:13px}.nav-links a{padding:9px 12px;border-radius:999px;transition:background .25s ease,color .25s ease}.nav-links a:hover{background:rgba(255,255,255,.07);color:var(--ink)}
-    main{width:var(--wrap);margin:auto}
-    .hero{padding:44px 0 76px}.hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);gap:34px;align-items:end}.hero-copy{padding-bottom:12px}.eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;color:var(--muted);font-size:13px;letter-spacing:.18em;text-transform:uppercase}.eyebrow::before{content:"";width:42px;height:1px;background:linear-gradient(90deg,var(--accent),transparent)}
-    h1{max-width:820px;font-size:clamp(42px,7vw,92px);line-height:.94;letter-spacing:-.07em;font-weight:830}.lead{margin-top:24px;max-width:720px;color:var(--muted);font-size:clamp(18px,2.2vw,27px);line-height:1.55;letter-spacing:-.025em}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:999px;border:1px solid var(--line-strong);background:rgba(255,255,255,.055);color:var(--ink);font-size:14px;transition:transform .25s ease,background .25s ease,border-color .25s ease}.btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.09);border-color:rgba(245,238,228,.34)}.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));border-color:transparent;color:#120b07;box-shadow:0 18px 42px rgba(184,107,71,.22)}
-    .hero-card{position:relative;border:1px solid var(--line-strong);border-radius:var(--radius-lg);overflow:hidden;background:#120f0b;box-shadow:var(--shadow);isolation:isolate}.hero-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 58%,rgba(0,0,0,.64));pointer-events:none}.hero-card img{aspect-ratio:4/5;object-fit:cover;min-height:520px;transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .9s ease}.hero-card:hover img{transform:scale(1.035);filter:saturate(1.05) contrast(1.03)}.hero-label{position:absolute;left:18px;right:18px;bottom:18px;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 15px;border:1px solid rgba(255,255,255,.16);border-radius:20px;background:rgba(8,7,5,.58);backdrop-filter:blur(16px)}.hero-label b{display:block;font-size:14px}.hero-label span{display:block;margin-top:4px;color:var(--muted);font-size:12px}.tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.tag{border:1px solid var(--line);border-radius:999px;padding:9px 13px;color:var(--muted);font-size:13px;background:rgba(255,255,255,.035)}
-    .section{padding:74px 0;border-top:1px solid var(--line)}.section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:30px}.section-kicker{display:block;margin-bottom:10px;color:var(--accent-2);font-size:12px;letter-spacing:.18em;text-transform:uppercase}.section h2{font-size:clamp(34px,5vw,64px);line-height:1;letter-spacing:-.055em;font-weight:810}.section-note{max-width:420px;color:var(--muted);font-size:15px;line-height:1.62}.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.text-card,.metric{border:1px solid var(--line);border-radius:var(--radius-md);background:linear-gradient(180deg,var(--card-2),var(--card));padding:24px}.text-card p{color:var(--muted);font-size:18px;line-height:1.7;letter-spacing:-.012em}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.metric{padding:18px}.metric b{display:block;font-size:22px;letter-spacing:-.04em}.metric span{display:block;margin-top:6px;color:var(--dim);font-size:13px;line-height:1.35}
-    .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{position:relative;cursor:pointer;border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;background:linear-gradient(180deg,var(--card-2),var(--card));transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease}.card:hover{transform:translateY(-4px);border-color:rgba(245,238,228,.28);box-shadow:0 18px 50px rgba(0,0,0,.32)}.card img{height:220px;width:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .7s ease}.card:hover img{transform:scale(1.065);filter:saturate(1.05)}.caption{min-height:92px;padding:15px;border-top:1px solid var(--line)}.caption b{display:block;font-size:15px;margin-bottom:6px}.caption span{display:block;color:var(--muted);font-size:13px;line-height:1.45}
-    .concept{display:grid;grid-template-columns:.88fr 1.12fr;gap:18px;align-items:stretch}.concept-visual{border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;background:#111}.concept-visual img{height:100%;min-height:360px;object-fit:cover}.principles{display:grid;gap:12px}.principle{border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.045);padding:20px}.principle b{display:block;margin-bottom:8px;font-size:16px}.principle p{color:var(--muted);font-size:15px;line-height:1.58}
-    footer{width:var(--wrap);margin:auto;border-top:1px solid var(--line);padding:26px 0 34px;color:var(--dim);font-size:13px;display:flex;justify-content:space-between;gap:18px}
-    .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.2,1)}.reveal.visible{opacity:1;transform:none}.lightbox{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:22px;background:rgba(0,0,0,.92);backdrop-filter:blur(16px)}.lightbox.open{display:flex}.lightbox img{max-width:min(1200px,96vw);max-height:84vh;object-fit:contain;border-radius:20px;box-shadow:0 30px 90px rgba(0,0,0,.7)}.lightbox button{position:absolute;top:16px;right:16px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.1);color:#fff;font-size:27px;cursor:pointer}
-    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal,.hero-card img,.card img,.btn,.card{transition:none!important}.hero-card:hover img,.card:hover img,.card:hover,.btn:hover{transform:none!important}}
-    @media(max-width:900px){:root{--wrap:min(100% - 28px,1120px)}.hero-grid,.about-grid,.concept{grid-template-columns:1fr}.hero{padding:30px 0 56px}.hero-copy{order:2}.hero-card{order:1}.hero-card img{aspect-ratio:16/10;min-height:0}.gallery-grid{grid-template-columns:repeat(2,1fr)}.metrics{grid-template-columns:1fr 1fr 1fr}.section-head{display:block}.section-note{margin-top:14px}}
-    @media(max-width:640px){.nav-inner{height:60px}.brand{font-size:11px;letter-spacing:.12em}.brand-mark{width:26px;height:26px}.nav-links{display:none}.nav-meta{font-size:11px;white-space:normal;text-align:right;line-height:1.2;max-width:148px}.hero{padding-top:22px}.eyebrow{font-size:11px}.lead{font-size:18px}.hero-actions{margin-top:22px}.btn{width:100%}.hero-label{position:static;margin:10px;border-radius:18px}.tags{gap:8px}.tag{font-size:12px;padding:8px 10px}.section{padding:50px 0}.text-card,.metric,.principle{padding:18px}.text-card p{font-size:16px}.metrics{grid-template-columns:1fr}.gallery-grid{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 1px 6px}.card{min-width:84%;scroll-snap-align:start}.card img{height:auto;aspect-ratio:16/10}.concept-visual img{min-height:260px}footer{flex-direction:column;padding-bottom:28px}}
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      margin: 0;
+      background: var(--black);
+      color: var(--ivory);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -24%;
+      z-index: -2;
+      background:
+        radial-gradient(circle at 10% 6%, rgba(181, 106, 70, .22), transparent 30%),
+        radial-gradient(circle at 86% 18%, rgba(118, 112, 74, .18), transparent 27%),
+        linear-gradient(180deg, #090705 0%, #12100c 48%, #080604 100%);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(244, 236, 223, .026) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(244, 236, 223, .018) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .72), transparent 72%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    img { display: block; max-width: 100%; height: auto; }
+    h1, h2, h3, p { margin: 0; }
+    ::selection { background: rgba(181, 106, 70, .48); color: #fff; }
+
+    :focus-visible {
+      outline: 2px solid var(--copper);
+      outline-offset: 4px;
+      border-radius: 18px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 12px;
+      z-index: 1000;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--ivory);
+      color: #14100c;
+      font-weight: 700;
+    }
+
+    .skip-link:focus { left: 12px; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--line);
+      background: rgba(9, 7, 5, .78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      width: var(--wrap);
+      min-height: 68px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      width: 31px;
+      height: 31px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 34% 28%, #e1b17a 0 21%, var(--copper) 48%, #4f4c2f 100%);
+      box-shadow: 0 0 0 7px rgba(181, 106, 70, .08), 0 0 42px rgba(181, 106, 70, .30);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+      color: var(--ivory-muted);
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      padding: 9px 12px;
+      border-radius: 999px;
+      transition: color .2s ease, background .2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--ivory);
+      background: rgba(255, 255, 255, .07);
+    }
+
+    main {
+      width: var(--wrap);
+      margin: 0 auto;
+    }
+
+    .section { padding: 86px 0; }
+
+    .hero {
+      min-height: calc(100svh - 68px);
+      padding: 42px 0 82px;
+      display: grid;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(420px, 1.08fr);
+      gap: clamp(28px, 5vw, 64px);
+      align-items: end;
+    }
+
+    .eyebrow,
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--ivory-dim);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before,
+    .section-kicker::before {
+      content: "";
+      width: 42px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--copper), transparent);
+    }
+
+    h1 {
+      max-width: 760px;
+      margin-top: 20px;
+      font-size: clamp(48px, 7vw, 104px);
+      line-height: .9;
+      letter-spacing: -.075em;
+      font-weight: 820;
+    }
+
+    .lead {
+      max-width: 650px;
+      margin-top: 24px;
+      color: var(--ivory-muted);
+      font-size: clamp(18px, 2vw, 24px);
+      line-height: 1.55;
+      letter-spacing: -.02em;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 30px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tags li {
+      padding: 9px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--ivory-muted);
+      background: rgba(255, 255, 255, .045);
+      font-size: 13px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .055);
+      color: var(--ivory);
+      font-size: 14px;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); background: rgba(255, 255, 255, .09); }
+    .btn.primary { border-color: transparent; background: linear-gradient(135deg, var(--copper), #d19a64); color: #140c07; font-weight: 750; }
+
+    .hero-visual {
+      position: relative;
+      width: 100%;
+      padding: 0;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background: #130f0b;
+      color: inherit;
+      box-shadow: var(--shadow);
+      cursor: zoom-in;
+      isolation: isolate;
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      z-index: 2;
+      border: 1px solid rgba(244, 236, 223, .22);
+      border-radius: calc(var(--radius-xl) - 14px);
+      pointer-events: none;
+    }
+
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(9, 7, 5, .02) 30%, rgba(9, 7, 5, .72) 100%);
+      pointer-events: none;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      min-height: 580px;
+      aspect-ratio: 5 / 6;
+      object-fit: cover;
+      transition: transform .75s cubic-bezier(.2, .7, .2, 1), filter .75s ease;
+    }
+
+    .hero-visual:hover img { transform: scale(1.03); filter: saturate(1.05) contrast(1.04); }
+
+    .hero-caption {
+      position: absolute;
+      left: 34px;
+      right: 34px;
+      bottom: 32px;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: end;
+      text-align: left;
+    }
+
+    .hero-caption b,
+    .caption b {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 20px;
+      letter-spacing: -.02em;
+    }
+
+    .hero-caption span,
+    .caption span {
+      display: block;
+      margin-top: 5px;
+      color: var(--ivory-muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .frame-index {
+      color: var(--ivory-dim);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 44px;
+      line-height: .9;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, .8fr) minmax(280px, .52fr);
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+
+    h2 {
+      margin-top: 14px;
+      max-width: 760px;
+      font-size: clamp(34px, 4.6vw, 64px);
+      line-height: .98;
+      letter-spacing: -.055em;
+    }
+
+    .section-note {
+      color: var(--ivory-muted);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, .55fr);
+      gap: 22px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(145deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .03));
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .24);
+    }
+
+    .about-text {
+      padding: clamp(24px, 4vw, 42px);
+    }
+
+    .about-text p {
+      color: var(--ivory-muted);
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    .about-text p + p { margin-top: 18px; }
+
+    .facts {
+      display: grid;
+      padding: 8px;
+    }
+
+    .fact {
+      padding: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .fact:last-child { border-bottom: 0; }
+    .fact small { color: var(--ivory-dim); text-transform: uppercase; letter-spacing: .16em; font-size: 11px; }
+    .fact b { display: block; margin-top: 8px; font-size: 18px; font-weight: 680; }
+
+    .concept-layout {
+      display: grid;
+      grid-template-columns: minmax(300px, .72fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .concept-board {
+      width: 100%;
+      height: 100%;
+      min-height: 430px;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--graphite);
+      cursor: zoom-in;
+    }
+
+    .concept-board img {
+      width: 100%;
+      height: 100%;
+      min-height: 430px;
+      object-fit: cover;
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .principle {
+      min-height: 190px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, .045);
+    }
+
+    .principle:nth-child(3) {
+      grid-column: 1 / -1;
+      min-height: 150px;
+      background: linear-gradient(135deg, rgba(181, 106, 70, .16), rgba(118, 112, 74, .09));
+    }
+
+    .principle b {
+      display: block;
+      color: var(--ivory);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 24px;
+      letter-spacing: -.02em;
+    }
+
+    .principle p {
+      margin-top: 12px;
+      color: var(--ivory-muted);
+      line-height: 1.65;
+    }
+
+    .palette {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .swatch {
+      min-height: 245px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .swatch::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 35%, rgba(0, 0, 0, .50));
+    }
+
+    .swatch b,
+    .swatch span { position: relative; z-index: 1; }
+    .swatch b { font-size: 15px; }
+    .swatch span { margin-top: 5px; color: rgba(244, 236, 223, .68); font-size: 12px; }
+    .swatch.black { background: #090705; }
+    .swatch.graphite { background: #1d1812; }
+    .swatch.copper { background: #b56a46; }
+    .swatch.ivory { background: #f4ecdf; color: #15120e; }
+    .swatch.ivory span { color: rgba(21, 18, 14, .62); }
+    .swatch.olive { background: #76704a; }
+
+    .materials-note {
+      margin-top: 18px;
+      color: var(--ivory-muted);
+      line-height: 1.7;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .render-card {
+      position: relative;
+      width: 100%;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--graphite);
+      color: inherit;
+      text-align: left;
+      cursor: zoom-in;
+      box-shadow: 0 22px 70px rgba(0, 0, 0, .26);
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .render-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--line-strong);
+      background: var(--graphite-soft);
+    }
+
+    .render-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      transition: transform .55s ease, filter .55s ease;
+    }
+
+    .render-card:hover img { transform: scale(1.025); filter: saturate(1.04); }
+
+    .caption {
+      padding: 18px 18px 20px;
+      border-top: 1px solid var(--line);
+      background: rgba(9, 7, 5, .42);
+    }
+
+    .author-card {
+      display: grid;
+      grid-template-columns: minmax(0, .85fr) minmax(260px, .45fr);
+      gap: 22px;
+      padding: clamp(24px, 4vw, 42px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(135deg, rgba(181, 106, 70, .14), rgba(118, 112, 74, .08)),
+        rgba(255, 255, 255, .045);
+    }
+
+    .author-card p { color: var(--ivory-muted); line-height: 1.7; }
+    .author-meta { display: grid; gap: 12px; align-content: start; }
+    .author-meta div { padding: 15px; border: 1px solid var(--line); border-radius: var(--radius-md); background: rgba(0, 0, 0, .12); }
+    .author-meta small { display: block; color: var(--ivory-dim); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+    .author-meta b { display: block; margin-top: 6px; }
+
+    footer {
+      width: var(--wrap);
+      margin: 0 auto;
+      padding: 36px 0 46px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      color: var(--ivory-dim);
+      font-size: 13px;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: rgba(5, 4, 3, .88);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease;
+    }
+
+    .lightbox.open { opacity: 1; pointer-events: auto; }
+    .lightbox img { max-height: 86vh; border-radius: var(--radius-md); box-shadow: var(--shadow); }
+
+    .lightbox button {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: rgba(244, 236, 223, .10);
+      color: var(--ivory);
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    @media (max-width: 980px) {
+      :root { --wrap: min(100% - 30px, 760px); }
+      .nav { align-items: flex-start; flex-direction: column; padding: 14px 0; gap: 12px; }
+      .nav-links { width: 100%; overflow-x: auto; justify-content: flex-start; padding-bottom: 2px; }
+      .hero { min-height: auto; padding-top: 34px; }
+      .hero-grid,
+      .section-head,
+      .about-grid,
+      .concept-layout,
+      .author-card { grid-template-columns: 1fr; }
+      .hero-visual { order: -1; }
+      .hero-visual img { min-height: 420px; aspect-ratio: 16 / 12; }
+      .palette { grid-template-columns: repeat(2, 1fr); }
+      .swatch { min-height: 170px; }
+    }
+
+    @media (max-width: 640px) {
+      :root { --wrap: calc(100% - 28px); }
+      .section { padding: 58px 0; }
+      .brand { font-size: 11px; letter-spacing: .14em; }
+      .nav-links { font-size: 12px; gap: 4px; }
+      .nav-links a { padding: 8px 10px; }
+      h1 { font-size: clamp(38px, 13vw, 54px); letter-spacing: -.06em; }
+      h2 { font-size: clamp(30px, 10vw, 42px); }
+      .lead { font-size: 16px; line-height: 1.55; }
+      .tags li { font-size: 12px; padding: 8px 11px; }
+      .hero-visual { border-radius: 26px; }
+      .hero-visual::before { inset: 12px; border-radius: 18px; }
+      .hero-visual img { min-height: 360px; aspect-ratio: 4 / 5; }
+      .hero-caption { left: 22px; right: 22px; bottom: 22px; grid-template-columns: 1fr; }
+      .frame-index { display: none; }
+      .section-note,
+      .about-text p,
+      .principle p,
+      .materials-note,
+      .author-card p { font-size: 15px; line-height: 1.65; }
+      .principles,
+      .gallery-grid,
+      .palette { grid-template-columns: 1fr; }
+      .concept-board,
+      .concept-board img { min-height: 310px; }
+      .render-card img { aspect-ratio: 5 / 4; }
+      footer { flex-direction: column; }
+      .lightbox { padding: 14px; }
+    }
   </style>
 </head>
 <body>
-  <a class="skip" href="#content">Перейти к содержанию</a>
-  <header class="nav">
-    <div class="nav-inner">
-      <a class="brand" href="#top" aria-label="Lectory Interior"><span class="brand-mark" aria-hidden="true"></span><span>Lectory Interior</span></a>
-      <div class="nav-meta">Таласбаев Т. А. · Арх/б-25-1-о</div>
-      <nav class="nav-links" aria-label="Навигация"><a href="#gallery">Рендеры</a><a href="#concept">Концепция</a><a href="#about">О проекте</a></nav>
-    </div>
+  <a class="skip-link" href="#content">Перейти к содержанию</a>
+  <header class="topbar" aria-label="Навигация по странице">
+    <nav class="nav">
+      <a class="brand" href="#top" aria-label="Лекторий — к началу страницы">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Lectory Interior</span>
+      </a>
+      <div class="nav-links" aria-label="Разделы проекта">
+        <a href="#about">О проекте</a>
+        <a href="#concept">Концепция</a>
+        <a href="#materials">Материалы</a>
+        <a href="#renders">Рендеры</a>
+        <a href="#author">Автор</a>
+      </div>
+    </nav>
   </header>
 
   <main id="content">
-    <section class="hero" id="top">
+    <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="hero-grid">
-        <div class="hero-copy">
-          <span class="eyebrow reveal">Interior concept · 2026</span>
-          <h1 class="reveal">Современный лекторий в тёплой природной эстетике</h1>
-          <p class="lead reveal">Учебная интерьерная концепция камерного пространства для лекций, встреч и обсуждений: мягкий солнечный свет, матовые стены, дерево, зелень и спокойная общественная атмосфера.</p>
-          <div class="hero-actions reveal"><a class="btn primary" href="#gallery">Смотреть рендеры</a><a class="btn" href="#about">Читать идею проекта</a></div>
-          <div class="tags reveal"><span class="tag">Interior Render</span><span class="tag">Lecture Room</span><span class="tag">Warm minimalism</span></div>
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Учебный интерьерный проект</span>
+          <h1 id="hero-title">Тёплый лекторий для спокойной концентрации</h1>
+          <p class="lead">Case study камерного образовательного пространства: тёмная архитектурная основа, медно-терракотовый акцент, мягкая посадка и тактильные материалы.</p>
+          <ul class="tags" aria-label="Ключевые характеристики проекта">
+            <li>Interior concept</li>
+            <li>Lecture room</li>
+            <li>Warm graphite</li>
+            <li>Copper terracotta</li>
+            <li>Student portfolio</li>
+          </ul>
+          <div class="hero-actions">
+            <a class="btn primary" href="#renders">Смотреть рендеры</a>
+            <a class="btn" href="#concept">Идея проекта</a>
+          </div>
         </div>
-        <article class="hero-card reveal" data-full="assets/render-03.webp">
-          <img src="assets/render-03.webp" alt="Главный рендер лектория с тёплой терракотовой стеной" width="1200" height="1500" fetchpriority="high" decoding="async">
-          <div class="hero-label"><div><b>Тёплая визуальная доминанта</b><span>Терракотовая стена, дерево и солнечные тени</span></div><span aria-hidden="true">↗</span></div>
-        </article>
+
+        <button class="hero-visual reveal" type="button" data-full="assets/render-03.webp" data-caption="Главный рендер лектория с терракотовой стеной и тёплым вечерним светом" aria-label="Открыть главный рендер лектория в увеличенном виде">
+          <img src="assets/render-03.webp" alt="Главный рендер лектория с терракотовой стеной, деревянными столами и тёплым светом" width="1200" height="1440" fetchpriority="high" decoding="async">
+          <span class="hero-caption" aria-hidden="true">
+            <span><b>Hero render</b><span>Визуальная доминанта проекта: акцентная стена, дерево и приглушённый свет.</span></span>
+            <span class="frame-index">01</span>
+          </span>
+        </button>
       </div>
     </section>
 
-    <section id="about" class="section about">
+    <section class="section" id="about" aria-labelledby="about-title">
       <div class="section-head reveal">
-        <div><span class="section-kicker">Project idea</span><h2>О проекте</h2></div>
-        <p class="section-note">Страница собрана как лаконичное портфолио: сначала сильный визуальный образ, затем смысловая структура, после — галерея рендеров.</p>
+        <div>
+          <span class="section-kicker">About project</span>
+          <h2 id="about-title">О проекте</h2>
+        </div>
+        <p class="section-note">Страница оформлена как архитектурное портфолио: минимум шума, сильная визуальная иерархия и ясное объяснение проектных решений.</p>
       </div>
       <div class="about-grid">
-        <article class="text-card reveal"><p>Концепция строится на балансе фактур: тёплое дерево, матовая стена, мягкий текстиль, растения и солнечные тени. Пространство не выглядит как формальная аудитория; оно воспринимается как спокойное место для лекций, камерных встреч и содержательных обсуждений.</p></article>
-        <article class="text-card reveal"><p>Главная задача — создать интерьер, который не перегружает внимание, но задаёт характер. Цветовая палитра работает тихо: земляной медный оттенок даёт глубину, дерево добавляет телесность, зелень смягчает геометрию.</p></article>
-      </div>
-      <div class="metrics reveal" aria-label="Ключевые качества проекта">
-        <div class="metric"><b>01</b><span>Тёплая природная палитра без визуального шума</span></div>
-        <div class="metric"><b>02</b><span>Адаптивная страница для просмотра с телефона</span></div>
-        <div class="metric"><b>03</b><span>Лёгкий HTML без тяжёлых библиотек и сборки</span></div>
+        <article class="about-text panel reveal">
+          <p>Лекторий задуман как компактное пространство для лекций, обсуждений и самостоятельной работы. В основе — спокойная тёмная оболочка, которая помогает сфокусироваться на спикере и визуальном материале.</p>
+          <p>Интерьер избегает учебной стерильности: природная палитра, матовые фактуры, дерево и мягкая светотень создают более дорогую, камерную и человеческую атмосферу.</p>
+        </article>
+        <aside class="facts panel reveal" aria-label="Краткие параметры проекта">
+          <div class="fact"><small>Типология</small><b>Учебный лекторий</b></div>
+          <div class="fact"><small>Формат</small><b>Интерьерный concept / case study</b></div>
+          <div class="fact"><small>Настроение</small><b>Тёплый минимализм</b></div>
+          <div class="fact"><small>Год</small><b>2026</b></div>
+        </aside>
       </div>
     </section>
 
-    <section id="gallery" class="section gallery">
+    <section class="section" id="concept" aria-labelledby="concept-title">
       <div class="section-head reveal">
-        <div><span class="section-kicker">Visuals</span><h2>Рендеры проекта</h2></div>
-        <p class="section-note">Нажми на изображение, чтобы открыть его крупнее. Картинки загружаются оптимизированно: первый рендер приоритетный, остальные — лениво.</p>
+        <div>
+          <span class="section-kicker">Concept</span>
+          <h2 id="concept-title">Концепция: тишина, фактура, концентрация</h2>
+        </div>
+        <p class="section-note">Идея проекта — превратить учебную аудиторию в спокойную студийную среду, где архитектура поддерживает внимание, а не конкурирует с содержанием лекции.</p>
+      </div>
+      <div class="concept-layout">
+        <button class="concept-board reveal" type="button" data-full="assets/concept-board.webp" data-caption="Концепт-борд с палитрой, материалами и визуальным настроением проекта" aria-label="Открыть концепт-борд материалов в увеличенном виде">
+          <img src="assets/concept-board.webp" alt="Концепт-борд учебного лектория с материалами, тёплой палитрой и интерьерными референсами" width="1000" height="720" loading="lazy" decoding="async">
+        </button>
+        <div class="principles">
+          <article class="principle reveal"><b>Сценарий</b><p>Зонирование поддерживает лекцию, дискуссию и работу в малых группах: столы, мягкие места и экран читаются как единая композиция.</p></article>
+          <article class="principle reveal"><b>Свет</b><p>Тёплый свет подчёркивает глубину графитовых поверхностей и делает терракотовую стену главным эмоциональным акцентом.</p></article>
+          <article class="principle reveal"><b>Архитектурная подача</b><p>Сайт выстроен как последовательность проектного рассказа: сильный кадр, описание задачи, концепция, материальная палитра, затем серия визуализаций.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="materials" aria-labelledby="materials-title">
+      <div class="section-head reveal">
+        <div>
+          <span class="section-kicker">Materials & palette</span>
+          <h2 id="materials-title">Материалы и палитра</h2>
+        </div>
+        <p class="section-note">Палитра собрана вокруг глубокого чёрного, тёплого графита, меди, слоновой кости и приглушённой оливы — без кислотных акцентов и лишнего глянца.</p>
+      </div>
+      <div class="palette reveal" aria-label="Цветовая палитра проекта">
+        <div class="swatch black"><b>Deep black</b><span>#090705 · архитектурная база</span></div>
+        <div class="swatch graphite"><b>Warm graphite</b><span>#1D1812 · стены и фон</span></div>
+        <div class="swatch copper"><b>Copper terracotta</b><span>#B56A46 · акцент</span></div>
+        <div class="swatch ivory"><b>Ivory</b><span>#F4ECDF · текст и свет</span></div>
+        <div class="swatch olive"><b>Muted olive</b><span>#76704A · природный баланс</span></div>
+      </div>
+      <p class="materials-note reveal">Матовые покрытия, дерево, текстиль и мягкое отражение света создают тактильность. Контраст строится не на яркости, а на глубине тона, фактуре и аккуратной композиции.</p>
+    </section>
+
+    <section class="section" id="renders" aria-labelledby="renders-title">
+      <div class="section-head reveal">
+        <div>
+          <span class="section-kicker">Project renders</span>
+          <h2 id="renders-title">Рендеры проекта</h2>
+        </div>
+        <p class="section-note">Все карточки открываются в lightbox по клику, Enter или Space. Главный кадр загружается приоритетно, остальные изображения — лениво.</p>
       </div>
       <div class="gallery-grid">
-        <article class="card reveal" data-full="assets/render-03.webp"><img src="assets/render-03.webp" alt="Терракотовая стена лектория" width="900" height="600" loading="lazy" decoding="async"><div class="caption"><b>Терракотовая стена</b><span>Главный цветовой акцент и мягкая светотень</span></div></article>
-        <article class="card reveal" data-full="assets/render-01.webp"><img src="assets/render-01.webp" alt="Общий вид лектория со столами и мягкой зоной" width="900" height="600" loading="lazy" decoding="async"><div class="caption"><b>Общий вид</b><span>Рабочая зона, лавки, кресла и естественный свет</span></div></article>
-        <article class="card reveal" data-full="assets/render-02.webp"><img src="assets/render-02.webp" alt="Фронтальная перспектива учебного лектория" width="900" height="600" loading="lazy" decoding="async"><div class="caption"><b>Фронтальная перспектива</b><span>Композиция стены, мебели и декоративных элементов</span></div></article>
-        <article class="card reveal" data-full="assets/render-04.webp"><img src="assets/render-04.webp" alt="Зона экрана и посадочные места в лектории" width="900" height="600" loading="lazy" decoding="async"><div class="caption"><b>Экран и посадка</b><span>Практическая часть пространства для лекций</span></div></article>
+        <button class="render-card reveal" type="button" data-full="assets/render-03.webp" data-caption="Терракотовая акцентная стена и тёплая светотень" aria-label="Открыть рендер: терракотовая акцентная стена">
+          <img src="assets/render-03.webp" alt="Терракотовая акцентная стена лектория с декоративными элементами и мягким светом" width="900" height="675" loading="lazy" decoding="async">
+          <span class="caption"><b>Терракотовая стена</b><span>Главный цветовой акцент, собирающий композицию интерьера.</span></span>
+        </button>
+        <button class="render-card reveal" type="button" data-full="assets/render-01.webp" data-caption="Общий вид лектория с рабочими столами и мягкой зоной" aria-label="Открыть рендер: общий вид лектория">
+          <img src="assets/render-01.webp" alt="Общий вид лектория с деревянными столами, мягкими креслами и естественным светом" width="900" height="675" loading="lazy" decoding="async">
+          <span class="caption"><b>Общий вид</b><span>Рабочая зона, мягкая посадка и спокойная навигация взгляда.</span></span>
+        </button>
+        <button class="render-card reveal" type="button" data-full="assets/render-02.webp" data-caption="Фронтальная перспектива с мебелью, стеной и декоративными акцентами" aria-label="Открыть рендер: фронтальная перспектива">
+          <img src="assets/render-02.webp" alt="Фронтальная перспектива учебного лектория с мебелью, акцентной стеной и декором" width="900" height="675" loading="lazy" decoding="async">
+          <span class="caption"><b>Фронтальная перспектива</b><span>Баланс стены, мебели и декоративных элементов в одном кадре.</span></span>
+        </button>
+        <button class="render-card reveal" type="button" data-full="assets/render-04.webp" data-caption="Зона экрана и посадочные места для лекционного сценария" aria-label="Открыть рендер: зона экрана и посадка">
+          <img src="assets/render-04.webp" alt="Зона экрана в лектории с посадочными местами для лекционного сценария" width="900" height="675" loading="lazy" decoding="async">
+          <span class="caption"><b>Экран и посадка</b><span>Практический сценарий пространства для лекций и обсуждений.</span></span>
+        </button>
       </div>
     </section>
 
-    <section id="concept" class="section concept-section">
-      <div class="section-head reveal">
-        <div><span class="section-kicker">Concept board</span><h2>Материалы и настроение</h2></div>
-        <p class="section-note">Раздел добавляет проекту академичности: сайт показывает не только красивые рендеры, но и проектную логику.</p>
-      </div>
-      <div class="concept">
-        <div class="concept-visual reveal" data-full="assets/concept-board.webp"><img src="assets/concept-board.webp" alt="Концепт-борд материалов и настроения проекта" width="1000" height="720" loading="lazy" decoding="async"></div>
-        <div class="principles">
-          <article class="principle reveal"><b>Свет</b><p>Естественная светотень делает интерьер менее плоским и подчёркивает фактуру стен, дерева и текстиля.</p></article>
-          <article class="principle reveal"><b>Фактура</b><p>Матовые поверхности и древесные элементы создают ощущение тактильности, которое важно для камерного общественного пространства.</p></article>
-          <article class="principle reveal"><b>Композиция</b><p>Страница построена по принципу архитектурной подачи: сильный кадр, идея, детали, затем визуальные доказательства.</p></article>
+    <section class="section" id="author" aria-labelledby="author-title">
+      <div class="author-card reveal">
+        <div>
+          <span class="section-kicker">Author & study info</span>
+          <h2 id="author-title">Автор / учебная информация</h2>
+          <p>Проект представлен как учебное портфолио по интерьерной визуализации: акцент сделан на понятной архитектурной идее, цельной палитре и аккуратной демонстрации рендеров.</p>
+        </div>
+        <div class="author-meta" aria-label="Информация об авторе и учебном проекте">
+          <div><small>Автор</small><b>Таласбаев Т. А.</b></div>
+          <div><small>Группа</small><b>Арх/б-25-1-о</b></div>
+          <div><small>Проект</small><b>Учебный лекторий</b></div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer><span>Lectory Interior Concept · 2026</span><span>Таласбаев Т. А. · Арх/б-25-1-о</span></footer>
+  <footer>
+    <span>Lectory Interior Concept · 2026</span>
+    <span>Таласбаев Т. А. · Арх/б-25-1-о</span>
+  </footer>
 
-  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Просмотр изображения"><button type="button" aria-label="Закрыть">×</button><img src="" alt=""></div>
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Просмотр изображения">
+    <button class="lightbox-close" type="button" aria-label="Закрыть увеличенное изображение">×</button>
+    <img src="" alt="">
+  </div>
+
   <script>
-    const reveals=document.querySelectorAll('.reveal');
-    if('IntersectionObserver' in window){
-      const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
-      reveals.forEach(el=>observer.observe(el));
-    }else{reveals.forEach(el=>el.classList.add('visible'));}
-    const lightbox=document.querySelector('#lightbox');
-    const lightboxImg=lightbox.querySelector('img');
-    const closeBtn=lightbox.querySelector('button');
-    let lastFocused=null;
-    document.querySelectorAll('[data-full]').forEach(card=>{card.setAttribute('tabindex','0');card.setAttribute('role','button');card.addEventListener('click',()=>openLightbox(card));card.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();openLightbox(card);}});});
-    function openLightbox(card){lastFocused=document.activeElement;const image=card.querySelector('img');lightboxImg.src=card.dataset.full;lightboxImg.alt=image?image.alt:'';lightbox.classList.add('open');lightbox.setAttribute('aria-hidden','false');closeBtn.focus();}
-    function closeLightbox(){lightbox.classList.remove('open');lightbox.setAttribute('aria-hidden','true');lightboxImg.src='';if(lastFocused)lastFocused.focus();}
-    closeBtn.addEventListener('click',closeLightbox);
-    lightbox.addEventListener('click',event=>{if(event.target===lightbox)closeLightbox();});
-    window.addEventListener('keydown',event=>{if(event.key==='Escape'&&lightbox.classList.contains('open'))closeLightbox();});
+    const revealItems = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+      revealItems.forEach((item) => observer.observe(item));
+    } else {
+      revealItems.forEach((item) => item.classList.add('visible'));
+    }
+
+    const lightbox = document.querySelector('#lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    const closeBtn = lightbox.querySelector('.lightbox-close');
+    let lastFocused = null;
+
+    document.querySelectorAll('[data-full]').forEach((trigger) => {
+      trigger.addEventListener('click', () => openLightbox(trigger));
+    });
+
+    function openLightbox(trigger) {
+      const image = trigger.querySelector('img');
+      lastFocused = document.activeElement;
+      lightboxImg.src = trigger.dataset.full;
+      lightboxImg.alt = trigger.dataset.caption || image?.alt || 'Увеличенное изображение проекта';
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImg.src = '';
+      document.body.style.overflow = '';
+      lastFocused?.focus();
+    }
+
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+    });
   </script>
   <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"CreativeWork","name":"Lectory Interior","description":"Учебная интерьерная концепция лектория с рендерами, материалами и описанием проектной идеи.","author":{"@type":"Person","name":"Таласбаев Т. А."},"dateCreated":"2026"}
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "Лекторий — архитектурный case study интерьера",
+      "description": "Учебный интерьерный проект лектория с концепцией, материалами, палитрой и серией рендеров.",
+      "author": { "@type": "Person", "name": "Таласбаев Т. А." },
+      "dateCreated": "2026",
+      "image": "assets/render-03.webp"
+    }
   </script>
 </body>
 </html>
