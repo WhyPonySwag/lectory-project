@@ -610,6 +610,82 @@
       line-height: 1.7;
     }
 
+    .material-rationale {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .material-rationale article,
+    .light-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: linear-gradient(180deg, rgba(255, 255, 255, .07), var(--card));
+      box-shadow: 0 18px 54px rgba(0, 0, 0, .22);
+    }
+
+    .material-rationale article {
+      min-height: 154px;
+      padding: 18px;
+    }
+
+    .material-rationale b,
+    .light-card b {
+      display: block;
+      color: var(--ivory);
+      font-size: 15px;
+      letter-spacing: .01em;
+    }
+
+    .material-rationale b::after,
+    .light-card b::after {
+      content: "";
+      display: block;
+      width: 34px;
+      height: 1px;
+      margin: 10px 0 0;
+      background: linear-gradient(90deg, var(--copper), rgba(181, 106, 70, 0));
+    }
+
+    .material-rationale p,
+    .light-card p {
+      margin-top: 12px;
+      color: var(--ivory-muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .light-scenarios {
+      margin-top: 24px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(181, 106, 70, .16), transparent 36%),
+        rgba(21, 18, 14, .50);
+    }
+
+    .light-scenarios h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(24px, 3vw, 34px);
+      font-weight: 700;
+      letter-spacing: -.02em;
+    }
+
+    .light-scenarios-grid {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .light-card {
+      min-height: 142px;
+      padding: 18px;
+    }
+
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -807,7 +883,9 @@
       .hero-visual img { min-height: 420px; aspect-ratio: 16 / 12; }
       .logic-diagram { min-height: auto; }
       .logic-cards { grid-template-columns: 1fr; }
-      .palette { grid-template-columns: repeat(2, 1fr); }
+      .palette,
+      .material-rationale { grid-template-columns: repeat(2, 1fr); }
+      .light-scenarios-grid { grid-template-columns: 1fr; }
       .swatch { min-height: 170px; }
     }
 
@@ -832,6 +910,8 @@
       .case-step p,
       .logic-card p,
       .materials-note,
+      .material-rationale p,
+      .light-card p,
       .author-card p,
       .contact-card p { font-size: 15px; line-height: 1.65; }
       .principles,
@@ -839,7 +919,11 @@
       .logic-cards,
       .gallery-grid,
       .palette,
+      .material-rationale,
       .contact-links { grid-template-columns: 1fr; }
+      .material-rationale article,
+      .light-card { min-height: auto; }
+      .light-scenarios { padding: 18px; }
       .concept-board,
       .concept-board img { min-height: 310px; }
       .logic-card { min-height: auto; padding: 18px; }
@@ -1014,7 +1098,22 @@
         <div class="swatch ivory"><b>Слоновая кость</b><span>#F4ECDF · текст и свет</span></div>
         <div class="swatch olive"><b>Приглушённая олива</b><span>#76704A · природный баланс</span></div>
       </div>
-      <p class="materials-note reveal">Матовые покрытия, дерево, текстиль и мягкое отражение света создают тактильность. Контраст строится не на яркости, а на глубине тона, фактуре и аккуратной композиции.</p>
+      <p class="materials-note reveal">Материалы работают как система: каждый оттенок и фактура поддерживают камерность, внимание и спокойный учебный ритм.</p>
+      <div class="material-rationale reveal" aria-label="Обоснование материалов проекта">
+        <article><b>Терракота</b><p>Эмоциональное тепло и визуальный акцент для главной стены.</p></article>
+        <article><b>Дерево</b><p>Тактильность, устойчивость и камерность в зоне занятий.</p></article>
+        <article><b>Матовые стены</b><p>Меньше визуального шума, больше концентрации на лекции.</p></article>
+        <article><b>Зелень</b><p>Мягко размыкает тёмную палитру и добавляет живой баланс.</p></article>
+        <article><b>Текстиль</b><p>Даёт ощущение уюта и акустической мягкости пространства.</p></article>
+      </div>
+      <div class="light-scenarios reveal" aria-labelledby="light-scenarios-title">
+        <h3 id="light-scenarios-title">Световые сценарии</h3>
+        <div class="light-scenarios-grid">
+          <article class="light-card"><b>Лекция</b><p>Направленный тёплый свет удерживает внимание на лекторе, экране и акцентной стене.</p></article>
+          <article class="light-card"><b>Обсуждение</b><p>Более мягкий общий свет снижает напряжение и помогает перейти от монолога к диалогу.</p></article>
+          <article class="light-card"><b>Пауза</b><p>Низкий контраст, дерево и приглушённая палитра создают спокойное состояние между занятиями.</p></article>
+        </div>
+      </div>
     </section>
 
     <section class="section" id="renders" aria-labelledby="renders-title">
