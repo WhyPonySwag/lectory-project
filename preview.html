@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Лекторий — тест стекла и шрифта</title>
+  <meta name="robots" content="noindex,nofollow">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; background: #0b0d0f; overflow: hidden; }
+    iframe { display: block; width: 100%; height: 100%; border: 0; background: #111315; }
+    .preview-label {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 9999;
+      padding: 9px 13px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 999px;
+      background: rgba(10,12,14,.62);
+      color: rgba(255,255,255,.68);
+      font: 600 11px/1.2 Arial, sans-serif;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <iframe id="site" src="index.html#concept-preview" title="Изолированная тестовая версия сайта"></iframe>
+  <div class="preview-label">тестовая версия</div>
+
+  <script>
+    const frame = document.querySelector('#site');
+
+    function applyPreview() {
+      const doc = frame.contentDocument;
+      if (!doc || !doc.head) return;
+
+      const fontLink = doc.createElement('link');
+      fontLink.rel = 'preconnect';
+      fontLink.href = 'https://fonts.googleapis.com';
+      doc.head.appendChild(fontLink);
+
+      const fontStyle = doc.createElement('link');
+      fontStyle.rel = 'stylesheet';
+      fontStyle.href = 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap';
+      doc.head.appendChild(fontStyle);
+
+      const style = doc.createElement('style');
+      style.id = 'isolated-preview-styles';
+      style.textContent = `
+        body,
+        button,
+        a,
+        .brand,
+        .hero-caption b,
+        .caption b,
+        .frame-index,
+        .case-step b,
+        .principle b {
+          font-family: 'Montserrat', Arial, sans-serif !important;
+        }
+
+        h1,
+        h2,
+        h3 {
+          font-family: 'Montserrat', Arial, sans-serif !important;
+          font-weight: 700 !important;
+          letter-spacing: -.055em !important;
+        }
+
+        .topbar {
+          background: rgba(10, 12, 14, .72) !important;
+          -webkit-backdrop-filter: blur(20px) saturate(120%);
+          backdrop-filter: blur(20px) saturate(120%);
+        }
+
+        #concept-preview {
+          position: relative;
+          isolation: isolate;
+        }
+
+        #concept-preview::before {
+          content: '';
+          position: absolute;
+          inset: 2% -8%;
+          z-index: -1;
+          pointer-events: none;
+          background:
+            radial-gradient(circle at 20% 45%, rgba(152,135,122,.30), transparent 34%),
+            radial-gradient(circle at 82% 58%, rgba(111,115,112,.23), transparent 38%);
+          filter: blur(44px);
+          opacity: .95;
+        }
+
+        .concept-teaser {
+          position: relative;
+          overflow: hidden;
+          background: rgba(12, 14, 16, .58) !important;
+          border-color: rgba(255,255,255,.16) !important;
+          -webkit-backdrop-filter: blur(26px) saturate(120%);
+          backdrop-filter: blur(26px) saturate(120%);
+          box-shadow:
+            0 34px 110px rgba(0,0,0,.48),
+            inset 0 1px 0 rgba(255,255,255,.085),
+            inset 0 -1px 0 rgba(255,255,255,.025) !important;
+        }
+
+        .concept-teaser::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          background:
+            linear-gradient(145deg, rgba(255,255,255,.055), transparent 27%, transparent 70%, rgba(255,255,255,.018));
+        }
+
+        .concept-teaser > * {
+          position: relative;
+          z-index: 1;
+        }
+
+        .concept-teaser-visual {
+          border-color: rgba(255,255,255,.14) !important;
+          background: rgba(0,0,0,.22) !important;
+          box-shadow: inset 0 1px 0 rgba(255,255,255,.045);
+        }
+
+        .concept-teaser-visual img {
+          opacity: .84 !important;
+        }
+
+        .teaser-points span,
+        .concept-teaser .btn {
+          background: rgba(255,255,255,.035) !important;
+          border-color: rgba(255,255,255,.13) !important;
+          -webkit-backdrop-filter: blur(12px);
+          backdrop-filter: blur(12px);
+        }
+      `;
+      doc.head.appendChild(style);
+
+      window.setTimeout(() => {
+        doc.querySelector('#concept-preview')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 450);
+    }
+
+    frame.addEventListener('load', applyPreview);
+  </script>
+</body>
+</html>
