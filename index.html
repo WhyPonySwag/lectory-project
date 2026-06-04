@@ -548,6 +548,68 @@
       line-height: 1.65;
     }
 
+    .concept-teaser {
+      display: grid;
+      grid-template-columns: minmax(260px, .58fr) minmax(0, .72fr);
+      gap: 18px;
+      align-items: stretch;
+      padding: clamp(18px, 3vw, 28px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(145deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .026)), var(--graphite);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .20);
+    }
+
+    .concept-teaser-visual {
+      position: relative;
+      min-height: 220px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: rgba(0, 0, 0, .18);
+    }
+
+    .concept-teaser-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .88;
+      filter: saturate(.96) contrast(1.02);
+    }
+
+    .concept-teaser-copy {
+      display: grid;
+      align-content: center;
+      gap: 18px;
+      padding: clamp(4px, 2vw, 18px);
+    }
+
+    .concept-teaser-copy h2 {
+      font-size: clamp(34px, 6vw, 68px);
+    }
+
+    .concept-teaser-copy p {
+      max-width: 560px;
+      color: var(--ivory-muted);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .teaser-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .teaser-points span {
+      padding: 9px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--ivory-muted);
+      background: rgba(255, 255, 255, .03);
+      font-size: 13px;
+    }
+
     .palette {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -857,6 +919,7 @@
       .section-head,
       .about-grid,
       .concept-layout,
+      .concept-teaser,
       .author-card,
       .contact-card,
       footer { grid-template-columns: 1fr; }
@@ -904,6 +967,7 @@
       html::after { opacity: .18; right: 18px; top: 112px; }
       .concept-board,
       .concept-board img { min-height: 310px; }
+      .concept-teaser-visual { min-height: 180px; }
       .render-card img { aspect-ratio: 5 / 4; }
       .caption { padding: 16px; }
       footer { padding-bottom: 34px; line-height: 1.5; }
@@ -921,8 +985,8 @@
       </a>
       <div class="nav-links" aria-label="Разделы проекта">
         <a href="#about">О проекте</a>
-        <a href="#concept">Концепция</a>
-        <a href="#materials">Материалы</a>
+        <a href="concept.html#concept">Концепция</a>
+        <a href="concept.html#materials">Материалы</a>
         <a href="#renders">Рендеры</a>
         <a href="#author">Автор</a>
         <a href="#contacts">Контакты</a>
@@ -946,7 +1010,7 @@
           </ul>
           <div class="hero-actions">
             <a class="btn primary" href="#renders">Смотреть рендеры</a>
-            <a class="btn" href="#concept">Идея проекта</a>
+            <a class="btn" href="concept.html">Идея проекта</a>
           </div>
         </div>
 
@@ -988,43 +1052,22 @@
       </div>
     </section>
 
-    <section class="section" id="concept" aria-labelledby="concept-title">
-      <div class="section-head reveal">
-        <div>
-          <span class="section-kicker">Концепция</span>
-          <h2 id="concept-title">Концепция: тишина, фактура, концентрация</h2>
-        </div>
-        <p class="section-note">Идея проекта — превратить учебную аудиторию в спокойную студийную среду, где архитектура поддерживает внимание, а не конкурирует с содержанием лекции.</p>
-      </div>
-      <div class="concept-layout">
-        <button class="concept-board reveal" type="button" data-full="assets/concept-board.webp" data-caption="Концепт-борд с палитрой, материалами и визуальным настроением проекта" aria-label="Открыть концепт-борд материалов в увеличенном виде">
-          <img src="assets/concept-board.webp" alt="Концепт-борд учебного лектория с материалами, тёплой палитрой и интерьерными референсами" width="1000" height="720" loading="lazy" decoding="async">
-        </button>
-        <div class="principles">
-          <article class="principle reveal"><b>Атмосфера</b><p>Камерная тёмная оболочка, дерево и мягкая светотень создают ощущение спокойной студийной среды без учебной стерильности.</p></article>
-          <article class="principle reveal"><b>Настроение</b><p>Терракотовый акцент и приглушённый графит работают как визуальная пауза: пространство выглядит собранным, тёплым и сосредоточенным.</p></article>
-          <article class="principle reveal"><b>Архитектурная подача</b><p>Сайт выстроен как последовательность проектного рассказа: сильный кадр, описание задачи, концепция, материальная палитра, затем серия визуализаций.</p></article>
+    <section class="section" id="concept-preview" aria-labelledby="concept-preview-title">
+      <div class="concept-teaser reveal">
+        <figure class="concept-teaser-visual" aria-label="Визуальный preview концепции и материалов">
+          <img src="assets/concept-board.webp" alt="Концепт-борд лектория с материалами, палитрой и визуальным настроением" width="1000" height="720" loading="lazy" decoding="async">
+        </figure>
+        <div class="concept-teaser-copy">
+          <span class="section-kicker">Детали проекта</span>
+          <h2 id="concept-preview-title">Концепция и материалы</h2>
+          <p>Атмосфера, палитра и выбор материалов вынесены в отдельную проектную подачу.</p>
+          <div class="teaser-points" aria-label="Содержимое детальной страницы">
+            <span>Концепция</span>
+            <span>Материалы</span>
+          </div>
+          <a class="btn" href="concept.html">Открыть концепцию</a>
         </div>
       </div>
-    </section>
-
-
-    <section class="section" id="materials" aria-labelledby="materials-title">
-      <div class="section-head reveal">
-        <div>
-          <span class="section-kicker">Материалы и палитра</span>
-          <h2 id="materials-title">Материалы и палитра</h2>
-        </div>
-        <p class="section-note">Палитра собрана вокруг глубокого чёрного, тёплого графита, меди, слоновой кости и приглушённой оливы — без кислотных акцентов и лишнего глянца.</p>
-      </div>
-      <div class="palette reveal" aria-label="Цветовая палитра проекта">
-        <div class="swatch black"><b>Глубокий чёрный</b><span>#090705 · архитектурная база</span></div>
-        <div class="swatch graphite"><b>Тёплый графит</b><span>#1D1812 · стены и фон</span></div>
-        <div class="swatch copper"><b>Медная терракота</b><span>#B56A46 · акцент</span></div>
-        <div class="swatch ivory"><b>Слоновая кость</b><span>#F4ECDF · текст и свет</span></div>
-        <div class="swatch olive"><b>Приглушённая олива</b><span>#76704A · природный баланс</span></div>
-      </div>
-      <p class="materials-note reveal">Матовые покрытия, дерево, текстиль и мягкое отражение света создают тактильность. Контраст строится не на яркости, а на глубине тона, фактуре и аккуратной композиции.</p>
     </section>
 
     <section class="section" id="renders" aria-labelledby="renders-title">
