@@ -409,9 +409,9 @@
     .facts-title {
       padding: 16px 20px 8px;
       color: var(--ivory-dim);
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
-      letter-spacing: .18em;
+      letter-spacing: .16em;
       text-transform: uppercase;
     }
 
@@ -425,7 +425,7 @@
     }
 
     .fact:last-child { border-bottom: 0; }
-    .fact small { color: var(--ivory-dim); text-transform: uppercase; letter-spacing: .16em; font-size: 11px; }
+    .fact small { color: var(--ivory-dim); text-transform: uppercase; letter-spacing: .14em; font-size: 12px; line-height: 1.35; }
     .fact b { display: block; margin-top: 8px; font-size: 18px; font-weight: 680; line-height: 1.35; }
 
     .case-steps {
@@ -652,6 +652,11 @@
       background: rgba(9, 7, 5, .42);
     }
 
+    .caption span {
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
     .author-card {
       display: grid;
       grid-template-columns: minmax(0, .85fr) minmax(260px, .45fr);
@@ -684,7 +689,8 @@
 
     .contact-card p {
       color: var(--ivory-muted);
-      line-height: 1.7;
+      font-size: 16px;
+      line-height: 1.72;
     }
 
     .contact-links {
@@ -695,6 +701,7 @@
     }
 
     .contact-link {
+      display: block;
       min-height: 74px;
       padding: 15px;
       border: 1px solid var(--line);
@@ -712,14 +719,17 @@
     .contact-link small {
       display: block;
       color: var(--ivory-dim);
-      font-size: 11px;
-      letter-spacing: .14em;
+      font-size: 12px;
+      line-height: 1.35;
+      letter-spacing: .12em;
       text-transform: uppercase;
     }
 
     .contact-link b {
       display: block;
       margin-top: 7px;
+      font-size: 16px;
+      line-height: 1.4;
       overflow-wrap: anywhere;
     }
 
@@ -910,7 +920,7 @@
           </div>
         </article>
         <aside class="facts project-facts panel reveal" aria-label="Project facts: краткая информация о проекте">
-          <div class="facts-title">Project facts</div>
+          <div class="facts-title">Информация о проекте</div>
           <div class="fact"><small>Тип проекта</small><b>Учебный интерьер</b></div>
           <div class="fact"><small>Роль</small><b>Концепция, визуальная подача, веб-презентация</b></div>
           <div class="fact"><small>Год</small><b>2026</b></div>
@@ -932,8 +942,8 @@
           <img src="assets/concept-board.webp" alt="Концепт-борд учебного лектория с материалами, тёплой палитрой и интерьерными референсами" width="1000" height="720" loading="lazy" decoding="async">
         </button>
         <div class="principles">
-          <article class="principle reveal"><b>Сценарий</b><p>Зонирование поддерживает лекцию, дискуссию и работу в малых группах: столы, мягкие места и экран читаются как единая композиция.</p></article>
-          <article class="principle reveal"><b>Свет</b><p>Тёплый свет подчёркивает глубину графитовых поверхностей и делает терракотовую стену главным эмоциональным акцентом.</p></article>
+          <article class="principle reveal"><b>Атмосфера</b><p>Камерная тёмная оболочка, дерево и мягкая светотень создают ощущение спокойной студийной среды без учебной стерильности.</p></article>
+          <article class="principle reveal"><b>Настроение</b><p>Терракотовый акцент и приглушённый графит работают как визуальная пауза: пространство выглядит собранным, тёплым и сосредоточенным.</p></article>
           <article class="principle reveal"><b>Архитектурная подача</b><p>Сайт выстроен как последовательность проектного рассказа: сильный кадр, описание задачи, концепция, материальная палитра, затем серия визуализаций.</p></article>
         </div>
       </div>
@@ -971,13 +981,13 @@
             <path d="M 124 370 C 150 326, 184 296, 226 270 C 282 236, 354 210, 448 186" fill="none" stroke="var(--copper)" stroke-width="3" stroke-linecap="round" stroke-dasharray="9 11" marker-end="url(#logic-arrow)"></path>
             <path d="M 190 242 L 466 88" stroke="var(--ivory-muted)" stroke-width="1.5" stroke-dasharray="5 9" opacity=".8"></path>
             <circle cx="190" cy="242" r="5" fill="var(--ivory)"></circle>
-            <text x="76" y="96" fill="var(--ivory-muted)" font-size="15" font-family="Inter, Arial, sans-serif">вход</text>
+            <text x="76" y="96" fill="var(--ivory-muted)" font-size="16" font-family="Inter, Arial, sans-serif">вход</text>
             <text x="116" y="166" fill="var(--ivory)" font-size="16" font-family="Inter, Arial, sans-serif">посадка</text>
             <text x="418" y="194" fill="var(--ivory)" font-size="16" font-family="Inter, Arial, sans-serif">лектор</text>
-            <text x="424" y="72" fill="var(--ivory-muted)" font-size="15" font-family="Inter, Arial, sans-serif">экран</text>
-            <text x="380" y="324" fill="var(--ivory-muted)" font-size="15" font-family="Inter, Arial, sans-serif">мягкая зона</text>
-            <text x="260" y="292" fill="var(--copper)" font-size="14" font-family="Inter, Arial, sans-serif">движение</text>
-            <text x="250" y="232" fill="var(--ivory-muted)" font-size="14" font-family="Inter, Arial, sans-serif">визуальный фокус</text>
+            <text x="424" y="72" fill="var(--ivory-muted)" font-size="16" font-family="Inter, Arial, sans-serif">экран</text>
+            <text x="380" y="324" fill="var(--ivory-muted)" font-size="16" font-family="Inter, Arial, sans-serif">мягкая зона</text>
+            <text x="260" y="292" fill="var(--copper)" font-size="15" font-family="Inter, Arial, sans-serif">движение</text>
+            <text x="250" y="232" fill="var(--ivory-muted)" font-size="15" font-family="Inter, Arial, sans-serif">визуальный фокус</text>
           </svg>
         </div>
         <div class="logic-cards">
@@ -1058,21 +1068,17 @@
           <p>Финальный блок оставлен простым: без формы и лишней логики, только прямые ссылки для связи и публикации проекта.</p>
         </div>
         <div class="contact-links" aria-label="Контактные ссылки">
-          <!-- TODO: заменить placeholder-ссылку на актуальный Telegram автора. -->
-          <a class="contact-link" href="https://t.me/username" aria-label="Открыть Telegram автора">
-            <small>Telegram</small><b>@username</b>
-          </a>
-          <!-- TODO: заменить email на актуальный адрес автора. -->
-          <a class="contact-link" href="mailto:hello@example.com" aria-label="Написать автору по email">
-            <small>Email</small><b>hello@example.com</b>
-          </a>
-          <!-- TODO: заменить placeholder-ссылку на актуальный GitHub-профиль или репозиторий. -->
+          <span class="contact-link" aria-label="Telegram автора будет добавлен позже">
+            <small>Telegram</small><b>скоро будет добавлен</b>
+          </span>
+          <span class="contact-link" aria-label="Email автора доступен по запросу">
+            <small>Email</small><b>по запросу</b>
+          </span>
           <a class="contact-link" href="https://github.com/WhyPonySwag" aria-label="Открыть GitHub автора">
             <small>GitHub</small><b>WhyPonySwag</b>
           </a>
-          <!-- TODO: заменить placeholder-ссылку на актуальную Vercel-ссылку портфолио после публикации. -->
-          <a class="contact-link" href="https://example.com" aria-label="Открыть ссылку портфолио или Vercel-публикации">
-            <small>Portfolio / Vercel</small><b>ссылка на публикацию</b>
+          <a class="contact-link" href="https://lectory-project.vercel.app" aria-label="Открыть опубликованное портфолио проекта">
+            <small>Портфолио</small><b>lectory-project.vercel.app</b>
           </a>
         </div>
       </div>
