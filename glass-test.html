@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Тест тёмного матового стекла — Лекторий</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 100%; height: 100%; background: #0c0e10; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; }
+    iframe { display: block; width: 100%; height: 100%; border: 0; background: #111315; }
+    .tester {
+      position: fixed;
+      z-index: 9999;
+      right: 18px;
+      bottom: 18px;
+      width: min(330px, calc(100% - 28px));
+      padding: 16px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 20px;
+      background: rgba(13,15,17,.72);
+      -webkit-backdrop-filter: blur(24px) saturate(120%);
+      backdrop-filter: blur(24px) saturate(120%);
+      box-shadow: 0 24px 80px rgba(0,0,0,.48), inset 0 1px 0 rgba(255,255,255,.07);
+      color: rgba(255,255,255,.9);
+    }
+    .tester h1 { margin: 0; font-size: 14px; font-weight: 720; letter-spacing: -.01em; }
+    .tester p { margin: 7px 0 14px; color: rgba(255,255,255,.58); font-size: 12px; line-height: 1.45; }
+    .control { display: grid; grid-template-columns: 92px 1fr 42px; gap: 10px; align-items: center; margin-top: 10px; font-size: 12px; }
+    .control span { color: rgba(255,255,255,.62); }
+    .control output { text-align: right; color: rgba(255,255,255,.82); }
+    input[type="range"] { width: 100%; accent-color: #d8d4cc; }
+    .actions { display: flex; gap: 8px; margin-top: 14px; }
+    button { flex: 1; min-height: 38px; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; background: rgba(255,255,255,.06); color: rgba(255,255,255,.88); cursor: pointer; }
+    button:hover { background: rgba(255,255,255,.1); }
+    @media (max-width: 640px) { .tester { right: 14px; bottom: 14px; padding: 14px; } }
+  </style>
+</head>
+<body>
+  <iframe id="site" src="index.html#concept-preview" title="Изолированная тестовая копия сайта"></iframe>
+
+  <aside class="tester" aria-label="Настройки эффекта матового стекла">
+    <h1>Черновик: тёмное матовое стекло</h1>
+    <p>Изменяется только тестовая копия в этом окне. Главная страница сайта остаётся прежней.</p>
+    <label class="control">
+      <span>Прозрачность</span>
+      <input id="alpha" type="range" min="0.28" max="0.92" step="0.01" value="0.58">
+      <output id="alphaOut">58%</output>
+    </label>
+    <label class="control">
+      <span>Размытие</span>
+      <input id="blur" type="range" min="0" max="42" step="1" value="24">
+      <output id="blurOut">24px</output>
+    </label>
+    <label class="control">
+      <span>Граница</span>
+      <input id="line" type="range" min="0.06" max="0.32" step="0.01" value="0.16">
+      <output id="lineOut">16%</output>
+    </label>
+    <div class="actions">
+      <button id="focus" type="button">К блоку</button>
+      <button id="reset" type="button">Сбросить</button>
+    </div>
+  </aside>
+
+  <script>
+    const frame = document.querySelector('#site');
+    const alpha = document.querySelector('#alpha');
+    const blur = document.querySelector('#blur');
+    const line = document.querySelector('#line');
+    const alphaOut = document.querySelector('#alphaOut');
+    const blurOut = document.querySelector('#blurOut');
+    const lineOut = document.querySelector('#lineOut');
+
+    function injectGlass() {
+      const doc = frame.contentDocument;
+      if (!doc) return;
+
+      let style = doc.querySelector('#glass-test-style');
+      if (!style) {
+        style = doc.createElement('style');
+        style.id = 'glass-test-style';
+        doc.head.appendChild(style);
+      }
+
+      style.textContent = `
+        :root {
+          --glass-alpha: ${alpha.value};
+          --glass-blur: ${blur.value}px;
+          --glass-line: ${line.value};
+        }
+        #concept-preview {
+          position: relative;
+          isolation: isolate;
+        }
+        #concept-preview::before {
+          content: "";
+          position: absolute;
+          inset: 7% -8%;
+          z-index: -1;
+          pointer-events: none;
+          background:
+            radial-gradient(circle at 18% 40%, rgba(152,135,122,.22), transparent 34%),
+            radial-gradient(circle at 78% 62%, rgba(111,115,112,.18), transparent 38%);
+          filter: blur(34px);
+          opacity: .8;
+        }
+        .concept-teaser {
+          position: relative;
+          overflow: hidden;
+          background: rgba(12,14,16,var(--glass-alpha)) !important;
+          border-color: rgba(255,255,255,var(--glass-line)) !important;
+          -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(118%);
+          backdrop-filter: blur(var(--glass-blur)) saturate(118%);
+          box-shadow:
+            0 34px 110px rgba(0,0,0,.44),
+            inset 0 1px 0 rgba(255,255,255,.075),
+            inset 0 -1px 0 rgba(255,255,255,.025) !important;
+        }
+        .concept-teaser::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          background: linear-gradient(145deg, rgba(255,255,255,.045), transparent 28%, transparent 72%, rgba(255,255,255,.018));
+        }
+        .concept-teaser > * { position: relative; z-index: 1; }
+        .concept-teaser-visual {
+          border-color: rgba(255,255,255,.13) !important;
+          background: rgba(0,0,0,.24) !important;
+          box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+        }
+        .teaser-points span,
+        .concept-teaser .btn {
+          background: rgba(255,255,255,.035) !important;
+          border-color: rgba(255,255,255,.12) !important;
+          -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+        }
+      `;
+
+      alphaOut.value = `${Math.round(Number(alpha.value) * 100)}%`;
+      blurOut.value = `${blur.value}px`;
+      lineOut.value = `${Math.round(Number(line.value) * 100)}%`;
+    }
+
+    frame.addEventListener('load', () => {
+      injectGlass();
+      setTimeout(() => frame.contentDocument?.querySelector('#concept-preview')?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 500);
+    });
+
+    [alpha, blur, line].forEach(input => input.addEventListener('input', injectGlass));
+    document.querySelector('#focus').addEventListener('click', () => frame.contentDocument?.querySelector('#concept-preview')?.scrollIntoView({ behavior: 'smooth', block: 'center' }));
+    document.querySelector('#reset').addEventListener('click', () => {
+      alpha.value = '0.58';
+      blur.value = '24';
+      line.value = '0.16';
+      injectGlass();
+    });
+  </script>
+</body>
+</html>
