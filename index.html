@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Лекторий — архитектурный case study интерьера</title>
   <meta name="description" content="Архитектурное портфолио учебного интерьерного проекта лектория: концепция, материалы, тёплая палитра, рендеры и авторская информация.">
-  <meta name="theme-color" content="#090705">
+  <meta name="theme-color" content="#111315">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Лекторий — архитектурный case study интерьера">
-  <meta property="og:description" content="Учебный интерьерный проект лектория в тёплой тёмной эстетике: концепция, материалы, рендеры и проектная логика.">
+  <meta property="og:description" content="Учебный интерьерный проект лектория в тёмной графитовой эстетике: концепция, материалы и рендеры.">
   <meta property="og:image" content="assets/render-03.webp">
   <link rel="preload" as="image" href="assets/render-03.webp" fetchpriority="high">
   <style>
     :root {
       color-scheme: dark;
-      --black: #0b0c0d;
+      --black: #111315;
       --graphite: #141618;
       --graphite-soft: #1b1e21;
       --ivory: #eeeeea;
@@ -49,47 +49,6 @@
       overflow-x: hidden;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: -22%;
-      z-index: -3;
-      pointer-events: none;
-      background:
-        radial-gradient(ellipse at 18% 8%, rgba(255, 255, 255, .075), transparent 30%),
-        radial-gradient(ellipse at 82% 22%, rgba(152, 135, 122, .075), transparent 28%),
-        radial-gradient(ellipse at 46% 72%, rgba(255, 255, 255, .045), transparent 42%),
-        linear-gradient(118deg, rgba(20, 22, 24, .96) 0 24%, transparent 24% 66%, rgba(255, 255, 255, .035) 66% 100%),
-        linear-gradient(180deg, #0b0c0d 0%, #151719 48%, #090a0b 100%);
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, .026) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, .02) 1px, transparent 1px),
-        repeating-linear-gradient(135deg, rgba(255, 255, 255, .011) 0 1px, transparent 1px 8px);
-      background-size: 84px 84px, 84px 84px, 16px 16px;
-      opacity: .74;
-      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .78), rgba(0, 0, 0, .44) 58%, transparent 92%);
-    }
-
-    html::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      background:
-        radial-gradient(ellipse at 28% 42%, rgba(255, 255, 255, .035), transparent 38%),
-        radial-gradient(ellipse at 78% 76%, rgba(152, 135, 122, .045), transparent 34%);
-      opacity: .72;
-    }
-
     a { color: inherit; text-decoration: none; }
     button { font: inherit; }
     img { display: block; max-width: 100%; height: auto; }
@@ -121,9 +80,7 @@
       top: 0;
       z-index: 50;
       border-bottom: 1px solid var(--line);
-      background: rgba(11, 12, 13, .82);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      background: var(--black);
     }
 
     .nav {
@@ -152,8 +109,8 @@
       width: 31px;
       height: 31px;
       border-radius: 50%;
-      background: radial-gradient(circle at 34% 28%, #d8d5cd 0 18%, var(--copper) 48%, #3b3f42 100%);
-      box-shadow: 0 0 0 7px rgba(255, 255, 255, .055), 0 0 34px rgba(152, 135, 122, .16);
+      background: var(--graphite-soft);
+      border: 1px solid var(--line-strong);
     }
 
     .nav-links {
@@ -175,6 +132,145 @@
     .nav-links a:focus-visible {
       color: var(--ivory);
       background: rgba(255, 255, 255, .07);
+    }
+
+
+    .menu-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 40px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--card);
+      color: var(--ivory);
+      cursor: pointer;
+    }
+
+    .menu-toggle-lines {
+      display: inline-grid;
+      gap: 5px;
+      width: 18px;
+    }
+
+    .menu-toggle-lines::before,
+    .menu-toggle-lines::after {
+      content: "";
+      display: block;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      background: rgba(0, 0, 0, .28);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .24s ease;
+    }
+
+    .drawer-overlay.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .editorial-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 100;
+      width: clamp(320px, 30vw, 430px);
+      max-width: 100%;
+      height: 100svh;
+      padding: 24px;
+      border-left: 1px solid var(--line-strong);
+      background: var(--graphite);
+      color: var(--ivory);
+      transform: translateX(100%);
+      transition: transform .28s ease;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+
+    .editorial-drawer.is-open {
+      transform: translateX(0);
+    }
+
+    .drawer-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .drawer-title {
+      color: var(--ivory-dim);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .drawer-close {
+      min-height: 38px;
+      padding: 0 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--card);
+      color: var(--ivory);
+      cursor: pointer;
+    }
+
+    .drawer-section {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .drawer-section h2 {
+      margin: 0 0 12px;
+      color: var(--ivory-dim);
+      font-family: inherit;
+      font-size: 12px;
+      line-height: 1.2;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .drawer-link,
+    .drawer-item {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 10px 0;
+      color: var(--ivory-muted);
+      border-bottom: 1px solid rgba(255, 255, 255, .055);
+    }
+
+    .drawer-link:hover,
+    .drawer-link:focus-visible {
+      color: var(--ivory);
+    }
+
+    .drawer-item span:last-child {
+      color: var(--ivory-dim);
+      text-align: right;
+    }
+
+    .drawer-foot {
+      padding-top: 22px;
+      color: var(--ivory-dim);
+      font-size: 13px;
+    }
+
+    body.drawer-open {
+      overflow: hidden;
     }
 
     main {
@@ -224,7 +320,7 @@
       content: "";
       width: 42px;
       height: 1px;
-      background: linear-gradient(90deg, var(--copper), transparent);
+      background: var(--copper);
     }
 
     h1 {
@@ -271,7 +367,7 @@
     }
 
     .btn:hover { transform: translateY(-2px); background: rgba(255, 255, 255, .09); }
-    .btn.primary { border-color: rgba(255, 255, 255, .16); background: linear-gradient(135deg, #d8d4cc, var(--copper)); color: #111315; font-weight: 750; }
+    .btn.primary { border-color: rgba(255, 255, 255, .16); background: #d8d4cc; color: #111315; font-weight: 750; }
 
     .hero-visual {
       position: relative;
@@ -381,14 +477,14 @@
 
     .about-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(300px, .55fr);
-      gap: 22px;
+      grid-template-columns: 1fr;
+      gap: 18px;
     }
 
     .panel {
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
-      background: linear-gradient(145deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .03));
+      background: var(--card);
       box-shadow: 0 24px 80px rgba(0, 0, 0, .24);
     }
 
@@ -502,7 +598,7 @@
     .principle:nth-child(3) {
       grid-column: 1 / -1;
       min-height: 150px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, .07), rgba(152, 135, 122, .055));
+      background: rgba(255, 255, 255, .052);
     }
 
     .principle b {
@@ -527,7 +623,7 @@
       padding: clamp(18px, 3vw, 28px);
       border: 1px solid var(--line);
       border-radius: var(--radius-xl);
-      background: linear-gradient(145deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .026)), var(--graphite);
+      background: var(--graphite);
       box-shadow: 0 24px 80px rgba(0, 0, 0, .20);
     }
 
@@ -677,9 +773,7 @@
       padding: clamp(24px, 4vw, 42px);
       border: 1px solid var(--line);
       border-radius: var(--radius-xl);
-      background:
-        linear-gradient(135deg, rgba(255, 255, 255, .065), rgba(152, 135, 122, .045)),
-        rgba(255, 255, 255, .038);
+      background: var(--card);
     }
 
     .author-card p { color: var(--ivory-muted); line-height: 1.7; }
@@ -695,9 +789,7 @@
       padding: clamp(26px, 4vw, 46px);
       border: 1px solid var(--line);
       border-radius: var(--radius-xl);
-      background:
-        linear-gradient(145deg, rgba(255, 255, 255, .062), rgba(255, 255, 255, .026)),
-        var(--graphite);
+      background: var(--graphite);
       box-shadow: 0 28px 92px rgba(0, 0, 0, .24);
       overflow: hidden;
       position: relative;
@@ -863,9 +955,10 @@
       :root { --wrap: min(100% - 30px, 760px); }
       .section,
       #top { scroll-margin-top: 126px; }
-      .nav { align-items: flex-start; flex-direction: column; padding: 14px 0; gap: 12px; }
-      .nav-links { width: 100%; overflow-x: auto; justify-content: flex-start; padding-bottom: 2px; }
-      .hero { min-height: auto; padding-top: 34px; }
+      .nav { min-height: auto; padding: 12px 0; gap: 12px; }
+      .nav-links { display: none; }
+      .editorial-drawer { width: min(100%, 94vw); }
+      .hero { min-height: auto; padding: 28px 0 50px; }
       .hero-grid,
       .section-head,
       .about-grid,
@@ -883,16 +976,17 @@
 
     @media (max-width: 640px) {
       :root { --wrap: calc(100% - 28px); }
-      .section { padding: 58px 0; }
+      .section { padding: 44px 0; }
       .brand { font-size: 11px; letter-spacing: .14em; }
       .nav-links { font-size: 12px; gap: 4px; }
       .nav-links a { padding: 8px 10px; }
       h1 { font-size: clamp(34px, 10vw, 46px); letter-spacing: -.025em; white-space: normal; overflow-wrap: normal; word-break: normal; hyphens: none; }
       h2 { font-size: clamp(30px, 10vw, 42px); }
-      .lead { font-size: 16px; line-height: 1.55; }
+      .lead { margin-top: 18px; font-size: 16px; line-height: 1.55; }
+      .hero-actions { margin-top: 24px; }
       .hero-visual { border-radius: 26px; }
       .hero-visual::before { inset: 12px; border-radius: 18px; }
-      .hero-visual img { min-height: 360px; aspect-ratio: 4 / 5; }
+      .hero-visual img { min-height: 320px; aspect-ratio: 4 / 5; }
       .hero-caption { left: 22px; right: 22px; bottom: 22px; grid-template-columns: 1fr; }
       .frame-index { display: none; }
       .section-note,
@@ -911,13 +1005,13 @@
       .contact-detail,
       .contact-detail img { min-height: 180px; }
       .footer-service { justify-content: flex-start; }
-      body::after { opacity: .38; background-size: 96px 96px, 96px 96px, 20px 20px; }
-      body::before { opacity: .82; }
-      html::before { opacity: .34; }
       .concept-board,
       .concept-board img { min-height: 310px; }
-      .concept-teaser-visual { min-height: 180px; }
+      .concept-teaser { padding: 16px; }
+      .concept-teaser-visual { min-height: 170px; }
       .render-card img { aspect-ratio: 5 / 4; }
+      .contact-detail,
+      .contact-detail img { min-height: 150px; }
       .caption { padding: 16px; }
       footer { padding-bottom: 34px; line-height: 1.5; }
       .lightbox { padding: 14px; }
@@ -940,8 +1034,38 @@
         <a href="#author">Автор</a>
         <a href="#contacts">Контакты</a>
       </div>
+      <button class="menu-toggle" type="button" data-drawer-toggle aria-label="Открыть меню" aria-expanded="false" aria-controls="site-drawer"><span data-menu-label>Меню</span><span class="menu-toggle-lines" aria-hidden="true"></span></button>
     </nav>
   </header>
+
+  <div class="drawer-overlay" data-drawer-overlay hidden></div>
+  <aside class="editorial-drawer" id="site-drawer" aria-hidden="true" inert aria-label="Editorial navigation drawer">
+    <div class="drawer-head">
+      <span class="drawer-title">Меню проекта</span>
+      <button class="drawer-close" type="button" data-drawer-close aria-label="Закрыть меню">Закрыть</button>
+    </div>
+    <section class="drawer-section" aria-labelledby="drawer-nav-title">
+      <h2 id="drawer-nav-title">Навигация</h2>
+      <a class="drawer-link" href="index.html">Главная</a>
+      <a class="drawer-link" href="index.html#about">О проекте</a>
+      <a class="drawer-link" href="concept.html">Концепция и материалы</a>
+      <a class="drawer-link" href="index.html#renders">Рендеры</a>
+      <a class="drawer-link" href="index.html#author">Автор</a>
+      <a class="drawer-link" href="index.html#contacts">Контакты</a>
+    </section>
+    <section class="drawer-section" aria-labelledby="drawer-project-title">
+      <h2 id="drawer-project-title">Проект</h2>
+      <a class="drawer-link" href="https://github.com/WhyPonySwag/lectory-project">GitHub</a>
+      <a class="drawer-link" href="https://lectory-project.vercel.app">Live site</a>
+      <div class="drawer-item"><span>PDF</span><span>скоро</span></div>
+    </section>
+    <section class="drawer-section" aria-labelledby="drawer-contact-title">
+      <h2 id="drawer-contact-title">Связь</h2>
+      <div class="drawer-item"><span>Telegram</span><span>скоро будет добавлен</span></div>
+      <div class="drawer-item"><span>Email</span><span>по запросу</span></div>
+    </section>
+    <div class="drawer-foot">Lectory Interior Concept · 2026</div>
+  </aside>
 
   <main id="content">
     <section class="hero" id="top" aria-labelledby="hero-title">
@@ -984,13 +1108,6 @@
             <article class="case-step"><b>Результат</b><p>Получилась компактная веб-презентация с ясной логикой, тёплой атмосферой и понятной ролью автора.</p></article>
           </div>
         </article>
-        <aside class="facts project-facts panel reveal" aria-label="Project facts: краткая информация о проекте">
-          <div class="facts-title">Информация о проекте</div>
-          <div class="fact"><small>Тип проекта</small><b>Учебный интерьер</b></div>
-          <div class="fact"><small>Роль</small><b>Концепция, визуальная подача, веб-презентация</b></div>
-          <div class="fact"><small>Год</small><b>2026</b></div>
-          <div class="fact"><small>Инструменты</small><b>3D-визуализация, ChatGPT, Codex, GitHub, Vercel</b></div>
-        </aside>
       </div>
     </section>
 
@@ -1000,7 +1117,7 @@
           <img src="assets/concept-board.webp" alt="Концепт-борд лектория с материалами, палитрой и визуальным настроением" width="1000" height="720" loading="lazy" decoding="async">
         </figure>
         <div class="concept-teaser-copy">
-          <span class="section-kicker">Детали проекта</span>
+          <span class="section-kicker">Проектная подача</span>
           <h2 id="concept-preview-title">Концепция и материалы</h2>
           <p>Атмосфера, палитра и выбор материалов вынесены в отдельную проектную подачу.</p>
           <div class="teaser-points" aria-label="Содержимое детальной страницы">
@@ -1105,6 +1222,83 @@
     <button class="lightbox-close" type="button" tabindex="-1" aria-label="Закрыть увеличенное изображение">×</button>
     <img src="" alt="">
   </div>
+
+
+  <script>
+    (() => {
+      const toggle = document.querySelector('[data-drawer-toggle]');
+      const drawer = document.querySelector('#site-drawer');
+      const overlay = document.querySelector('[data-drawer-overlay]');
+      const closeButton = document.querySelector('[data-drawer-close]');
+      if (!toggle || !drawer || !overlay || !closeButton) return;
+
+      const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+      let lastDrawerFocus = null;
+
+      function getFocusable() {
+        return Array.from(drawer.querySelectorAll(focusableSelector));
+      }
+
+      function openDrawer() {
+        lastDrawerFocus = document.activeElement;
+        drawer.classList.add('is-open');
+        overlay.hidden = false;
+        requestAnimationFrame(() => overlay.classList.add('is-open'));
+        drawer.removeAttribute('inert');
+        drawer.setAttribute('aria-hidden', 'false');
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.querySelector('[data-menu-label]').textContent = 'Закрыть';
+        document.body.classList.add('drawer-open');
+        closeButton.focus();
+      }
+
+      function closeDrawer({ restoreFocus = true } = {}) {
+        drawer.classList.remove('is-open');
+        overlay.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+        drawer.setAttribute('inert', '');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.querySelector('[data-menu-label]').textContent = 'Меню';
+        document.body.classList.remove('drawer-open');
+        window.setTimeout(() => {
+          if (!drawer.classList.contains('is-open')) overlay.hidden = true;
+        }, 240);
+        if (restoreFocus) (lastDrawerFocus || toggle).focus();
+      }
+
+      toggle.addEventListener('click', () => {
+        if (drawer.classList.contains('is-open')) closeDrawer();
+        else openDrawer();
+      });
+
+      closeButton.addEventListener('click', () => closeDrawer());
+      overlay.addEventListener('click', () => closeDrawer());
+
+      drawer.querySelectorAll('a[href]').forEach((link) => {
+        link.addEventListener('click', () => closeDrawer({ restoreFocus: false }));
+      });
+
+      window.addEventListener('keydown', (event) => {
+        if (!drawer.classList.contains('is-open')) return;
+        if (event.key === 'Escape') {
+          closeDrawer();
+          return;
+        }
+        if (event.key !== 'Tab') return;
+        const focusable = getFocusable();
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (!first || !last) return;
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      });
+    })();
+  </script>
 
   <script>
     const revealItems = document.querySelectorAll('.reveal');
