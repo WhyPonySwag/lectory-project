@@ -516,183 +516,6 @@
       line-height: 1.65;
     }
 
-    .logic-layout {
-      display: grid;
-      grid-template-columns: minmax(360px, .78fr) minmax(0, 1fr);
-      gap: 22px;
-      align-items: stretch;
-    }
-
-    .logic-diagram {
-      min-height: 420px;
-      padding: clamp(18px, 3vw, 28px);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: linear-gradient(145deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .025)), var(--graphite);
-      box-shadow: 0 24px 80px rgba(0, 0, 0, .22);
-    }
-
-    .logic-diagram svg {
-      width: 100%;
-      height: auto;
-      min-height: 340px;
-      display: block;
-      overflow: visible;
-    }
-
-    .logic-zone {
-      cursor: pointer;
-      outline: none;
-    }
-
-    .logic-zone .zone-fill,
-    .logic-zone .zone-line,
-    .logic-zone .zone-dot,
-    .logic-zone .zone-label,
-    .human-path-item {
-      transition: fill .22s ease, stroke .22s ease, opacity .22s ease, border-color .22s ease, background .22s ease, transform .22s ease;
-    }
-
-    .logic-zone:hover .zone-fill,
-    .logic-zone:focus-visible .zone-fill {
-      fill: rgba(181, 106, 70, .18);
-      stroke: var(--copper);
-      stroke-width: 2.4;
-    }
-
-    .logic-zone:hover .zone-line,
-    .logic-zone:focus-visible .zone-line,
-    .logic-zone:hover .zone-dot,
-    .logic-zone:focus-visible .zone-dot {
-      stroke: var(--copper);
-      stroke-width: 2.4;
-    }
-
-    .logic-zone:hover .zone-label,
-    .logic-zone:focus-visible .zone-label {
-      fill: var(--ivory);
-    }
-
-    .logic-zone:focus-visible .zone-focus {
-      stroke: var(--copper);
-      stroke-width: 3;
-      stroke-dasharray: 6 8;
-    }
-
-    .human-path {
-      margin-top: 16px;
-      padding: 18px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: rgba(255, 255, 255, .04);
-    }
-
-    .human-path h3 {
-      margin: 0;
-      color: var(--ivory);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 24px;
-      letter-spacing: -.02em;
-    }
-
-    .human-path-track {
-      margin-top: 12px;
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .human-path-item {
-      min-height: 118px;
-      padding: 14px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      background: var(--card);
-    }
-
-    .human-path-item:hover,
-    .human-path-item:focus-visible {
-      border-color: rgba(181, 106, 70, .62);
-      background: linear-gradient(180deg, rgba(181, 106, 70, .13), var(--card));
-      transform: translateY(-2px);
-    }
-
-    .human-path-item b {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--ivory);
-      font-size: 13px;
-    }
-
-    .human-path-item b::before {
-      content: attr(data-step);
-      width: 24px;
-      height: 24px;
-      border: 1px solid rgba(181, 106, 70, .58);
-      border-radius: 50%;
-      display: inline-grid;
-      place-items: center;
-      color: var(--copper);
-      font-size: 11px;
-      flex: 0 0 auto;
-    }
-
-    .human-path-item p {
-      margin-top: 9px;
-      color: var(--ivory-muted);
-      font-size: 13px;
-      line-height: 1.45;
-    }
-
-    @supports selector(:has(*)) {
-      .logic-layout:has(.logic-zone-entry:is(:hover, :focus-visible)) .human-path-item[data-zone="entry"],
-      .logic-layout:has(.logic-zone-seating:is(:hover, :focus-visible)) .human-path-item[data-zone="seating"],
-      .logic-layout:has(.logic-zone-focus:is(:hover, :focus-visible)) .human-path-item[data-zone="focus"],
-      .logic-layout:has(.logic-zone-discussion:is(:hover, :focus-visible)) .human-path-item[data-zone="discussion"],
-      .logic-layout:has(.logic-zone-pause:is(:hover, :focus-visible)) .human-path-item[data-zone="pause"] {
-        border-color: rgba(181, 106, 70, .62);
-        background: linear-gradient(180deg, rgba(181, 106, 70, .13), var(--card));
-      }
-
-      .logic-layout:has(.human-path-item[data-zone="entry"]:is(:hover, :focus-visible)) .logic-zone-entry .zone-line,
-      .logic-layout:has(.human-path-item[data-zone="seating"]:is(:hover, :focus-visible)) .logic-zone-seating .zone-fill,
-      .logic-layout:has(.human-path-item[data-zone="focus"]:is(:hover, :focus-visible)) .logic-zone-focus .zone-line,
-      .logic-layout:has(.human-path-item[data-zone="discussion"]:is(:hover, :focus-visible)) .logic-zone-discussion .zone-fill,
-      .logic-layout:has(.human-path-item[data-zone="pause"]:is(:hover, :focus-visible)) .logic-zone-pause .zone-fill {
-        stroke: var(--copper);
-        stroke-width: 2.4;
-      }
-    }
-
-    .logic-cards {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .logic-card {
-      min-height: 184px;
-      padding: 22px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: var(--card);
-    }
-
-    .logic-card b {
-      display: block;
-      color: var(--ivory);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 23px;
-      letter-spacing: -.02em;
-    }
-
-    .logic-card p {
-      margin-top: 12px;
-      color: var(--ivory-muted);
-      line-height: 1.65;
-    }
-
     .palette {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -870,6 +693,36 @@
       font-size: 13px;
     }
 
+    .author-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-width: max-content;
+      color: var(--ivory-muted);
+    }
+
+    .author-mark-symbol {
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(181, 106, 70, .55);
+      border-radius: 50%;
+      display: inline-grid;
+      place-items: center;
+      color: var(--copper);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      background: rgba(181, 106, 70, .08);
+    }
+
+    .author-mark-caption {
+      color: var(--ivory-dim);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
     .lightbox {
       position: fixed;
       inset: 0;
@@ -925,25 +778,10 @@
       .section-head,
       .about-grid,
       .concept-layout,
-      .logic-layout,
       .author-card,
       .contact-card { grid-template-columns: 1fr; }
       .hero-visual { order: -1; }
       .hero-visual img { min-height: 420px; aspect-ratio: 16 / 12; }
-      .logic-diagram { min-height: auto; }
-      .logic-cards { grid-template-columns: 1fr; }
-      .human-path-track {
-        display: flex;
-        overflow-x: auto;
-        overscroll-behavior-x: contain;
-        scroll-snap-type: x proximity;
-        padding-bottom: 4px;
-      }
-      .human-path-item {
-        min-width: 158px;
-        min-height: 112px;
-        scroll-snap-align: start;
-      }
       .palette { grid-template-columns: repeat(2, 1fr); }
       .swatch { min-height: 170px; }
     }
@@ -967,21 +805,16 @@
       .about-text p,
       .principle p,
       .case-step p,
-      .logic-card p,
       .materials-note,
       .author-card p,
       .contact-card p { font-size: 15px; line-height: 1.65; }
       .principles,
       .case-steps,
-      .logic-cards,
       .gallery-grid,
       .palette,
       .contact-links { grid-template-columns: 1fr; }
       .concept-board,
       .concept-board img { min-height: 310px; }
-      .logic-card { min-height: auto; padding: 18px; }
-      .human-path { padding: 16px; }
-      .logic-diagram svg { min-height: 280px; }
       .render-card img { aspect-ratio: 5 / 4; }
       .caption { padding: 16px; }
       footer { flex-direction: column; padding-bottom: 34px; line-height: 1.5; }
@@ -1000,7 +833,6 @@
       <div class="nav-links" aria-label="Разделы проекта">
         <a href="#about">О проекте</a>
         <a href="#concept">Концепция</a>
-        <a href="#logic">Логика</a>
         <a href="#materials">Материалы</a>
         <a href="#renders">Рендеры</a>
         <a href="#author">Автор</a>
@@ -1087,84 +919,6 @@
       </div>
     </section>
 
-    <section class="section" id="logic" aria-labelledby="logic-title">
-      <div class="section-head reveal">
-        <div>
-          <span class="section-kicker">Проектная логика</span>
-          <h2 id="logic-title">Сценарий, свет и зонирование</h2>
-        </div>
-        <p class="section-note">Интерьер строится не только на палитре и рендерах, но и на сценарии использования: где человек входит, где концентрируется, как работает свет и как материалы задают атмосферу.</p>
-      </div>
-      <div class="logic-layout">
-        <div class="logic-diagram reveal">
-          <svg viewBox="0 0 640 460" role="img" aria-labelledby="logic-map-title logic-map-desc">
-            <title id="logic-map-title">Интерактивная схема проектной логики лектория</title>
-            <desc id="logic-map-desc">Схема показывает вход, посадку, фокус лектора и экрана, обсуждение в мягкой зоне и спокойную паузу.</desc>
-            <defs>
-              <marker id="logic-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--copper)"></path>
-              </marker>
-            </defs>
-            <rect x="46" y="42" width="548" height="360" rx="24" fill="rgba(255, 255, 255, .025)" stroke="var(--line)" stroke-width="2"></rect>
-            <g class="logic-zone logic-zone-entry" data-zone="entry" tabindex="0" role="img" aria-label="Вход: человек считывает пространство и выбирает траекторию">
-              <title>Вход</title>
-              <rect class="zone-focus" x="62" y="68" width="96" height="56" rx="18" fill="transparent" stroke="transparent"></rect>
-              <path class="zone-line" d="M 124 370 C 150 326, 184 296, 226 270 C 282 236, 354 210, 448 186" fill="none" stroke="var(--copper)" stroke-width="3" stroke-linecap="round" stroke-dasharray="9 11" marker-end="url(#logic-arrow)"></path>
-              <text class="zone-label" x="76" y="96" fill="var(--ivory-muted)" font-size="16" font-family="Inter, Arial, sans-serif">01 вход</text>
-            </g>
-            <g class="logic-zone logic-zone-seating" data-zone="seating" tabindex="0" role="img" aria-label="Посадка: рабочая зона собирает группу">
-              <title>Посадка</title>
-              <path class="zone-fill" d="M 92 118 H 318 V 356 H 92 Z" fill="rgba(181, 106, 70, .06)" stroke="var(--line)" stroke-width="1.5"></path>
-              <circle class="zone-dot" cx="126" cy="206" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
-              <circle class="zone-dot" cx="190" cy="206" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
-              <circle class="zone-dot" cx="254" cy="206" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
-              <circle class="zone-dot" cx="126" cy="276" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
-              <circle class="zone-dot" cx="190" cy="276" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
-              <circle class="zone-dot" cx="254" cy="276" r="16" fill="var(--card)" stroke="var(--ivory-muted)" stroke-width="1"></circle>
-              <circle cx="190" cy="242" r="5" fill="var(--ivory)"></circle>
-              <text class="zone-label" x="116" y="166" fill="var(--ivory)" font-size="16" font-family="Inter, Arial, sans-serif">02 посадка</text>
-            </g>
-            <g class="logic-zone logic-zone-focus" data-zone="focus" tabindex="0" role="img" aria-label="Фокус: лектор и экран формируют смысловой центр">
-              <title>Фокус</title>
-              <path class="zone-fill" d="M 342 118 H 548 V 256 H 342 Z" fill="rgba(255, 255, 255, .035)" stroke="var(--line)" stroke-width="1.5"></path>
-              <line class="zone-line" x1="466" y1="78" x2="466" y2="118" stroke="var(--copper)" stroke-width="3" stroke-linecap="round"></line>
-              <line class="zone-line" x1="392" y1="88" x2="540" y2="88" stroke="var(--copper)" stroke-width="3" stroke-linecap="round"></line>
-              <path class="zone-line" d="M 190 242 L 466 88" stroke="var(--ivory-muted)" stroke-width="1.5" stroke-dasharray="5 9" opacity=".8"></path>
-              <circle class="zone-line" cx="448" cy="186" r="26" fill="rgba(181, 106, 70, .16)" stroke="var(--copper)" stroke-width="1.5"></circle>
-              <text class="zone-label" x="412" y="72" fill="var(--ivory-muted)" font-size="16" font-family="Inter, Arial, sans-serif">03 фокус</text>
-            </g>
-            <g class="logic-zone logic-zone-discussion" data-zone="discussion" tabindex="0" role="img" aria-label="Обсуждение: мягкая зона переводит лекцию в диалог">
-              <title>Обсуждение</title>
-              <path class="zone-fill" d="M 342 276 H 548 V 356 H 342 Z" fill="rgba(118, 112, 74, .12)" stroke="var(--line)" stroke-width="1.5"></path>
-              <text class="zone-label" x="368" y="324" fill="var(--ivory-muted)" font-size="16" font-family="Inter, Arial, sans-serif">04 обсуждение</text>
-            </g>
-            <g class="logic-zone logic-zone-pause" data-zone="pause" tabindex="0" role="img" aria-label="Пауза: тёплая палитра снижает напряжение">
-              <title>Пауза</title>
-              <circle class="zone-fill" cx="536" cy="372" r="20" fill="rgba(181, 106, 70, .10)" stroke="var(--line)" stroke-width="1.5"></circle>
-              <text class="zone-label" x="482" y="414" fill="var(--ivory-muted)" font-size="15" font-family="Inter, Arial, sans-serif">05 пауза</text>
-            </g>
-            <text x="260" y="292" fill="var(--copper)" font-size="15" font-family="Inter, Arial, sans-serif">движение</text>
-            <text x="250" y="232" fill="var(--ivory-muted)" font-size="15" font-family="Inter, Arial, sans-serif">визуальный фокус</text>
-          </svg>
-          <div class="human-path" aria-labelledby="human-path-title">
-            <h3 id="human-path-title">Путь человека</h3>
-            <div class="human-path-track" aria-label="Компактный маршрут по пространству">
-              <article class="human-path-item" data-zone="entry" tabindex="0"><b data-step="01">Вход</b><p>Человек считывает пространство и выбирает траекторию.</p></article>
-              <article class="human-path-item" data-zone="seating" tabindex="0"><b data-step="02">Посадка</b><p>Рабочая зона собирает группу и направляет внимание.</p></article>
-              <article class="human-path-item" data-zone="focus" tabindex="0"><b data-step="03">Фокус</b><p>Лектор и экран формируют смысловой центр.</p></article>
-              <article class="human-path-item" data-zone="discussion" tabindex="0"><b data-step="04">Обсуждение</b><p>Мягкая зона переводит лекцию в диалог.</p></article>
-              <article class="human-path-item" data-zone="pause" tabindex="0"><b data-step="05">Пауза</b><p>Тёплая палитра снижает напряжение между занятиями.</p></article>
-            </div>
-          </div>
-        </div>
-        <div class="logic-cards">
-          <article class="logic-card reveal"><b>Зонирование</b><p>Рабочая зона, зона лектора, мягкая посадка и визуальный фокус собраны в спокойную композицию без лишнего шума.</p></article>
-          <article class="logic-card reveal"><b>Сценарий движения</b><p>Маршрут строится просто: вход → посадка → внимание на лектора и экран → обсуждение после занятия.</p></article>
-          <article class="logic-card reveal"><b>Свет</b><p>Тёплый направленный свет и естественная светотень выделяют терракотовую стену и делают пространство менее плоским.</p></article>
-          <article class="logic-card reveal"><b>Материалы</b><p>Матовые стены, дерево, текстиль и зелень создают тактильную среду с приглушённым контрастом.</p></article>
-        </div>
-      </div>
-    </section>
 
     <section class="section" id="materials" aria-labelledby="materials-title">
       <div class="section-head reveal">
@@ -1253,6 +1007,10 @@
   </main>
 
   <footer>
+    <div class="author-mark" aria-label="Авторский знак Таласбаев Т. А.">
+      <span class="author-mark-symbol" aria-hidden="true">ТА</span>
+      <span class="author-mark-caption">T.A. · Lectory / 2026</span>
+    </div>
     <span>Концепция интерьера лектория · 2026</span>
     <span>© 2026 Таласбаев Т. А. Все права защищены.</span>
   </footer>
