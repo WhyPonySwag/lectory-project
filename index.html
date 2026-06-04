@@ -165,7 +165,12 @@
       margin: 0 auto;
     }
 
-    .section { padding: 86px 0; }
+    .section {
+      padding: 86px 0;
+      scroll-margin-top: 96px;
+    }
+
+    #top { scroll-margin-top: 96px; }
 
     .hero {
       min-height: calc(100svh - 68px);
@@ -401,6 +406,19 @@
       padding: 8px;
     }
 
+    .facts-title {
+      padding: 16px 20px 8px;
+      color: var(--ivory-dim);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .project-facts {
+      align-content: start;
+    }
+
     .fact {
       padding: 20px;
       border-bottom: 1px solid var(--line);
@@ -408,7 +426,35 @@
 
     .fact:last-child { border-bottom: 0; }
     .fact small { color: var(--ivory-dim); text-transform: uppercase; letter-spacing: .16em; font-size: 11px; }
-    .fact b { display: block; margin-top: 8px; font-size: 18px; font-weight: 680; }
+    .fact b { display: block; margin-top: 8px; font-size: 18px; font-weight: 680; line-height: 1.35; }
+
+    .case-steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .case-step {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, .038);
+    }
+
+    .case-step b {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 21px;
+      letter-spacing: -.02em;
+    }
+
+    .case-step p {
+      margin-top: 10px;
+      color: var(--ivory-muted);
+      font-size: 15px;
+      line-height: 1.62;
+    }
 
     .concept-layout {
       display: grid;
@@ -572,6 +618,59 @@
     .author-meta small { display: block; color: var(--ivory-dim); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
     .author-meta b { display: block; margin-top: 6px; }
 
+    .contact-card {
+      display: grid;
+      grid-template-columns: minmax(0, .66fr) minmax(320px, .7fr);
+      gap: 22px;
+      padding: clamp(24px, 4vw, 42px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, .065), rgba(181, 106, 70, .08)),
+        rgba(255, 255, 255, .035);
+    }
+
+    .contact-card p {
+      color: var(--ivory-muted);
+      line-height: 1.7;
+    }
+
+    .contact-links {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      align-content: start;
+    }
+
+    .contact-link {
+      min-height: 74px;
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(0, 0, 0, .12);
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .contact-link:hover {
+      transform: translateY(-2px);
+      border-color: var(--line-strong);
+      background: rgba(255, 255, 255, .06);
+    }
+
+    .contact-link small {
+      display: block;
+      color: var(--ivory-dim);
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .contact-link b {
+      display: block;
+      margin-top: 7px;
+      overflow-wrap: anywhere;
+    }
+
     footer {
       width: var(--wrap);
       margin: 0 auto;
@@ -630,6 +729,8 @@
 
     @media (max-width: 980px) {
       :root { --wrap: min(100% - 30px, 760px); }
+      .section,
+      #top { scroll-margin-top: 126px; }
       .nav { align-items: flex-start; flex-direction: column; padding: 14px 0; gap: 12px; }
       .nav-links { width: 100%; overflow-x: auto; justify-content: flex-start; padding-bottom: 2px; }
       .hero { min-height: auto; padding-top: 34px; }
@@ -637,7 +738,8 @@
       .section-head,
       .about-grid,
       .concept-layout,
-      .author-card { grid-template-columns: 1fr; }
+      .author-card,
+      .contact-card { grid-template-columns: 1fr; }
       .hero-visual { order: -1; }
       .hero-visual img { min-height: 420px; aspect-ratio: 16 / 12; }
       .palette { grid-template-columns: repeat(2, 1fr); }
@@ -662,15 +764,20 @@
       .section-note,
       .about-text p,
       .principle p,
+      .case-step p,
       .materials-note,
-      .author-card p { font-size: 15px; line-height: 1.65; }
+      .author-card p,
+      .contact-card p { font-size: 15px; line-height: 1.65; }
       .principles,
+      .case-steps,
       .gallery-grid,
-      .palette { grid-template-columns: 1fr; }
+      .palette,
+      .contact-links { grid-template-columns: 1fr; }
       .concept-board,
       .concept-board img { min-height: 310px; }
       .render-card img { aspect-ratio: 5 / 4; }
-      footer { flex-direction: column; }
+      .caption { padding: 16px; }
+      footer { flex-direction: column; padding-bottom: 34px; line-height: 1.5; }
       .lightbox { padding: 14px; }
     }
   </style>
@@ -681,7 +788,7 @@
     <nav class="nav">
       <a class="brand" href="#top" aria-label="Лекторий — к началу страницы">
         <span class="brand-mark" aria-hidden="true"></span>
-        <span>Lectory Interior</span>
+        <span>Лекторий интерьер</span>
       </a>
       <div class="nav-links" aria-label="Разделы проекта">
         <a href="#about">О проекте</a>
@@ -689,6 +796,7 @@
         <a href="#materials">Материалы</a>
         <a href="#renders">Рендеры</a>
         <a href="#author">Автор</a>
+        <a href="#contacts">Контакты</a>
       </div>
     </nav>
   </header>
@@ -701,11 +809,11 @@
           <h1 id="hero-title">Тёплый лекторий</h1>
           <p class="lead">Камерное учебное пространство для лекций, встреч и спокойной концентрации: тёплая архитектурная основа, медно-терракотовый акцент, мягкий свет и тактильные материалы.</p>
           <ul class="tags" aria-label="Ключевые характеристики проекта">
-            <li>Interior concept</li>
-            <li>Lecture room</li>
-            <li>Warm graphite</li>
-            <li>Copper terracotta</li>
-            <li>Student portfolio</li>
+            <li>Интерьерная концепция</li>
+            <li>Учебный лекторий</li>
+            <li>Тёплый графит</li>
+            <li>Медная терракота</li>
+            <li>Портфолио студента</li>
           </ul>
           <div class="hero-actions">
             <a class="btn primary" href="#renders">Смотреть рендеры</a>
@@ -716,7 +824,7 @@
         <button class="hero-visual reveal" type="button" data-full="assets/render-03.webp" data-caption="Главный рендер лектория с терракотовой стеной и тёплым вечерним светом" aria-label="Открыть главный рендер лектория в увеличенном виде">
           <img src="assets/render-03.webp" alt="Главный рендер лектория с терракотовой стеной, деревянными столами и тёплым светом" width="1200" height="1440" fetchpriority="high" decoding="async">
           <span class="hero-caption" aria-hidden="true">
-            <span><b>Hero render</b><span>Визуальная доминанта проекта: акцентная стена, дерево и приглушённый свет.</span></span>
+            <span><b>Главный рендер</b><span>Визуальная доминанта проекта: акцентная стена, дерево и приглушённый свет.</span></span>
             <span class="frame-index">01</span>
           </span>
         </button>
@@ -726,7 +834,7 @@
     <section class="section" id="about" aria-labelledby="about-title">
       <div class="section-head reveal">
         <div>
-          <span class="section-kicker">About project</span>
+          <span class="section-kicker">О проекте</span>
           <h2 id="about-title">О проекте</h2>
         </div>
         <p class="section-note">Страница оформлена как архитектурное портфолио: минимум шума, сильная визуальная иерархия и ясное объяснение проектных решений.</p>
@@ -735,12 +843,18 @@
         <article class="about-text panel reveal">
           <p>Лекторий задуман как компактное пространство для лекций, обсуждений и самостоятельной работы. В основе — спокойная тёмная оболочка, которая помогает сфокусироваться на спикере и визуальном материале.</p>
           <p>Интерьер избегает учебной стерильности: природная палитра, матовые фактуры, дерево и мягкая светотень создают более дорогую, камерную и человеческую атмосферу.</p>
+          <div class="case-steps" aria-label="Задача, решение и результат проекта">
+            <article class="case-step"><b>Задача</b><p>Показать учебный интерьер как цельный архитектурный кейс, а не только набор красивых кадров.</p></article>
+            <article class="case-step"><b>Решение</b><p>Собрать рассказ вокруг сценария лекции, спокойной палитры, материалов и последовательной галереи.</p></article>
+            <article class="case-step"><b>Результат</b><p>Получилась компактная веб-презентация с ясной логикой, тёплой атмосферой и понятной ролью автора.</p></article>
+          </div>
         </article>
-        <aside class="facts panel reveal" aria-label="Краткие параметры проекта">
-          <div class="fact"><small>Типология</small><b>Учебный лекторий</b></div>
-          <div class="fact"><small>Формат</small><b>Интерьерный concept / case study</b></div>
-          <div class="fact"><small>Настроение</small><b>Тёплый минимализм</b></div>
+        <aside class="facts project-facts panel reveal" aria-label="Project facts: краткая информация о проекте">
+          <div class="facts-title">Project facts</div>
+          <div class="fact"><small>Тип проекта</small><b>Учебный интерьер</b></div>
+          <div class="fact"><small>Роль</small><b>Концепция, визуальная подача, веб-презентация</b></div>
           <div class="fact"><small>Год</small><b>2026</b></div>
+          <div class="fact"><small>Инструменты</small><b>3D-визуализация, ChatGPT, Codex, GitHub, Vercel</b></div>
         </aside>
       </div>
     </section>
@@ -748,7 +862,7 @@
     <section class="section" id="concept" aria-labelledby="concept-title">
       <div class="section-head reveal">
         <div>
-          <span class="section-kicker">Concept</span>
+          <span class="section-kicker">Концепция</span>
           <h2 id="concept-title">Концепция: тишина, фактура, концентрация</h2>
         </div>
         <p class="section-note">Идея проекта — превратить учебную аудиторию в спокойную студийную среду, где архитектура поддерживает внимание, а не конкурирует с содержанием лекции.</p>
@@ -768,17 +882,17 @@
     <section class="section" id="materials" aria-labelledby="materials-title">
       <div class="section-head reveal">
         <div>
-          <span class="section-kicker">Materials & palette</span>
+          <span class="section-kicker">Материалы и палитра</span>
           <h2 id="materials-title">Материалы и палитра</h2>
         </div>
         <p class="section-note">Палитра собрана вокруг глубокого чёрного, тёплого графита, меди, слоновой кости и приглушённой оливы — без кислотных акцентов и лишнего глянца.</p>
       </div>
       <div class="palette reveal" aria-label="Цветовая палитра проекта">
-        <div class="swatch black"><b>Deep black</b><span>#090705 · архитектурная база</span></div>
-        <div class="swatch graphite"><b>Warm graphite</b><span>#1D1812 · стены и фон</span></div>
-        <div class="swatch copper"><b>Copper terracotta</b><span>#B56A46 · акцент</span></div>
-        <div class="swatch ivory"><b>Ivory</b><span>#F4ECDF · текст и свет</span></div>
-        <div class="swatch olive"><b>Muted olive</b><span>#76704A · природный баланс</span></div>
+        <div class="swatch black"><b>Глубокий чёрный</b><span>#090705 · архитектурная база</span></div>
+        <div class="swatch graphite"><b>Тёплый графит</b><span>#1D1812 · стены и фон</span></div>
+        <div class="swatch copper"><b>Медная терракота</b><span>#B56A46 · акцент</span></div>
+        <div class="swatch ivory"><b>Слоновая кость</b><span>#F4ECDF · текст и свет</span></div>
+        <div class="swatch olive"><b>Приглушённая олива</b><span>#76704A · природный баланс</span></div>
       </div>
       <p class="materials-note reveal">Матовые покрытия, дерево, текстиль и мягкое отражение света создают тактильность. Контраст строится не на яркости, а на глубине тона, фактуре и аккуратной композиции.</p>
     </section>
@@ -786,10 +900,10 @@
     <section class="section" id="renders" aria-labelledby="renders-title">
       <div class="section-head reveal">
         <div>
-          <span class="section-kicker">Project renders</span>
+          <span class="section-kicker">Рендеры проекта</span>
           <h2 id="renders-title">Рендеры проекта</h2>
         </div>
-        <p class="section-note">Все карточки открываются в lightbox по клику, Enter или Space. Главный кадр загружается приоритетно, остальные изображения — лениво.</p>
+        <p class="section-note">Карточки открываются в полноэкранном просмотре по клику, Enter или Space. Главный кадр загружается приоритетно, остальные изображения — лениво.</p>
       </div>
       <div class="gallery-grid">
         <button class="render-card reveal" type="button" data-full="assets/render-03.webp" data-caption="Терракотовая акцентная стена и тёплая светотень" aria-label="Открыть рендер: терракотовая акцентная стена">
@@ -814,7 +928,7 @@
     <section class="section" id="author" aria-labelledby="author-title">
       <div class="author-card reveal">
         <div>
-          <span class="section-kicker">Author & study info</span>
+          <span class="section-kicker">Автор и обучение</span>
           <h2 id="author-title">Автор / учебная информация</h2>
           <p>Проект представлен как учебное портфолио по интерьерной визуализации: акцент сделан на понятной архитектурной идее, цельной палитре и аккуратной демонстрации рендеров.</p>
         </div>
@@ -825,15 +939,43 @@
         </div>
       </div>
     </section>
+
+    <section class="section" id="contacts" aria-labelledby="contacts-title">
+      <div class="contact-card reveal">
+        <div>
+          <span class="section-kicker">Контакты</span>
+          <h2 id="contacts-title">Контакты</h2>
+          <p>Финальный блок оставлен простым: без формы и лишней логики, только прямые ссылки для связи и публикации проекта.</p>
+        </div>
+        <div class="contact-links" aria-label="Контактные ссылки">
+          <!-- TODO: заменить placeholder-ссылку на актуальный Telegram автора. -->
+          <a class="contact-link" href="https://t.me/username" aria-label="Открыть Telegram автора">
+            <small>Telegram</small><b>@username</b>
+          </a>
+          <!-- TODO: заменить email на актуальный адрес автора. -->
+          <a class="contact-link" href="mailto:hello@example.com" aria-label="Написать автору по email">
+            <small>Email</small><b>hello@example.com</b>
+          </a>
+          <!-- TODO: заменить placeholder-ссылку на актуальный GitHub-профиль или репозиторий. -->
+          <a class="contact-link" href="https://github.com/WhyPonySwag" aria-label="Открыть GitHub автора">
+            <small>GitHub</small><b>WhyPonySwag</b>
+          </a>
+          <!-- TODO: заменить placeholder-ссылку на актуальную Vercel-ссылку портфолио после публикации. -->
+          <a class="contact-link" href="https://example.com" aria-label="Открыть ссылку портфолио или Vercel-публикации">
+            <small>Portfolio / Vercel</small><b>ссылка на публикацию</b>
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <span>Lectory Interior Concept · 2026</span>
+    <span>Концепция интерьера лектория · 2026</span>
     <span>© 2026 Таласбаев Т. А. Все права защищены.</span>
   </footer>
 
-  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Просмотр изображения">
-    <button class="lightbox-close" type="button" aria-label="Закрыть увеличенное изображение">×</button>
+  <div class="lightbox" id="lightbox" aria-hidden="true" inert role="dialog" aria-modal="true" aria-label="Просмотр изображения">
+    <button class="lightbox-close" type="button" tabindex="-1" aria-label="Закрыть увеличенное изображение">×</button>
     <img src="" alt="">
   </div>
 
@@ -868,7 +1010,9 @@
       lightboxImg.src = trigger.dataset.full;
       lightboxImg.alt = trigger.dataset.caption || image?.alt || 'Увеличенное изображение проекта';
       lightbox.classList.add('open');
+      lightbox.removeAttribute('inert');
       lightbox.setAttribute('aria-hidden', 'false');
+      closeBtn.removeAttribute('tabindex');
       document.body.style.overflow = 'hidden';
       closeBtn.focus();
     }
@@ -876,6 +1020,8 @@
     function closeLightbox() {
       lightbox.classList.remove('open');
       lightbox.setAttribute('aria-hidden', 'true');
+      lightbox.setAttribute('inert', '');
+      closeBtn.setAttribute('tabindex', '-1');
       lightboxImg.src = '';
       document.body.style.overflow = '';
       lastFocused?.focus();
@@ -886,7 +1032,12 @@
       if (event.target === lightbox) closeLightbox();
     });
     window.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+      if (!lightbox.classList.contains('open')) return;
+      if (event.key === 'Escape') closeLightbox();
+      if (event.key === 'Tab') {
+        event.preventDefault();
+        closeBtn.focus();
+      }
     });
   </script>
   <script type="application/ld+json">
