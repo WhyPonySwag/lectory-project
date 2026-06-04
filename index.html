@@ -90,21 +90,6 @@
       opacity: .72;
     }
 
-    html::after {
-      content: "ТА";
-      position: fixed;
-      right: clamp(20px, 6vw, 92px);
-      top: clamp(100px, 18vh, 184px);
-      z-index: -1;
-      pointer-events: none;
-      color: rgba(238, 238, 234, .032);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(86px, 16vw, 236px);
-      font-weight: 700;
-      letter-spacing: -.08em;
-      line-height: .8;
-    }
-
     a { color: inherit; text-decoration: none; }
     button { font: inherit; }
     img { display: block; max-width: 100%; height: auto; }
@@ -264,24 +249,6 @@
       letter-spacing: -.012em;
     }
 
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 30px;
-      padding: 0;
-      list-style: none;
-    }
-
-    .tags li {
-      padding: 9px 13px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--ivory-muted);
-      background: rgba(255, 255, 255, .036);
-      font-size: 13px;
-    }
-
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
@@ -392,6 +359,10 @@
       gap: 28px;
       align-items: end;
       margin-bottom: 34px;
+    }
+
+    .section-head-compact {
+      grid-template-columns: 1fr;
     }
 
     h2 {
@@ -826,31 +797,11 @@
       padding: 34px 0 46px;
       border-top: 1px solid var(--line);
       display: grid;
-      grid-template-columns: minmax(220px, .8fr) minmax(0, 1fr) auto;
+      grid-template-columns: minmax(0, 1fr) auto;
       align-items: center;
       gap: 20px;
       color: var(--ivory-dim);
       font-size: 13px;
-    }
-
-    .footer-mark {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      min-width: max-content;
-    }
-
-    .footer-symbol {
-      width: 40px;
-      height: 40px;
-      border: 1px solid var(--line-strong);
-      border-radius: 50%;
-      display: inline-grid;
-      place-items: center;
-      color: var(--ivory-muted);
-      font-family: Georgia, "Times New Roman", serif;
-      font-weight: 700;
-      background: rgba(255, 255, 255, .035);
     }
 
     .footer-copy,
@@ -939,7 +890,6 @@
       h1 { font-size: clamp(34px, 10vw, 46px); letter-spacing: -.025em; white-space: normal; overflow-wrap: normal; word-break: normal; hyphens: none; }
       h2 { font-size: clamp(30px, 10vw, 42px); }
       .lead { font-size: 16px; line-height: 1.55; }
-      .tags li { font-size: 12px; padding: 8px 11px; }
       .hero-visual { border-radius: 26px; }
       .hero-visual::before { inset: 12px; border-radius: 18px; }
       .hero-visual img { min-height: 360px; aspect-ratio: 4 / 5; }
@@ -964,7 +914,6 @@
       body::after { opacity: .38; background-size: 96px 96px, 96px 96px, 20px 20px; }
       body::before { opacity: .82; }
       html::before { opacity: .34; }
-      html::after { opacity: .18; right: 18px; top: 112px; }
       .concept-board,
       .concept-board img { min-height: 310px; }
       .concept-teaser-visual { min-height: 180px; }
@@ -1001,13 +950,6 @@
           <span class="eyebrow">Учебный интерьерный проект</span>
           <h1 id="hero-title">Тёплый лекторий</h1>
           <p class="lead">Камерное учебное пространство для лекций, встреч и спокойной концентрации: тёплая архитектурная основа, медно-терракотовый акцент, мягкий свет и тактильные материалы.</p>
-          <ul class="tags" aria-label="Ключевые характеристики проекта">
-            <li>Интерьерная концепция</li>
-            <li>Учебный лекторий</li>
-            <li>Тёплый графит</li>
-            <li>Медная терракота</li>
-            <li>Портфолио студента</li>
-          </ul>
           <div class="hero-actions">
             <a class="btn primary" href="#renders">Смотреть рендеры</a>
             <a class="btn" href="concept.html">Идея проекта</a>
@@ -1071,12 +1013,11 @@
     </section>
 
     <section class="section" id="renders" aria-labelledby="renders-title">
-      <div class="section-head reveal">
+      <div class="section-head section-head-compact reveal">
         <div>
           <span class="section-kicker">Рендеры проекта</span>
           <h2 id="renders-title">Рендеры проекта</h2>
         </div>
-        <p class="section-note">Карточки открываются в полноэкранном просмотре по клику, Enter или Space. Главный кадр загружается приоритетно, остальные изображения — лениво.</p>
       </div>
       <div class="gallery-grid">
         <button class="render-card reveal" type="button" data-full="assets/render-03.webp" data-caption="Терракотовая акцентная стена и тёплая светотень" aria-label="Открыть рендер: терракотовая акцентная стена">
@@ -1149,10 +1090,6 @@
   </main>
 
   <footer>
-    <div class="footer-mark" aria-label="Авторский знак проекта">
-      <span class="footer-symbol" aria-hidden="true">ТА</span>
-      <span>Lectory / 2026</span>
-    </div>
     <div class="footer-copy">
       <span>© 2026 · Lectory Interior Concept · T.A.</span>
       <span>Таласбаев Т. А.</span>
