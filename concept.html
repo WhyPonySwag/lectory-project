@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Концепция и материалы — Лекторий</title>
+  <meta name="description" content="Детальная проектная подача концепции и материалов учебного интерьера лектория.">
+  <meta name="theme-color" content="#111315">
+  <style>
+    :root {
+      color-scheme: dark;
+      --black: #111315;
+      --graphite: #141618;
+      --graphite-soft: #1b1e21;
+      --ivory: #eeeeea;
+      --ivory-muted: rgba(238, 238, 234, .72);
+      --ivory-dim: rgba(238, 238, 234, .46);
+      --copper: #98877a;
+      --line: rgba(255, 255, 255, .11);
+      --line-strong: rgba(255, 255, 255, .20);
+      --card: rgba(255, 255, 255, .04);
+      --shadow: 0 34px 110px rgba(0, 0, 0, .48);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --wrap: min(1180px, calc(100% - 40px));
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      margin: 0;
+      background: var(--black);
+      color: var(--ivory);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; height: auto; }
+    h1, h2, h3, p { margin: 0; }
+    ::selection { background: rgba(152, 135, 122, .44); color: #fff; }
+
+    :focus-visible {
+      outline: 2px solid var(--copper);
+      outline-offset: 4px;
+      border-radius: 18px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--line);
+      background: var(--black);
+    }
+
+    .nav {
+      width: var(--wrap);
+      min-height: 68px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      width: 31px;
+      height: 31px;
+      border-radius: 50%;
+      background: var(--graphite-soft);
+      border: 1px solid var(--line-strong);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+      color: var(--ivory-muted);
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      padding: 9px 12px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      transition: border-color .2s ease, background .2s ease, color .2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--ivory);
+      border-color: var(--line);
+      background: rgba(255, 255, 255, .045);
+    }
+
+
+
+    .menu-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 40px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--card);
+      color: var(--ivory);
+      cursor: pointer;
+    }
+
+    .menu-toggle-lines {
+      display: inline-grid;
+      gap: 5px;
+      width: 18px;
+    }
+
+    .menu-toggle-lines::before,
+    .menu-toggle-lines::after {
+      content: "";
+      display: block;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      background: rgba(0, 0, 0, .28);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .24s ease;
+    }
+
+    .drawer-overlay.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .editorial-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 100;
+      width: clamp(320px, 30vw, 430px);
+      max-width: 100%;
+      height: 100svh;
+      padding: 24px;
+      border-left: 1px solid var(--line-strong);
+      background: var(--graphite);
+      color: var(--ivory);
+      transform: translateX(100%);
+      transition: transform .28s ease;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+
+    .editorial-drawer.is-open {
+      transform: translateX(0);
+    }
+
+    .drawer-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .drawer-title {
+      color: var(--ivory-dim);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .drawer-close {
+      min-height: 38px;
+      padding: 0 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--card);
+      color: var(--ivory);
+      cursor: pointer;
+    }
+
+    .drawer-section {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .drawer-section h2 {
+      margin: 0 0 12px;
+      color: var(--ivory-dim);
+      font-family: inherit;
+      font-size: 12px;
+      line-height: 1.2;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .drawer-link,
+    .drawer-item {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 10px 0;
+      color: var(--ivory-muted);
+      border-bottom: 1px solid rgba(255, 255, 255, .055);
+    }
+
+    .drawer-link:hover,
+    .drawer-link:focus-visible {
+      color: var(--ivory);
+    }
+
+    .drawer-item span:last-child {
+      color: var(--ivory-dim);
+      text-align: right;
+    }
+
+    .drawer-foot {
+      padding-top: 22px;
+      color: var(--ivory-dim);
+      font-size: 13px;
+    }
+
+    body.drawer-open {
+      overflow: hidden;
+    }
+
+    .section {
+      width: var(--wrap);
+      margin: 0 auto;
+      padding: 88px 0;
+      scroll-margin-top: 96px;
+    }
+
+    .page-hero {
+      padding-top: 72px;
+      padding-bottom: 38px;
+    }
+
+    .eyebrow,
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ivory-dim);
+      font-size: 12px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .section-kicker::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: var(--copper);
+    }
+
+    h1,
+    h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 700;
+      letter-spacing: -.04em;
+      line-height: .98;
+    }
+
+    h1 { margin-top: 18px; max-width: 920px; font-size: clamp(48px, 8vw, 104px); }
+    h2 { font-size: clamp(36px, 6vw, 76px); }
+
+    .lead,
+    .section-note {
+      color: var(--ivory-muted);
+      line-height: 1.7;
+    }
+
+    .lead { max-width: 720px; margin-top: 24px; font-size: clamp(17px, 1.55vw, 21px); }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, .8fr) minmax(280px, .52fr);
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+
+    .section-head-compact {
+      grid-template-columns: 1fr;
+    }
+
+
+    .project-details {
+      padding-top: 36px;
+      padding-bottom: 42px;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .detail-card {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--card);
+    }
+
+    .detail-card small {
+      color: var(--ivory-dim);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .detail-card b {
+      display: block;
+      margin-top: 8px;
+      color: var(--ivory);
+      font-size: 15px;
+      line-height: 1.38;
+    }
+
+    .concept-layout {
+      display: grid;
+      grid-template-columns: minmax(320px, .92fr) minmax(0, .72fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .concept-board {
+      min-height: 520px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background: var(--graphite);
+      box-shadow: var(--shadow);
+    }
+
+    .concept-board img {
+      width: 100%;
+      height: 100%;
+      min-height: 520px;
+      object-fit: cover;
+    }
+
+    .principles {
+      display: grid;
+      gap: 14px;
+    }
+
+    .principle,
+    .cta-panel {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--card);
+    }
+
+    .principle b {
+      display: block;
+      color: var(--ivory);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 24px;
+      letter-spacing: -.02em;
+    }
+
+    .principle p {
+      margin-top: 12px;
+      color: var(--ivory-muted);
+      line-height: 1.65;
+    }
+
+    .palette {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .swatch {
+      min-height: 245px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .swatch::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 35%, rgba(0, 0, 0, .50));
+    }
+
+    .swatch b,
+    .swatch span { position: relative; z-index: 1; }
+    .swatch b { font-size: 15px; }
+    .swatch span { margin-top: 5px; color: rgba(238, 238, 234, .68); font-size: 12px; }
+    .swatch.black { background: #090705; }
+    .swatch.graphite { background: #1d1812; }
+    .swatch.copper { background: #b56a46; }
+    .swatch.ivory { background: #f4ecdf; color: #15120e; }
+    .swatch.ivory span { color: rgba(21, 18, 14, .62); }
+    .swatch.olive { background: #76704a; }
+
+    .materials-note {
+      margin-top: 18px;
+      color: var(--ivory-muted);
+      line-height: 1.7;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      width: max-content;
+      padding: 0 18px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .045);
+      color: var(--ivory);
+      font-size: 14px;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); background: rgba(255, 255, 255, .07); }
+
+    .cta-panel {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      margin-top: 26px;
+    }
+
+    footer {
+      width: var(--wrap);
+      margin: 0 auto;
+      padding: 34px 0 46px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 20px;
+      color: var(--ivory-dim);
+      font-size: 13px;
+    }
+
+    .footer-copy,
+    .footer-service {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 14px;
+    }
+
+    .footer-service { justify-content: flex-end; }
+    .footer-service a { color: var(--ivory-muted); }
+
+    @media (max-width: 980px) {
+      :root { --wrap: min(100% - 30px, 760px); }
+      .nav { min-height: auto; padding: 12px 0; gap: 12px; }
+      .nav-links { display: none; }
+      .editorial-drawer { width: min(100%, 94vw); }
+      .section-head,
+      .concept-layout,
+      footer { grid-template-columns: 1fr; }
+      .details-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .palette { grid-template-columns: repeat(2, 1fr); }
+      .footer-service { justify-content: flex-start; }
+    }
+
+    @media (max-width: 640px) {
+      :root { --wrap: calc(100% - 28px); }
+      .section { padding: 44px 0; }
+      .page-hero { padding-top: 42px; padding-bottom: 18px; }
+      .brand { font-size: 11px; letter-spacing: .14em; }
+      .nav-links { font-size: 12px; gap: 4px; }
+      .nav-links a { padding: 8px 10px; }
+      h1 { font-size: clamp(40px, 12vw, 58px); }
+      h2 { font-size: clamp(32px, 10vw, 46px); }
+      .lead,
+      .section-note,
+      .principle p,
+      .materials-note { font-size: 15px; line-height: 1.65; }
+      .principles,
+      .palette { grid-template-columns: 1fr; }
+      .details-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .detail-card { padding: 14px; }
+      .concept-board,
+      .concept-board img { min-height: 250px; }
+      .swatch { min-height: 150px; }
+      footer { padding-bottom: 34px; line-height: 1.5; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar" aria-label="Навигация по странице">
+    <nav class="nav">
+      <a class="brand" href="index.html" aria-label="Вернуться на главную страницу">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Лекторий интерьер</span>
+      </a>
+      <div class="nav-links" aria-label="Разделы детальной страницы">
+        <a href="index.html">Главная</a>
+        <a href="#concept">Концепция</a>
+        <a href="#materials">Материалы</a>
+        <a href="index.html#renders">Рендеры</a>
+        <a href="index.html#contacts">Контакты</a>
+      </div>
+      <button class="menu-toggle" type="button" data-drawer-toggle aria-label="Открыть меню" aria-expanded="false" aria-controls="site-drawer"><span data-menu-label>Меню</span><span class="menu-toggle-lines" aria-hidden="true"></span></button>
+    </nav>
+  </header>
+
+  <div class="drawer-overlay" data-drawer-overlay hidden></div>
+  <aside class="editorial-drawer" id="site-drawer" aria-hidden="true" inert aria-label="Editorial navigation drawer">
+    <div class="drawer-head">
+      <span class="drawer-title">Меню проекта</span>
+      <button class="drawer-close" type="button" data-drawer-close aria-label="Закрыть меню">Закрыть</button>
+    </div>
+    <section class="drawer-section" aria-labelledby="drawer-nav-title">
+      <h2 id="drawer-nav-title">Навигация</h2>
+      <a class="drawer-link" href="index.html">Главная</a>
+      <a class="drawer-link" href="index.html#about">О проекте</a>
+      <a class="drawer-link" href="concept.html">Концепция и материалы</a>
+      <a class="drawer-link" href="index.html#renders">Рендеры</a>
+      <a class="drawer-link" href="index.html#author">Автор</a>
+      <a class="drawer-link" href="index.html#contacts">Контакты</a>
+    </section>
+    <section class="drawer-section" aria-labelledby="drawer-project-title">
+      <h2 id="drawer-project-title">Проект</h2>
+      <a class="drawer-link" href="https://github.com/WhyPonySwag/lectory-project">GitHub</a>
+      <a class="drawer-link" href="https://lectory-project.vercel.app">Live site</a>
+      <div class="drawer-item"><span>PDF</span><span>скоро</span></div>
+    </section>
+    <section class="drawer-section" aria-labelledby="drawer-contact-title">
+      <h2 id="drawer-contact-title">Связь</h2>
+      <div class="drawer-item"><span>Telegram</span><span>скоро будет добавлен</span></div>
+      <div class="drawer-item"><span>Email</span><span>по запросу</span></div>
+    </section>
+    <div class="drawer-foot">Lectory Interior Concept · 2026</div>
+  </aside>
+
+  <main>
+    <section class="section page-hero" aria-labelledby="page-title">
+      <span class="eyebrow">Детальная проектная подача</span>
+      <h1 id="page-title">Концепция и материалы</h1>
+      <p class="lead">Отдельная страница собирает визуальную идею, настроение и материальную палитру лектория, чтобы главная оставалась короткой и сфокусированной на рендерах.</p>
+    </section>
+
+    <section class="section project-details" id="project-details" aria-labelledby="project-details-title">
+      <div class="section-head section-head-compact">
+        <div>
+          <span class="section-kicker">Детали проекта</span>
+          <h2 id="project-details-title">Детали проекта</h2>
+        </div>
+      </div>
+      <div class="details-grid" aria-label="Краткие детали проекта">
+        <article class="detail-card"><small>Тип проекта</small><b>Учебный интерьер</b></article>
+        <article class="detail-card"><small>Роль</small><b>Концепция, визуальная подача, веб-презентация</b></article>
+        <article class="detail-card"><small>Год</small><b>2026</b></article>
+        <article class="detail-card"><small>Инструменты</small><b>3D-визуализация, ChatGPT, Codex, GitHub, Vercel</b></article>
+      </div>
+    </section>
+
+    <section class="section" id="concept" aria-labelledby="concept-title">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">Концепция</span>
+          <h2 id="concept-title">Концепция: тишина, фактура, концентрация</h2>
+        </div>
+        <p class="section-note">Идея проекта — превратить учебную аудиторию в спокойную студийную среду, где архитектура поддерживает внимание, а не конкурирует с содержанием лекции.</p>
+      </div>
+      <div class="concept-layout">
+        <figure class="concept-board" aria-label="Концепт-борд материалов и визуального настроения проекта">
+          <img src="assets/concept-board.webp" alt="Концепт-борд учебного лектория с материалами, тёплой палитрой и интерьерными референсами" width="1000" height="720" loading="lazy" decoding="async">
+        </figure>
+        <div class="principles">
+          <article class="principle"><b>Атмосфера</b><p>Камерная тёмная оболочка, дерево и мягкая светотень создают ощущение спокойной студийной среды без учебной стерильности.</p></article>
+          <article class="principle"><b>Настроение</b><p>Терракотовый акцент и приглушённый графит работают как визуальная пауза: пространство выглядит собранным, тёплым и сосредоточенным.</p></article>
+          <article class="principle"><b>Архитектурная подача</b><p>Сайт выстроен как последовательность проектного рассказа: сильный кадр, описание задачи, концепция, материальная палитра, затем серия визуализаций.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="materials" aria-labelledby="materials-title">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">Материалы и палитра</span>
+          <h2 id="materials-title">Материалы и палитра</h2>
+        </div>
+        <p class="section-note">Палитра собрана вокруг глубокого чёрного, тёплого графита, меди, слоновой кости и приглушённой оливы — без кислотных акцентов и лишнего глянца.</p>
+      </div>
+      <div class="palette" aria-label="Цветовая палитра проекта">
+        <div class="swatch black"><b>Глубокий чёрный</b><span>#090705 · архитектурная база</span></div>
+        <div class="swatch graphite"><b>Тёплый графит</b><span>#1D1812 · стены и фон</span></div>
+        <div class="swatch copper"><b>Медная терракота</b><span>#B56A46 · акцент</span></div>
+        <div class="swatch ivory"><b>Слоновая кость</b><span>#F4ECDF · текст и свет</span></div>
+        <div class="swatch olive"><b>Приглушённая олива</b><span>#76704A · природный баланс</span></div>
+      </div>
+      <p class="materials-note">Матовые покрытия, дерево, текстиль и мягкое отражение света создают тактильность. Контраст строится не на яркости, а на глубине тона, фактуре и аккуратной композиции.</p>
+      <div class="cta-panel">
+        <p class="section-note">Вернуться к визуальным результатам и серии рендеров проекта.</p>
+        <a class="btn" href="index.html#renders">Вернуться к проекту</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-copy">
+      <span>© 2026 · Lectory Interior Concept · T.A.</span>
+      <span>Таласбаев Т. А.</span>
+    </div>
+    <div class="footer-service" aria-label="Сервисные ссылки">
+      <a href="index.html#renders">Renders</a>
+      <a href="index.html#contacts">Contacts</a>
+      <a href="index.html">Home</a>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const toggle = document.querySelector('[data-drawer-toggle]');
+      const drawer = document.querySelector('#site-drawer');
+      const overlay = document.querySelector('[data-drawer-overlay]');
+      const closeButton = document.querySelector('[data-drawer-close]');
+      if (!toggle || !drawer || !overlay || !closeButton) return;
+
+      const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+      let lastDrawerFocus = null;
+
+      function getFocusable() {
+        return Array.from(drawer.querySelectorAll(focusableSelector));
+      }
+
+      function openDrawer() {
+        lastDrawerFocus = document.activeElement;
+        drawer.classList.add('is-open');
+        overlay.hidden = false;
+        requestAnimationFrame(() => overlay.classList.add('is-open'));
+        drawer.removeAttribute('inert');
+        drawer.setAttribute('aria-hidden', 'false');
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.querySelector('[data-menu-label]').textContent = 'Закрыть';
+        document.body.classList.add('drawer-open');
+        closeButton.focus();
+      }
+
+      function closeDrawer({ restoreFocus = true } = {}) {
+        drawer.classList.remove('is-open');
+        overlay.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+        drawer.setAttribute('inert', '');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.querySelector('[data-menu-label]').textContent = 'Меню';
+        document.body.classList.remove('drawer-open');
+        window.setTimeout(() => {
+          if (!drawer.classList.contains('is-open')) overlay.hidden = true;
+        }, 240);
+        if (restoreFocus) (lastDrawerFocus || toggle).focus();
+      }
+
+      toggle.addEventListener('click', () => {
+        if (drawer.classList.contains('is-open')) closeDrawer();
+        else openDrawer();
+      });
+
+      closeButton.addEventListener('click', () => closeDrawer());
+      overlay.addEventListener('click', () => closeDrawer());
+
+      drawer.querySelectorAll('a[href]').forEach((link) => {
+        link.addEventListener('click', () => closeDrawer({ restoreFocus: false }));
+      });
+
+      window.addEventListener('keydown', (event) => {
+        if (!drawer.classList.contains('is-open')) return;
+        if (event.key === 'Escape') {
+          closeDrawer();
+          return;
+        }
+        if (event.key !== 'Tab') return;
+        const focusable = getFocusable();
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (!first || !last) return;
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
