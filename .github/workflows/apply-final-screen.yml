@@ -1,0 +1,134 @@
+name: Apply final screen and contact navigation
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+
+      - name: Replace contact block with final screen
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          index = Path('index.html')
+          concept = Path('concept.html')
+
+          index_text = index.read_text(encoding='utf-8')
+
+          final_section = '''    <section class="section final-screen" id="project-end" aria-labelledby="final-title">
+      <div class="final-screen-card reveal">
+        <span class="section-kicker">Проект завершён</span>
+        <h2 id="final-title">Тёплый лекторий</h2>
+        <p>Учебный интерьер · 2026</p>
+        <div class="final-screen-actions" aria-label="Финальные действия проекта">
+          <a class="btn primary" href="concept.html">Открыть концепцию</a>
+          <a class="btn" href="contacts.html">Написать автору</a>
+          <a class="btn" href="#top">Вернуться к началу</a>
+        </div>
+      </div>
+    </section>'''
+
+          contact_pattern = re.compile(
+              r'    <section class="section" id="contacts" aria-labelledby="contacts-title">.*?    </section>',
+              re.S,
+          )
+          index_text, replaced = contact_pattern.subn(final_section, index_text, count=1)
+          if replaced != 1:
+              raise SystemExit(f'Expected one contact section, replaced {replaced}')
+
+          index_text = index_text.replace('href="#contacts"', 'href="contacts.html"')
+          index_text = index_text.replace('href="index.html#contacts"', 'href="contacts.html"')
+
+          final_css = '''<style id="final-screen-styles">
+.final-screen {
+  min-height: min(78svh, 760px);
+  display: grid;
+  align-items: center;
+}
+.final-screen-card {
+  min-height: min(62svh, 600px);
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 22px;
+  padding: clamp(42px, 7vw, 96px);
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 32px;
+  background: rgba(10,12,14,.72);
+  -webkit-backdrop-filter: blur(20px) saturate(110%);
+  backdrop-filter: blur(20px) saturate(110%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.045), 0 30px 90px rgba(0,0,0,.34);
+  text-align: center;
+}
+.final-screen-card h2 { max-width: 900px; margin: 0; }
+.final-screen-card p { color: var(--ivory-muted); font-size: clamp(16px, 2vw, 20px); }
+.final-screen-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 10px; }
+@media (max-width: 640px) {
+  .final-screen { min-height: auto; }
+  .final-screen-card { min-height: 72svh; padding: 38px 18px; border-radius: 24px; }
+  .final-screen-actions { width: 100%; flex-direction: column; }
+  .final-screen-actions .btn { width: 100%; }
+}
+</style>'''
+
+          index_text = re.sub(r'<style id="final-screen-styles">.*?</style>\s*', '', index_text, flags=re.S)
+          index_text = index_text.replace('</head>', final_css + '\n</head>', 1)
+          index.write_text(index_text, encoding='utf-8')
+
+          concept_text = concept.read_text(encoding='utf-8')
+          concept_text = concept_text.replace('href="#contacts"', 'href="contacts.html"')
+          concept_text = concept_text.replace('href="index.html#contacts"', 'href="contacts.html"')
+          concept.write_text(concept_text, encoding='utf-8')
+
+          for path in [
+              Path('final-screen-notes.txt'),
+              Path('.github/workflows/apply-contact-stage-pr.yml'),
+              Path('.github/workflows/apply-final-screen.yml'),
+          ]:
+              if path.exists():
+                  path.unlink()
+          PY
+
+      - name: Validate and commit
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          index = Path('index.html').read_text(encoding='utf-8')
+          concept = Path('concept.html').read_text(encoding='utf-8')
+          contacts = Path('contacts.html').read_text(encoding='utf-8')
+
+          assert 'id="project-end"' in index
+          assert 'Проект завершён' in index
+          assert 'href="contacts.html"' in index
+          assert 'href="contacts.html"' in concept
+          assert 'id="contacts" aria-labelledby="contacts-title"' not in index
+          assert 'index.html#contacts' not in index + concept
+          assert 'href="#contacts"' not in index + concept
+          assert '@doomrushaz2000' in contacts
+          assert 'yourtoxicpm@gmail.com' in contacts
+          assert not re.search(r'href="[^\"]*#contacts"', index + concept)
+          print('Final screen and contact navigation checks passed')
+          PY
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Replace contact block with final project screen"
+          git push origin HEAD:main
