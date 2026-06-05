@@ -410,7 +410,7 @@
       transition: transform .75s cubic-bezier(.2, .7, .2, 1), filter .75s ease;
     }
 
-    .hero-visual:hover img { transform: scale(1.03); filter: saturate(1.05) contrast(1.04); }
+    .hero-visual:hover img { transform: scale(1.02); filter: saturate(1.025) contrast(1.02); }
 
     .hero-caption {
       position: absolute;
@@ -1148,6 +1148,39 @@ h2 { font-family: inherit !important; letter-spacing: -.04em !important; }
   color: var(--ivory-muted);
 }
 
+
+.final-screen { padding-bottom: clamp(54px, 8vw, 96px) !important; }
+.final-card {
+  display: grid !important;
+  gap: 18px !important;
+  max-width: 860px !important;
+  padding: clamp(28px, 5vw, 56px) 0 !important;
+  border-top: 1px solid rgba(255,255,255,.14) !important;
+  border-bottom: 1px solid rgba(255,255,255,.09) !important;
+  background: transparent !important;
+}
+.final-card h2 {
+  max-width: 760px !important;
+  font-size: clamp(40px, 6.4vw, 82px) !important;
+  line-height: .98 !important;
+  letter-spacing: -.045em !important;
+}
+.final-card p {
+  max-width: 560px !important;
+  color: var(--ivory-muted) !important;
+  font-size: clamp(15px, 1.5vw, 18px) !important;
+  line-height: 1.65 !important;
+}
+.final-actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  margin-top: 12px !important;
+}
+@media (max-width: 640px) {
+  .final-actions { flex-direction: column !important; align-items: stretch !important; }
+  .final-actions .btn { width: 100% !important; }
+}
 @media (max-width: 1180px) and (min-width: 981px) {
   .hero-grid { grid-template-columns: minmax(0,1fr) minmax(350px,.75fr) !important; gap: 34px !important; }
   h1 { font-size: clamp(42px, 5vw, 62px) !important; }
@@ -1170,6 +1203,7 @@ h2 { font-family: inherit !important; letter-spacing: -.04em !important; }
   .contact-link { min-height: 78px !important; }
 }
 </style>
+  <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
   <a class="skip-link" href="#content">Перейти к содержанию</a>
@@ -1185,7 +1219,7 @@ h2 { font-family: inherit !important; letter-spacing: -.04em !important; }
         <a href="concept.html#materials">Материалы</a>
         <a href="#renders">Рендеры</a>
         <a href="#author">Автор</a>
-        <a href="#contacts">Контакты</a>
+        <a href="contacts.html">Контакты</a>
       </div>
       <button class="menu-toggle" type="button" data-drawer-toggle aria-label="Открыть меню" aria-expanded="false" aria-controls="site-drawer"><span data-menu-label>Меню</span><span class="menu-toggle-lines" aria-hidden="true"></span></button>
     </nav>
@@ -1204,7 +1238,7 @@ h2 { font-family: inherit !important; letter-spacing: -.04em !important; }
       <a class="drawer-link" href="concept.html">Концепция и материалы</a>
       <a class="drawer-link" href="index.html#renders">Рендеры</a>
       <a class="drawer-link" href="index.html#author">Автор</a>
-      <a class="drawer-link" href="index.html#contacts">Контакты</a>
+      <a class="drawer-link" href="contacts.html">Контакты</a>
     </section>
     <section class="drawer-section" aria-labelledby="drawer-project-title">
       <h2 id="drawer-project-title">Проект</h2>
@@ -1288,6 +1322,9 @@ h2 { font-family: inherit !important; letter-spacing: -.04em !important; }
           <span class="section-kicker">Рендеры проекта</span>
           <h2 id="renders-title">Рендеры проекта</h2>
         </div>
+        <div class="renders-actions">
+          <button class="btn" type="button" data-presentation-open aria-haspopup="dialog">Смотреть проект</button>
+        </div>
       </div>
       <div class="gallery-grid">
         <button class="render-card reveal" type="button" data-full="assets/render-03.webp" data-caption="Терракотовая акцентная стена и тёплая светотень" aria-label="Открыть рендер: терракотовая акцентная стена">
@@ -1324,33 +1361,16 @@ h2 { font-family: inherit !important; letter-spacing: -.04em !important; }
       </div>
     </section>
 
-    <section class="section" id="contacts" aria-labelledby="contacts-title">
-      <div class="contact-card reveal">
-        <div class="contact-intro">
-          <span class="section-kicker">Контакты</span>
-          <h2 id="contacts-title">Контакты</h2>
-          <p>Связаться со мной можно напрямую через Telegram или Email. Ниже также доступны исходники и опубликованная версия проекта.</p>
+    <section class="section final-screen" id="final" aria-labelledby="final-title">
+      <div class="final-card reveal">
+        <span class="section-kicker">Финал проекта</span>
+        <h2 id="final-title">Проект завершён</h2>
+        <p>Тёплый лекторий · Учебный интерьер · 2026</p>
+        <div class="final-actions" aria-label="Финальная навигация по проекту">
+          <a class="btn primary" href="concept.html">Открыть концепцию</a>
+          <a class="btn" href="contacts.html">Написать автору</a>
+          <a class="btn" href="#top">Вернуться к началу</a>
         </div>
-        <div class="contact-links" aria-label="Контактные и сервисные ссылки">
-          <a class="contact-link" href="https://t.me/doomrushaz2000" target="_blank" rel="noopener noreferrer" aria-label="Открыть Telegram @doomrushaz2000"><small>Telegram</small><b>@doomrushaz2000</b></a>
-          <a class="contact-link" href="mailto:yourtoxicpm@gmail.com" aria-label="Написать на yourtoxicpm@gmail.com"><small>Email</small><b>yourtoxicpm@gmail.com</b></a>
-          <a class="contact-link" href="https://github.com/WhyPonySwag" aria-label="Открыть GitHub автора">
-            <small>GitHub</small><b>WhyPonySwag</b>
-          </a>
-          <a class="contact-link" href="https://lectory-project.vercel.app" aria-label="Открыть опубликованное портфолио проекта">
-            <small>Portfolio</small><b>Live site</b>
-          </a>
-          <span class="contact-link" aria-label="PDF-версия проекта будет подготовлена позже">
-            <small>PDF</small><b>позже</b>
-          </span>
-          <a class="contact-link" href="#top" aria-label="Вернуться к началу страницы">
-            <small>Навигация</small><b>к началу</b>
-          </a>
-        </div>
-        <figure class="contact-detail" aria-label="Деталь интерьера лектория">
-          <img src="assets/render-02.webp" alt="Деталь интерьера лектория с тёплой палитрой и акцентной стеной" width="900" height="675" loading="lazy" decoding="async">
-          <span>Interior detail</span>
-        </figure>
       </div>
     </section>
   </main>
@@ -1362,10 +1382,21 @@ h2 { font-family: inherit !important; letter-spacing: -.04em !important; }
     </div>
     <div class="footer-service" aria-label="Сервисные ссылки">
       <a href="https://github.com/WhyPonySwag">GitHub</a>
-      <a href="#contacts">Contacts</a>
+      <a href="contacts.html">Contacts</a>
       <a href="#top">Top</a>
     </div>
   </footer>
+
+
+  <div class="floating-contact" data-floating-contact>
+    <div class="floating-contact__panel" id="floating-contact-panel" data-floating-contact-panel role="dialog" aria-modal="false" aria-labelledby="floating-contact-title" hidden>
+      <span class="floating-contact__title" id="floating-contact-title">Быстрая связь</span>
+      <a class="floating-contact__link" href="https://t.me/doomrushaz2000" target="_blank" rel="noopener noreferrer"><span>Telegram</span><span>@doomrushaz2000</span></a>
+      <a class="floating-contact__link" href="mailto:yourtoxicpm@gmail.com"><span>Email</span><span>yourtoxicpm@gmail.com</span></a>
+      <a class="floating-contact__link" href="https://github.com/WhyPonySwag" target="_blank" rel="noopener noreferrer"><span>GitHub</span><span>WhyPonySwag</span></a>
+    </div>
+    <button class="floating-contact__button" type="button" data-floating-contact-toggle aria-expanded="false" aria-controls="floating-contact-panel">Связаться</button>
+  </div>
 
   <div class="lightbox" id="lightbox" aria-hidden="true" inert role="dialog" aria-modal="true" aria-label="Просмотр изображения">
     <button class="lightbox-close" type="button" tabindex="-1" aria-label="Закрыть увеличенное изображение">×</button>
@@ -1373,81 +1404,30 @@ h2 { font-family: inherit !important; letter-spacing: -.04em !important; }
   </div>
 
 
-  <script>
-    (() => {
-      const toggle = document.querySelector('[data-drawer-toggle]');
-      const drawer = document.querySelector('#site-drawer');
-      const overlay = document.querySelector('[data-drawer-overlay]');
-      const closeButton = document.querySelector('[data-drawer-close]');
-      if (!toggle || !drawer || !overlay || !closeButton) return;
 
-      const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
-      let lastDrawerFocus = null;
 
-      function getFocusable() {
-        return Array.from(drawer.querySelectorAll(focusableSelector));
-      }
 
-      function openDrawer() {
-        lastDrawerFocus = document.activeElement;
-        drawer.classList.add('is-open');
-        overlay.hidden = false;
-        requestAnimationFrame(() => overlay.classList.add('is-open'));
-        drawer.removeAttribute('inert');
-        drawer.setAttribute('aria-hidden', 'false');
-        toggle.setAttribute('aria-expanded', 'true');
-        toggle.querySelector('[data-menu-label]').textContent = 'Закрыть';
-        document.body.classList.add('drawer-open');
-        closeButton.focus();
-      }
+  <div class="presentation-viewer" id="presentation-viewer" data-presentation-viewer role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="presentation-title" inert hidden>
+    <div class="presentation-viewer__top">
+      <div class="presentation-viewer__meta">
+        <span class="presentation-viewer__counter" data-presentation-counter>01 / 04</span>
+        <h2 class="presentation-viewer__title" id="presentation-title" data-presentation-title>Терракотовая стена</h2>
+        <p class="presentation-viewer__description" data-presentation-description>Главный цветовой акцент, собирающий композицию интерьера.</p>
+      </div>
+      <button class="presentation-viewer__close" type="button" data-presentation-close aria-label="Закрыть просмотр проекта">Закрыть</button>
+    </div>
+    <div class="presentation-viewer__stage" data-presentation-stage>
+      <figure class="presentation-viewer__figure">
+        <img src="" alt="" data-presentation-image>
+      </figure>
+    </div>
+    <div class="presentation-viewer__controls" aria-label="Навигация по кадрам проекта">
+      <button class="presentation-viewer__nav" type="button" data-presentation-prev>Назад</button>
+      <button class="presentation-viewer__nav" type="button" data-presentation-next>Вперёд</button>
+    </div>
+  </div>
 
-      function closeDrawer({ restoreFocus = true } = {}) {
-        drawer.classList.remove('is-open');
-        overlay.classList.remove('is-open');
-        drawer.setAttribute('aria-hidden', 'true');
-        drawer.setAttribute('inert', '');
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.querySelector('[data-menu-label]').textContent = 'Меню';
-        document.body.classList.remove('drawer-open');
-        window.setTimeout(() => {
-          if (!drawer.classList.contains('is-open')) overlay.hidden = true;
-        }, 240);
-        if (restoreFocus) (lastDrawerFocus || toggle).focus();
-      }
-
-      toggle.addEventListener('click', () => {
-        if (drawer.classList.contains('is-open')) closeDrawer();
-        else openDrawer();
-      });
-
-      closeButton.addEventListener('click', () => closeDrawer());
-      overlay.addEventListener('click', () => closeDrawer());
-
-      drawer.querySelectorAll('a[href]').forEach((link) => {
-        link.addEventListener('click', () => closeDrawer({ restoreFocus: false }));
-      });
-
-      window.addEventListener('keydown', (event) => {
-        if (!drawer.classList.contains('is-open')) return;
-        if (event.key === 'Escape') {
-          closeDrawer();
-          return;
-        }
-        if (event.key !== 'Tab') return;
-        const focusable = getFocusable();
-        const first = focusable[0];
-        const last = focusable[focusable.length - 1];
-        if (!first || !last) return;
-        if (event.shiftKey && document.activeElement === first) {
-          event.preventDefault();
-          last.focus();
-        } else if (!event.shiftKey && document.activeElement === last) {
-          event.preventDefault();
-          first.focus();
-        }
-      });
-    })();
-  </script>
+  <script src="assets/site.js" defer></script>
 
   <script>
     const revealItems = document.querySelectorAll('.reveal');
@@ -1479,10 +1459,12 @@ h2 { font-family: inherit !important; letter-spacing: -.04em !important; }
       lastFocused = document.activeElement;
       lightboxImg.src = trigger.dataset.full;
       lightboxImg.alt = trigger.dataset.caption || image?.alt || 'Увеличенное изображение проекта';
+      window.dispatchEvent(new CustomEvent('lectory:modal-open', { detail: { source: 'lightbox' } }));
       lightbox.classList.add('open');
       lightbox.removeAttribute('inert');
       lightbox.setAttribute('aria-hidden', 'false');
       closeBtn.removeAttribute('tabindex');
+      document.body.classList.add('lightbox-open');
       document.body.style.overflow = 'hidden';
       closeBtn.focus();
     }
@@ -1493,6 +1475,7 @@ h2 { font-family: inherit !important; letter-spacing: -.04em !important; }
       lightbox.setAttribute('inert', '');
       closeBtn.setAttribute('tabindex', '-1');
       lightboxImg.src = '';
+      document.body.classList.remove('lightbox-open');
       document.body.style.overflow = '';
       lastFocused?.focus();
     }
