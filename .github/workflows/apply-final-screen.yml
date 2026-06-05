@@ -1,15 +1,13 @@
 name: Apply final screen and contact navigation
 
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
   apply:
-    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -95,7 +93,6 @@ jobs:
           concept.write_text(concept_text, encoding='utf-8')
 
           for path in [
-              Path('final-screen-notes.txt'),
               Path('.github/workflows/apply-contact-stage-pr.yml'),
               Path('.github/workflows/apply-final-screen.yml'),
           ]:
