@@ -98,9 +98,10 @@
 
     function closePanel({ restoreFocus = true } = {}) {
       if (panel.hidden) return;
+      const focusWasInsidePanel = panel.contains(document.activeElement);
       panel.hidden = true;
       button.setAttribute('aria-expanded', 'false');
-      if (restoreFocus) button.focus();
+      if (restoreFocus || focusWasInsidePanel) button.focus({ preventScroll: true });
     }
 
     button.addEventListener('click', () => {
