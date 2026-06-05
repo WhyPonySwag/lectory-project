@@ -1323,7 +1323,7 @@ h2 { font-family: inherit !important; letter-spacing: -.04em !important; }
           <h2 id="renders-title">Рендеры проекта</h2>
         </div>
         <div class="renders-actions">
-          <button class="btn" type="button" data-presentation-open aria-haspopup="dialog">Смотреть проект</button>
+          <button class="btn" type="button" data-presentation-open aria-haspopup="dialog" aria-controls="presentation-viewer" aria-expanded="false">Смотреть проект</button>
         </div>
       </div>
       <div class="gallery-grid">
@@ -1449,12 +1449,14 @@ h2 { font-family: inherit !important; letter-spacing: -.04em !important; }
     const lightboxImg = lightbox.querySelector('img');
     const closeBtn = lightbox.querySelector('.lightbox-close');
     let lastFocused = null;
+    let previousLightboxOverflow = '';
 
     document.querySelectorAll('[data-full]').forEach((trigger) => {
       trigger.addEventListener('click', () => openLightbox(trigger));
     });
 
     function openLightbox(trigger) {
+      if (lightbox.classList.contains('open')) return;
       const image = trigger.querySelector('img');
       lastFocused = document.activeElement;
       lightboxImg.src = trigger.dataset.full;
@@ -1464,29 +1466,37 @@ h2 { font-family: inherit !important; letter-spacing: -.04em !important; }
       lightbox.removeAttribute('inert');
       lightbox.setAttribute('aria-hidden', 'false');
       closeBtn.removeAttribute('tabindex');
+      previousLightboxOverflow = document.body.style.overflow;
       document.body.classList.add('lightbox-open');
       document.body.style.overflow = 'hidden';
       closeBtn.focus();
     }
 
-    function closeLightbox() {
+    function closeLightbox({ restoreFocus = true } = {}) {
+      if (!lightbox.classList.contains('open')) return;
       lightbox.classList.remove('open');
       lightbox.setAttribute('aria-hidden', 'true');
       lightbox.setAttribute('inert', '');
       closeBtn.setAttribute('tabindex', '-1');
       lightboxImg.src = '';
       document.body.classList.remove('lightbox-open');
-      document.body.style.overflow = '';
-      lastFocused?.focus();
+      document.body.style.overflow = previousLightboxOverflow;
+      if (restoreFocus) lastFocused?.focus();
     }
 
     closeBtn.addEventListener('click', closeLightbox);
     lightbox.addEventListener('click', (event) => {
       if (event.target === lightbox) closeLightbox();
     });
+    window.addEventListener('lectory:modal-open', (event) => {
+      if (event.detail?.source !== 'lightbox') closeLightbox({ restoreFocus: false });
+    });
     window.addEventListener('keydown', (event) => {
       if (!lightbox.classList.contains('open')) return;
-      if (event.key === 'Escape') closeLightbox();
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeLightbox();
+      }
       if (event.key === 'Tab') {
         event.preventDefault();
         closeBtn.focus();

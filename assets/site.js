@@ -15,6 +15,7 @@
     let lastDrawerFocus = null;
 
     function openDrawer() {
+      if (drawer.classList.contains('is-open')) return;
       window.dispatchEvent(new CustomEvent('lectory:modal-open', { detail: { source: 'drawer' } }));
       lastDrawerFocus = document.activeElement;
       drawer.classList.add('is-open');
@@ -29,6 +30,7 @@
     }
 
     function closeDrawer({ restoreFocus = true } = {}) {
+      if (!drawer.classList.contains('is-open')) return;
       drawer.classList.remove('is-open');
       overlay.classList.remove('is-open');
       drawer.setAttribute('aria-hidden', 'true');
@@ -52,6 +54,10 @@
 
     drawer.querySelectorAll('a[href]').forEach((link) => {
       link.addEventListener('click', () => closeDrawer({ restoreFocus: false }));
+    });
+
+    window.addEventListener('lectory:modal-open', (event) => {
+      if (event.detail?.source !== 'drawer') closeDrawer({ restoreFocus: false });
     });
 
     window.addEventListener('keydown', (event) => {
@@ -83,6 +89,7 @@
     if (!button || !panel) return;
 
     function openPanel() {
+      window.dispatchEvent(new CustomEvent('lectory:modal-open', { detail: { source: 'floating-contact' } }));
       panel.hidden = false;
       button.setAttribute('aria-expanded', 'true');
       const firstLink = focusableWithin(panel)[0];
@@ -106,7 +113,9 @@
       closePanel({ restoreFocus: false });
     });
 
-    window.addEventListener('lectory:modal-open', () => closePanel({ restoreFocus: false }));
+    window.addEventListener('lectory:modal-open', (event) => {
+      if (event.detail?.source !== 'floating-contact') closePanel({ restoreFocus: false });
+    });
 
     document.querySelectorAll('[data-full]').forEach((trigger) => {
       trigger.addEventListener('click', () => closePanel({ restoreFocus: false }), { capture: true });
@@ -204,6 +213,7 @@
     }
 
     function openViewer() {
+      if (!viewer.hidden) return;
       window.dispatchEvent(new CustomEvent('lectory:modal-open', { detail: { source: 'presentation' } }));
       lastPresentationFocus = document.activeElement;
       currentIndex = 0;
@@ -211,6 +221,7 @@
       viewer.hidden = false;
       viewer.removeAttribute('inert');
       viewer.setAttribute('aria-hidden', 'false');
+      openButton.setAttribute('aria-expanded', 'true');
       previousBodyOverflow = document.body.style.overflow;
       document.body.classList.add('presentation-open');
       document.body.style.overflow = 'hidden';
@@ -222,6 +233,7 @@
       viewer.hidden = true;
       viewer.setAttribute('aria-hidden', 'true');
       viewer.setAttribute('inert', '');
+      openButton.setAttribute('aria-expanded', 'false');
       document.body.classList.remove('presentation-open');
       document.body.style.overflow = previousBodyOverflow;
       image.src = '';
@@ -260,6 +272,14 @@
       if (deltaX < 0) showNext();
       else showPrevious();
     }, { passive: true });
+
+    stage.addEventListener('touchcancel', () => {
+      isTrackingSwipe = false;
+    }, { passive: true });
+
+    window.addEventListener('lectory:modal-open', (event) => {
+      if (event.detail?.source !== 'presentation') closeViewer({ restoreFocus: false });
+    });
 
     window.addEventListener('keydown', (event) => {
       if (viewer.hidden) return;
